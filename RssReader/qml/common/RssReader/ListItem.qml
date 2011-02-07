@@ -8,10 +8,10 @@ Item {
     property color fontColor: "black"
     property bool fontBold: false
     property string text: "NOT SET"
-    property string bgImage: 'gfx/list_item.png'
-    property string bgImageSelected: 'gfx/list_item_selected.png'
-    property string bgImagePressed: 'gfx/list_item_pressed.png'
-    property string bgImageActive: 'gfx/list_item_active.png'
+    property string bgImage: './gfx/list_item.png'
+    property string bgImageSelected: './gfx/list_item_selected.png'
+    property string bgImagePressed: './gfx/list_item_pressed.png'
+    property string bgImageActive: './gfx/list_item_active.png'
     property bool selected: false
     property bool selectable: false
     property int textIndent: 0

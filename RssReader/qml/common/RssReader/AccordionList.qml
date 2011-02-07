@@ -14,11 +14,11 @@ Item {
     property string selectedUrl: ""
     property alias model: mainModel
 
-    property string bgImageSubItem: "gfx/list_subitem.png"
-    property string bgImage: 'gfx/list_item.png'
-    property string bgImageSelected: 'gfx/list_item_selected.png'
-    property string bgImagePressed: 'gfx/list_item_pressed.png'
-    property string bgImageActive: 'gfx/list_item_active.png'
+    property string bgImageSubItem: "./gfx/list_subitem.png"
+    property string bgImage: './gfx/list_item.png'
+    property string bgImageSelected: './gfx/list_item_selected.png'
+    property string bgImagePressed: './gfx/list_item_pressed.png'
+    property string bgImageActive: './gfx/list_item_active.png'
 
     property string headerItemFontName: "Helvetica"
     property int headerItemFontSize: 12
