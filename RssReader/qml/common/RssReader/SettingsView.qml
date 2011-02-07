@@ -4,7 +4,7 @@ Item {
     id: container
 
     property string fontName: "Helvetica"
-    property int fontSize: 12
+    property int fontSize: 8
     property color fontColor: "black"
 
     Column {
@@ -16,7 +16,7 @@ Item {
         spacing: 10
         Text {
             id: switchLabel
-            text: qsTr("Refresh on background")
+            text: qsTr("Settings: TBD")
             font {
                 family: container.fontName
                 pointSize: container.fontSize
@@ -26,7 +26,7 @@ Item {
 
         Switch {
             id: refreshSwitch
-            anchors.right: container.right
+            x: 0
 
         }
 

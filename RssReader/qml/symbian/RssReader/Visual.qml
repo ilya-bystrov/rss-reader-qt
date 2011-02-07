@@ -34,7 +34,7 @@ Item {
 
     // Discovery view
     property string discoveryViewFont: defaultFontFamily
-    property int discoveryViewFontSize: 10
+    property int discoveryViewFontSize: 8
     property color discoveryViewFontColor: defaultFontColor
 
     // Category view
