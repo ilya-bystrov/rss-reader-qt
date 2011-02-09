@@ -49,14 +49,8 @@ Item {
         spacing: 0
     }
 
-    // ScrollBar indicator.
-    ScrollBar {
-        id: scrollBar
-        scrollArea: listView
-        height: listView.height
-        width: container.scrollBarWidth
-        anchors.right: item.right
-    }
+    ScrollBar { scrollArea: listView; width: item.scrollBarWidth; anchors.top: listView.top; anchors.right: listView.right; anchors.bottom: listView.bottom; z: 100 }
+
 
     Component {
         id: listViewDelegate
