@@ -56,7 +56,7 @@ Item {
         id: itemText
         anchors {
             left: iconId.right
-            top: parent.top
+            top: iconId.top
             topMargin: 4
             bottomMargin: 4
             leftMargin: 8 + textIndent

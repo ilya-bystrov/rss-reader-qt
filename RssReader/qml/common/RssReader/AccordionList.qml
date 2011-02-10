@@ -135,7 +135,7 @@ Item {
 
                         ListItem {
                             id: subListItem
-                            //width: container.width
+                            width: container.width
                             height: subItemsRect.itemHeight
                             text: categoryTitle
                             bgImage: item.bgImageSubItem
