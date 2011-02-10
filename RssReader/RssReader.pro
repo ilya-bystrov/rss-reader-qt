@@ -1,4 +1,3 @@
-
 # Files common to all platforms
 common_qml.source = qml/common/RssReader
 common_qml.target = qml

@@ -51,12 +51,14 @@ int main(int argc, char *argv[])
 #endif
 
     // set viewer parameters
-#ifdef Q_WS_MAEMO_5
-    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockLandscape);
-#endif
-#ifdef Q_OS_SYMBIAN
-    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockPortrait);
-#endif
+
+    // Do not lock orientation, allowing the platform to do the switching automatically.
+//#ifdef Q_WS_MAEMO_5
+//    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockLandscape);
+//#endif
+//#ifdef Q_OS_SYMBIAN
+//    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockPortrait);
+//#endif
     viewer.setMainQmlFile(QLatin1String("qml/RssReader/main.qml"));
     viewer.addImportPath(QLatin1String("qml/Components"));
 

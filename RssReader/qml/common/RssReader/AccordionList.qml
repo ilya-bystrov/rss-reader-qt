@@ -49,14 +49,8 @@ Item {
         spacing: 0
     }
 
-    // ScrollBar indicator.
-    ScrollBar {
-        id: scrollBar
-        scrollArea: listView
-        height: listView.height
-        width: container.scrollBarWidth
-        anchors.right: item.right
-    }
+    ScrollBar { scrollArea: listView; width: item.scrollBarWidth; anchors.top: listView.top; anchors.right: listView.right; anchors.bottom: listView.bottom; z: 100 }
+
 
     Component {
         id: listViewDelegate
@@ -84,7 +78,7 @@ Item {
                 text: categoryTitle
                 icon: iconUrl ? iconUrl : ""
                 onClicked: {
-                    Util.log("Clicked on " + categoryTitle);
+                    Util.log("Clicked on " + categoryTitle + " at " +index);
                     container.expanded = !container.expanded
                     item.expandedTitle = categoryTitle
                 }
@@ -123,9 +117,11 @@ Item {
 
                 opacity: 1
                 Behavior on height {
-                    NumberAnimation {
-                        duration: item.animationDuration
-                        easing.type: Easing.InOutQuad
+                    // Animate subitem expansion. After the final height is reached,
+                    // ensure that it is visible to the user.
+                    SequentialAnimation {
+                        NumberAnimation { duration: item.animationDuration; easing.type: Easing.InOutQuad }
+                        ScriptAction { script: ListView.view.positionViewAtIndex(index, ListView.Contain) }
                     }
                 }
 
@@ -139,14 +135,19 @@ Item {
 
                         ListItem {
                             id: subListItem
-                            width: container.width
+                            //width: container.width
                             height: subItemsRect.itemHeight
                             text: categoryTitle
+                            bgImage: item.bgImageSubItem
                             fontName: item.subItemFontName
                             fontSize: item.subItemFontSize
                             fontColor: item.subItemFontColor
-                            textIndent: item.indent
-                            bgImage: item.bgImageSubItem
+                            // When the item is Manage/Discover button, alter
+                            // the look a little.
+                            textIndent: type == "discover" ? 0 : item.indent
+                            icon: type == "discover" ? "gfx/settings_icon.png" : ""
+                            iconOpacity: type == "discover" ? 0.5 : 1.0
+                            iconIndent: type == "discover" ? item.indent : 0
                             onPressAndHold: {
                                 if(type == "discover") {
                                     // No action when longtapping this button.

@@ -3,7 +3,6 @@ import "Util.js" as Util
 
 // Follow http://doc.qt.nokia.com/4.7/qml-coding-conventions.html
 Rectangle {
-    // Id
     id: mainWindow
 
     Visual { id: visual }
@@ -13,47 +12,36 @@ Rectangle {
         id: appState
     }
 
+    // Connect the the orientation sensor signal to our handler function
+    Connections {
+        id: orient
+        property bool inLandscape: false
+        target: filter // this is available only on device, on desktop you get warnings
+        onOrientationChanged: {
+            if (orientation === 1) {
+                Util.log("Orientation TOP POINTING UP");
+                orient.inLandscape = false
+            } else if (orientation === 2) {
+                Util.log("Orientation TOP POINTING DOWN");
+                orient.inLandscape = false
+            } else if (orientation === 3) {
+                Util.log("Orientation LEFT POINTING UP");
+                orient.inLandscape = true
+            } else if (orientation === 4) {
+                Util.log("Orientation RIGHT POINTING UP");
+                orient.inLandscape = true
+            }
+        }
+    }
+
     // Signals
 
     // Functions
 
-    // Connect the the orientation sensor signal to our handler function
-    Connections {
-        target: filter // this is available only on device, on desktop you get warnings
-        onOrientationChanged: orientationChanged(orientation)
-    }
-
     // Handle orientation changes
-    function orientationChanged(orientation) {
-        if (orientation === 0) {
-            Util.log("Orientation UNKNOWN");
-            mainWindow.rotation = 0;
-        } else if (orientation === 1) {
-            Util.log("Orientation TOP POINTING UP");
-            mainWindow.rotation = 0;
-        } else if (orientation === 2) {
-            Util.log("Orientation TOP POINTING DOWN");
-            mainWindow.rotation = 180;
-        } else if (orientation === 3) {
-            Util.log("Orientation LEFT POINTING UP");
-            mainWindow.rotation = 270;
-        } else if (orientation === 4) {
-            Util.log("Orientation RIGHT POINTING UP");
-            mainWindow.rotation = 90;
-        } else if (orientation === 5) {
-            Util.log("Orientation FACE POINTING UP");
-            mainWindow.rotation = 0;
-        } else if (orientation === 6) {
-            Util.log("Orientation FACE POINTING DOWN");
-            mainWindow.rotation = 0;
-        }
-    }
-
-    Component.onCompleted: {
-        Util.log("main.qml loaded")
-    }
 
     // Object properties
+    anchors.centerIn: parent
     width: visual.appWidth ? visual.appWidth: screenWidth
     height: visual.appHeight ? visual.appHeight : screenHeight
     color: visual.applicationBackgroundColor
@@ -101,7 +89,7 @@ Rectangle {
             top: mainWindow.top
             left: mainWindow.left
             right: mainWindow.right
-        }        
+        }
         fontBold: true
         fontName: visual.titleBarFont
         fontSize: visual.titleBarFontSize
@@ -377,7 +365,7 @@ Rectangle {
                 target: appState
                 showBackButton: true
                 currentTitle: qsTr("Settings")
-            }            
+            }
             // Animate the view switch with viewSwitcher
             StateChangeScript { script: viewSwitcher.switchView(settingsView, appState.fromLeft, 0); }
         }
@@ -397,7 +385,8 @@ Rectangle {
         }
     ]
 
-    Behavior on rotation { RotationAnimation { direction: RotationAnimation.Shortest; duration: 500; easing.type: Easing.OutBounce } }
-    Behavior on width    { NumberAnimation   { duration: 500 } }
-    Behavior on height   { NumberAnimation   { duration: 500 } }
+    Behavior on rotation { RotationAnimation { direction: RotationAnimation.Shortest; duration: 500; easing.type: Easing.OutQuint } }
+    Behavior on width    { NumberAnimation   { duration: 500; } }
+    Behavior on height   { NumberAnimation   { duration: 500; } }
 }
+
