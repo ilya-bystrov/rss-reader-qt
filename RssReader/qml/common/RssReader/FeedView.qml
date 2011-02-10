@@ -40,6 +40,7 @@ Item {
             fontName: container.fontName
             fontSize: container.fontSize
             fontColor: container.fontColor
+            bgImage: './gfx/list_subitem.png' // Lighter than default gfx.
             onClicked: {
                 Util.log("Clicked on "+title + " "+enclosureUrl)
                 container.itemTitle = title

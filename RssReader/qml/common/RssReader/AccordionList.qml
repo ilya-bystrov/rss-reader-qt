@@ -133,14 +133,19 @@ Item {
 
                         ListItem {
                             id: subListItem
-                            width: container.width
+                            //width: container.width
                             height: subItemsRect.itemHeight
                             text: categoryTitle
+                            bgImage: item.bgImageSubItem
                             fontName: item.subItemFontName
                             fontSize: item.subItemFontSize
                             fontColor: item.subItemFontColor
-                            textIndent: item.indent
-                            bgImage: item.bgImageSubItem
+                            // When the item is Manage/Discover button, alter
+                            // the look a little.
+                            textIndent: type == "discover" ? 0 : item.indent
+                            icon: type == "discover" ? "gfx/settings_icon.png" : ""
+                            iconOpacity: type == "discover" ? 0.5 : 1.0
+                            iconIndent: type == "discover" ? item.indent : 0
                             onPressAndHold: {
                                 if(type == "discover") {
                                     // No action when longtapping this button.

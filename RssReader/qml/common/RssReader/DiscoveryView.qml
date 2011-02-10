@@ -34,12 +34,12 @@ Item {
             property bool subscribed: categoryView.model.feedExists(url)
             text: title
             width: listView.width
-            selectable: true
-            selected: subscribed
+            // ListItem is not selectable.
             icon: iconUrl
             fontName: view.fontName
             fontSize: view.fontSize
             fontColor: view.fontColor
+            bgImage: './gfx/list_subitem.png' // Lighter than default gfx.
             onClicked: {
                 if(subscribed) {
                     categoryView.model.removeFromCategory(categoryTitle, url)
@@ -51,7 +51,7 @@ Item {
                 id: star
                 fillMode: "PreserveAspectFit"
                 height: parent.height*0.5
-                source: parent.selected ? "gfx/favourited.png" : "gfx/favourited_not.png"
+                source: parent.subscribed ? "gfx/favourited.png" : "gfx/favourited_not.png"
                 smooth: true
                 anchors {
                     right: parent.right

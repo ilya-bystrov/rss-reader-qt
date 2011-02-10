@@ -9,15 +9,19 @@ Item {
     property bool fontBold: false
     property string text: "NOT SET"
     property string bgImage: './gfx/list_item.png'
+
     property string bgImageSelected: './gfx/list_item_selected.png'
     property string bgImagePressed: './gfx/list_item_pressed.png'
     property string bgImageActive: './gfx/list_item_active.png'
     property bool selected: false
     property bool selectable: false
     property int textIndent: 0
+    property int iconIndent: 0
     property string icon: ""
+    property double iconOpacity: 1
     signal clicked
     signal pressAndHold(int mouseX, int mouseY)
+
 
     width: 360
     height: 64
@@ -37,11 +41,13 @@ Item {
         source: icon
         width: visible ? height: 0
         smooth: true
+        opacity: container.iconOpacity
         anchors {
             left: parent.left
             top: parent.top
             margins: 0.2*parent.height
             verticalCenter: parent.verticalCenter
+            leftMargin: 8 + iconIndent
         }
 
     }
@@ -50,7 +56,7 @@ Item {
         id: itemText
         anchors {
             left: iconId.right
-            top: iconId.top
+            top: parent.top
             topMargin: 4
             bottomMargin: 4
             leftMargin: 8 + textIndent
