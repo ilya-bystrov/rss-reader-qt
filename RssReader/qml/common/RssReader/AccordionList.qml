@@ -78,7 +78,7 @@ Item {
                 text: categoryTitle
                 icon: iconUrl ? iconUrl : ""
                 onClicked: {
-                    Util.log("Clicked on " + categoryTitle);
+                    Util.log("Clicked on " + categoryTitle + " at " +index);
                     container.expanded = !container.expanded
                     item.expandedTitle = categoryTitle
                 }
@@ -117,9 +117,11 @@ Item {
 
                 opacity: 1
                 Behavior on height {
-                    NumberAnimation {
-                        duration: item.animationDuration
-                        easing.type: Easing.InOutQuad
+                    // Animate subitem expansion. After the final height is reached,
+                    // ensure that it is visible to the user.
+                    SequentialAnimation {
+                        NumberAnimation { duration: item.animationDuration; easing.type: Easing.InOutQuad }
+                        ScriptAction { script: ListView.view.positionViewAtIndex(index, ListView.Contain) }
                     }
                 }
 
