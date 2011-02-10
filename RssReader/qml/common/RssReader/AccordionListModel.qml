@@ -45,91 +45,9 @@ ListModel {
         ]
     }
 
-    /*
-    // Predefined contents:
-    ListElement {
-        categoryTitle: "Qt Blogs"
-        iconUrl: "http://www.webdesign.org/img_articles/15628/25.jpg"
-        attributes: [
-            ListElement {
-                categoryTitle: "Qt Blog"
-                type: "rss"
-                url: "http://feeds.feedburner.com/TheQtBlog"
-            },
-            ListElement {
-                categoryTitle: "Qt Labs Blog"
-                type: "rss"
-                url: "http://labs.qt.nokia.com/feed/"
-            },
-            ListElement {
-                categoryTitle: "Manage"
-                type: "discover"
-                url: "discovery.xml"
-            }
-        ]
-    }
-    ListElement {
-        categoryTitle: "Forum Nokia Blogs"
-        attributes: [
-            ListElement {
-                categoryTitle: "Forum Nokia - Kate Alhola"
-                type: "rss"
-                url: "http://blogs.forum.nokia.com/rss.php?blogId=300003&profile=rss20"
-            },
-            ListElement {
-                categoryTitle: "Forum Nokia - Ville Vainio"
-                type: "rss"
-                url: "http://blogs.forum.nokia.com/rss.php?blogId=300125&profile=rss20"
-            },
-            ListElement {
-                categoryTitle: "Manage"
-                type: "discover"
-                url: "discovery.xml"
-            }
-        ]
-    }
-
-    ListElement {
-        categoryTitle: "Other blogs"
-        attributes: [
-
-            ListElement {
-                categoryTitle: "All About MeeGo"
-                type: "rss"
-                url: "http://rss.allaboutmeego.com/aam-feed-summary.xml"
-            },
-            ListElement {
-                categoryTitle: "All About Symbian"
-                type: "rss"
-                url: "http://rss.allaboutsymbian.com/news/rss2all.xml"
-            },
-            ListElement {
-                categoryTitle: "Manage"
-                type: "discover"
-                url: "discovery.xml"
-            }
-        ]
-    }
-
-    ListElement {
-        categoryTitle: "Image feeds"
-        attributes: [
-            ListElement {
-                categoryTitle: "Dilbert"
-                type: "rss"
-                url: "http://feed.dilbert.com/dilbert/daily_strip?format=xml"
-            },
-            ListElement {
-                categoryTitle: "Manage"
-                type: "discover"
-                url: "discovery.xml"
-            }
-        ]
-    }
-*/
     Component.onCompleted: {
         // Comment the following line and run once to restore the initial state with predefined content.
-        //Store.restore(model);
+        Store.restore(model);
     }
 
     Component.onDestruction: {

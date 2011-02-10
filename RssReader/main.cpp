@@ -40,25 +40,8 @@ int main(int argc, char *argv[])
     context->setContextProperty("screenWidth", screenRect.width());
     context->setContextProperty("screenHeight", screenRect.height());
 
-#if defined(Q_WS_MAEMO_5) || defined(Q_OS_SYMBIAN)
-    // Create an orientation sensor and add it to QML context
-    QOrientationSensor sensor;
-    // We use our own filter to be able to signal with QVariant the orientation because Sensors QML-plugin is not yet a part of 1.1
-    OrientationFilter filter;
-    sensor.addFilter(&filter);
-    sensor.start();
-    context->setContextProperty("filter", &filter);
-#endif
-
     // set viewer parameters
-
-    // Do not lock orientation, allowing the platform to do the switching automatically.
-//#ifdef Q_WS_MAEMO_5
-//    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockLandscape);
-//#endif
-//#ifdef Q_OS_SYMBIAN
-//    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockPortrait);
-//#endif
+    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
     viewer.setMainQmlFile(QLatin1String("qml/RssReader/main.qml"));
     viewer.addImportPath(QLatin1String("qml/Components"));
 

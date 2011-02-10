@@ -12,28 +12,6 @@ Rectangle {
         id: appState
     }
 
-    // Connect the the orientation sensor signal to our handler function
-    Connections {
-        id: orient
-        property bool inLandscape: false
-        target: filter // this is available only on device, on desktop you get warnings
-        onOrientationChanged: {
-            if (orientation === 1) {
-                Util.log("Orientation TOP POINTING UP");
-                orient.inLandscape = false
-            } else if (orientation === 2) {
-                Util.log("Orientation TOP POINTING DOWN");
-                orient.inLandscape = false
-            } else if (orientation === 3) {
-                Util.log("Orientation LEFT POINTING UP");
-                orient.inLandscape = true
-            } else if (orientation === 4) {
-                Util.log("Orientation RIGHT POINTING UP");
-                orient.inLandscape = true
-            }
-        }
-    }
-
     // Signals
 
     // Functions
@@ -385,8 +363,8 @@ Rectangle {
         }
     ]
 
-    Behavior on rotation { RotationAnimation { direction: RotationAnimation.Shortest; duration: 500; easing.type: Easing.OutQuint } }
-    Behavior on width    { NumberAnimation   { duration: 500; } }
-    Behavior on height   { NumberAnimation   { duration: 500; } }
+//    Behavior on rotation { RotationAnimation { direction: RotationAnimation.Shortest; duration: 500; easing.type: Easing.OutQuint } }
+//    Behavior on width    { NumberAnimation   { duration: 500; } }
+//    Behavior on height   { NumberAnimation   { duration: 500; } }
 }
 
