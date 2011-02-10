@@ -32,6 +32,11 @@ Item {
     // Footer
     property int footerHeight: 60
 
+    // Settings view
+    property string settingsViewFont: defaultFontFamily
+    property int settingsViewFontSize: 14
+    property color settingsViewFontColor: "red"
+
     // Discovery view
     property string discoveryViewFont: defaultFontFamily
     property int discoveryViewFontSize: 12

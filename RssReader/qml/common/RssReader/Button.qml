@@ -20,8 +20,7 @@ Item {
 
     width: 140
     height: 60
-    opacity: enabled ? 1.0 : 0.5
-    onActiveChanged: state = active ? '' :'active'
+    opacity: enabled ? 1.0 : 0.5    
 
     BorderImage {
         id: background
@@ -59,7 +58,7 @@ Item {
             PropertyChanges { target: background; source: bgImagePressed; border { left: 38; top: 37; right: 38; bottom: 15 } }
         },
         State {
-            name: 'active';
+            name: 'active'; when: container.active
             PropertyChanges { target: background; source: bgImageActive; }
         }
     ]

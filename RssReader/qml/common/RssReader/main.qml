@@ -135,7 +135,7 @@ Rectangle {
     // This item will contain the views that we switch between
     Item {
         id: contentPane
-        //clip: true
+        clip: true
         anchors {
             top: titleBar.bottom
             left: mainWindow.left
@@ -160,6 +160,9 @@ Rectangle {
             id: settingsView
             anchors.fill: parent
             opacity: 0
+            fontName: visual.settingsViewFont
+            fontSize: visual.settingsViewFontSize
+            fontColor: visual.settingsViewFontColor
         }
 
         // Discovery view to add more subscriptions

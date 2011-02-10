@@ -4,38 +4,47 @@ Item {
     id: container
 
     property string fontName: "Helvetica"
-    property int fontSize: 8
+    property int fontSize: 12
     property color fontColor: "black"
-
+    property double margins: 8
     Column {
-        anchors {
-            fill: parent
-            margins: 10
-        }
+        anchors.fill: parent
+        spacing: container.margins
 
-        spacing: 10
-        Text {
-            id: switchLabel
-            text: qsTr("Settings: TBD")
-            font {
-                family: container.fontName
-                pointSize: container.fontSize
+        Row {
+            anchors {
+                left: parent.left
+                right: parent.right
+                margins: container.margins
             }
-            color: container.fontColor
+            spacing: container.margins
+
+            Text {
+                id: switchLabel
+                anchors.left:  parent.left
+                anchors.right: themeSwitch.left
+                anchors.margins: container.margins
+                color: container.fontColor
+                font {
+                    family: container.fontName
+                    pixelSize: container.fontSize
+                }
+                text: qsTr("Theme")
+            }
+
+            Switch {
+                id: themeSwitch
+                anchors.right: parent.right
+                anchors.margins: container.margins
+            }
+
         }
-
-        Switch {
-            id: refreshSwitch
-            x: 0
-
-        }
-
+        /*
+        Slider {
+            anchor {
+                left: parent.left
+                right: parent.right
+            }
+        }*/
     }
-    /*
-    Slider {
-        anchor {
-            left: parent.left
-            right: parent.right
-        }
-    }*/
 }
