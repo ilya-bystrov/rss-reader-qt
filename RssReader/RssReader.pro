@@ -5,13 +5,11 @@ common_qml.target = qml
 # Platform specific files and configuration
 symbian {
     TARGET.UID3 = 0xE1E1B70E
-    HEADERS += orientationfilter.h
     platform_qml.source = qml/symbian/RssReader
     platform_qml.target = qml
     QML_IMPORT_PATH = qml/symbian/RssReader
 } else:maemo5 {
     QT += opengl
-    HEADERS += orientationfilter.h
     platform_qml.source = qml/maemo/RssReader
     platform_qml.target = qml
     QML_IMPORT_PATH = qml/maemo/RssReader

@@ -7,13 +7,6 @@
 #include <QtOpenGL/QGLWidget>
 #endif
 
-#if defined(Q_WS_MAEMO_5) || defined(Q_OS_SYMBIAN)
-#include <QOrientationSensor>
-#include "orientationfilter.h"
-QTM_USE_NAMESPACE
-#endif
-
-
 int main(int argc, char *argv[])
 {
     // Create application
