@@ -57,24 +57,22 @@ Item {
         anchors {
             left: iconId.right
             top: iconId.top
+            right: parent.right
             topMargin: 4
             bottomMargin: 4
             leftMargin: 8 + textIndent
             rightMargin: 8
             verticalCenter: container.verticalCenter
         }
-
         font {
             family: container.fontName
             pointSize: container.fontSize
             bold: container.fontBold
         }
         color: container.fontColor
-        elide: Text.ElideLeft
-        textFormat: Text.RichText
+        elide: Text.ElideRight
         text: container.text
         verticalAlignment: Text.AlignVCenter
-
     }
 
     MouseArea {
