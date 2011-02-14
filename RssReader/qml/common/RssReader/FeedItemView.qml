@@ -18,7 +18,6 @@ Item {
 
     Flickable {
         id: flicker
-        //anchors.fill: parent
         width: parent.width
         anchors.top:  parent.top
         anchors.bottom: buttonPart.top
@@ -64,20 +63,6 @@ Item {
                 Util.log("image status "+status)
             }
         }
-
-        /*
-        WebView {
-            id: textPart
-            anchors {
-                margins: 8
-                top: imagePart.bottom
-                left: parent.left
-                right: parent.right
-            }
-            html: itemDescription
-
-        }
-        */
 
         Text {
             id: textPart
