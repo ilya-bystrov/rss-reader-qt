@@ -30,10 +30,29 @@ Item {
         contentWidth: parent.width
         contentHeight: imagePart.height + textPart.height
 
+        Text {
+            id: titleText
+            text: appState.selectedFeedItemTitle
+            anchors {
+                margins: 8
+                top: parent.top
+                left: parent.left
+                right: parent.right
+            }
+            font {
+                family: container.fontName
+                pointSize: container.fontSize
+                bold: true
+            }
+            color: container.fontColor
+            wrapMode: Text.Wrap
+            textFormat: Text.RichText
+        }
+
         Image {
             id: imagePart
             anchors {
-                top: parent.top
+                top: titleText.bottom
                 left: parent.left
                 right: parent.right
                 margins: 8

@@ -283,7 +283,6 @@ Rectangle {
                 // Set all state variable changes to appState
                 target: appState
                 showBackButton: true;
-                //currentTitle: appState.selectedFeedTitle
                 currentTitle: qsTr("Manage news feeds")
             }
             // Animate the view switch with viewSwitcher
@@ -299,7 +298,7 @@ Rectangle {
                 showBackButton: false;
                 currentTitle: qsTr("RSS Reader");
             }
-            PropertyChanges { target: footer; show: true }
+            //PropertyChanges { target: footer; show: true }
             // Animate the view switch with viewSwitcher
             StateChangeScript { script: viewSwitcher.switchView(categoryView, appState.fromLeft, 0); }
         },
@@ -326,11 +325,12 @@ Rectangle {
                 // Set all state variable changes to appState
                 target: appState
                 showBackButton: true
-                currentTitle: appState.selectedFeedItemTitle
+                currentTitle: appState.selectedFeedTitle
+                //currentTitle: appState.selectedFeedItemTitle
             }
             PropertyChanges {
                 target: titleBar
-                fontSize: visual.titleBarSmallestFontSize
+                fontSize: visual.titleBarSmallerFontSize
             }
             // Animate the view switch with viewSwitcher
             StateChangeScript { script: viewSwitcher.switchView(feedItemView, appState.fromLeft, 0); }
@@ -362,9 +362,5 @@ Rectangle {
             }
         }
     ]
-
-//    Behavior on rotation { RotationAnimation { direction: RotationAnimation.Shortest; duration: 500; easing.type: Easing.OutQuint } }
-//    Behavior on width    { NumberAnimation   { duration: 500; } }
-//    Behavior on height   { NumberAnimation   { duration: 500; } }
 }
 
