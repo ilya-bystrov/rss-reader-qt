@@ -74,7 +74,7 @@ Rectangle {
         fontColor: visual.titlebarFontColor
         color: visual.titleBarBackgroundColor
         height: visual.titleBarHeight
-        text: appState.currentTitle;
+        text: appState.currentTitle
         iconSource: "gfx/rss_logo.png"
         showingBackButton: appState.showBackButton
         onBackButtonClicked: {
@@ -96,6 +96,7 @@ Rectangle {
         onExitButtonClicked: {
             Util.exitApp("Exit-button clicked");
         }
+        onTextChanged: { Util.log("titleBar.text "+titleBar.text); Util.log("appState.currentTitle "+appState.currentTitle)}
     }
 
     // This item will contain the views that we switch between
@@ -170,15 +171,17 @@ Rectangle {
                 appState.fromLeft = false;
                 appState.currentViewName = "feedView";
             }
-            onDiscoverFromCategory: {
-                Util.log("Discover from " + categoryView.expandedCategoryTitle
-                         + ", url:" + categoryView.selectedCategoryUrl);
-                // Set the discovery view to show the proper category:
-                discoveryView.categoryTitle = categoryView.expandedCategoryTitle
+            onDiscoverFromCategory: {                
+                Util.log("Discover from " + category
+                                         + ", url:" + categoryView.selectedCategoryUrl);
+                // Set the discovery view to show the proper category:                
+                discoveryView.categoryTitle = category
                 discoveryView.discoveryUrl = categoryView.selectedCategoryUrl
-                appState.selectedFeedTitle = categoryView.expandedCategoryTitle
+                appState.selectedFeedTitle = categoryView.expandedCategoryTitle                
+                Util.log("appState.currentTitle "+appState.currentTitle)
                 appState.fromLeft = true;
                 appState.currentViewName = "discoveryView";
+                appState.currentTitle = "Manage "+category+" Feeds"
             }
         }
 
@@ -283,7 +286,7 @@ Rectangle {
                 // Set all state variable changes to appState
                 target: appState
                 showBackButton: true;
-                currentTitle: qsTr("Manage news feeds")
+                //currentTitle: qsTr("Manage "+""+" feeds")
             }
             // Animate the view switch with viewSwitcher
             StateChangeScript { script: viewSwitcher.switchView(discoveryView, appState.fromLeft, 0); }
