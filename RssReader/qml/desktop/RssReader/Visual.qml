@@ -35,7 +35,7 @@ Item {
     // Settings view
     property string settingsViewFont: defaultFontFamily
     property int settingsViewFontSize: 14
-    property color settingsViewFontColor: "red"
+    property color settingsViewFontColor: defaultFontColor
 
     // Discovery view
     property string discoveryViewFont: defaultFontFamily

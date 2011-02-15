@@ -298,7 +298,7 @@ Rectangle {
                 showBackButton: false;
                 currentTitle: qsTr("RSS Reader");
             }
-            //PropertyChanges { target: footer; show: true }
+            PropertyChanges { target: footer; show: true }
             // Animate the view switch with viewSwitcher
             StateChangeScript { script: viewSwitcher.switchView(categoryView, appState.fromLeft, 0); }
         },

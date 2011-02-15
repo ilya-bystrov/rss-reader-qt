@@ -9,14 +9,11 @@ Item {
     property double margins: 8
     Column {
         anchors.fill: parent
+        anchors.margins: container.margins
         spacing: container.margins
 
         Row {
-            anchors {
-                left: parent.left
-                right: parent.right
-                margins: container.margins
-            }
+            width: parent.width
             spacing: container.margins
 
             Text {
@@ -37,7 +34,6 @@ Item {
                 anchors.right: parent.right
                 anchors.margins: container.margins
             }
-
         }
         /*
         Slider {
