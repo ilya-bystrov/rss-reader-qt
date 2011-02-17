@@ -65,8 +65,8 @@ Item {
             top: parent.top
             left: parent.left
             right: parent.right
-            bottom: textEntry.top
-            bottomMargin: 14
+            bottom: icon.top
+            bottomMargin: 24
         }
 
         clip: true
@@ -77,13 +77,26 @@ Item {
         visible: !listModel.loading
     }
 
+
+    Image {
+        id: icon
+        source: 'gfx/search_icon.png'
+        anchors {
+            left: parent.left
+            bottom: parent.bottom
+        }
+        anchors.margins: 8
+        fillMode: Image.PreserveAspectFit
+        smooth: true
+    }
+
     TextEntry {
         id: textEntry
-        width: parent.width
         height: 61
         anchors {
+            leftMargin: 8
             bottom: parent.bottom
-            left: parent.left
+            left: icon.right
             right: parent.right
         }
         text: ""
