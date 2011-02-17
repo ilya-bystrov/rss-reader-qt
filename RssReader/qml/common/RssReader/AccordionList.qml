@@ -160,6 +160,7 @@ Item {
                             onClicked: {
                                 item.selectedTitle = categoryTitle
                                 item.selectedUrl = url
+                                item.expandedTitle = expandedCategoryTitle
 
                                 if(type == "discover") {
                                     Util.log("Clicked on discovery in " + expandedCategoryTitle);

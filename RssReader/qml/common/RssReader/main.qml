@@ -232,9 +232,10 @@ Rectangle {
             source: "gfx/frame.png"
             border { left: 8; top: 8; right: 8; bottom: 8 }
             width: contentPane.width
-            // Adjust the background frame a bit when in feedItemView to give some
+            // Adjust the background frame a bit when in feedView or feedItemView to give some
             // space for the button there.
-            height: appState.currentViewName == "feedItemView" ? contentPane.height - 75  : contentPane.height
+            height: appState.currentViewName == "feedItemView" || appState.currentViewName == "feedView"
+                    ? contentPane.height - 75  : contentPane.height
             anchors { top: contentPane.top; left: contentPane.left }
         }
     }

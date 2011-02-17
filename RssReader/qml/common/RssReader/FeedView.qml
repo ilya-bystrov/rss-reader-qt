@@ -36,7 +36,9 @@ Item {
 
         ListItem {
             text: title
+            property bool filtered: title.match(new RegExp(textEntry.text,"i")) != null
             width: container.width
+            height: filtered ? 64 : 0
             fontName: container.fontName
             fontSize: container.fontSize
             fontColor: container.fontColor
@@ -58,13 +60,33 @@ Item {
 
     ListView {
         id: list
-        anchors.fill: parent
+
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.right
+            bottom: textEntry.top
+            bottomMargin: 14
+        }
+
         clip: true
         model: listModel
         delegate: listDelegate
         // Hide list until loading complete to avoid showing previously loaded
         // content.
         visible: !listModel.loading
+    }
+
+    TextEntry {
+        id: textEntry
+        width: parent.width
+        height: 61
+        anchors {
+            bottom: parent.bottom
+            left: parent.left
+            right: parent.right
+        }
+        text: ""
     }
 
     // ScrollBar indicator. Take the bottommost search field height into account.
