@@ -12,5 +12,7 @@ QtObject {
     property string selectedFeedTitle: ""
     // Populate this whenever you select a feed item
     property string selectedFeedItemTitle: ""
+    // theme-dir name
+    property string themeDir: ""
 }
 
