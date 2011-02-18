@@ -119,4 +119,9 @@ Item {
         width: container.scrollBarWidth
         anchors.right: container.right
     }
+
+    function activationComplete() {
+        // Clear textEntry focus on activation.
+        list.focus = true
+    }
 }
