@@ -59,3 +59,11 @@ UI_DIR = tmp
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
+
+OTHER_FILES += \
+    debian/changelog \
+    debian/compat \
+    debian/control \
+    debian/copyright \
+    debian/README \
+    debian/rules

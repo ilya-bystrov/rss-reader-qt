@@ -95,8 +95,7 @@ Rectangle {
         }
         onExitButtonClicked: {
             Util.exitApp("Exit-button clicked");
-        }
-        onTextChanged: { Util.log("titleBar.text "+titleBar.text); Util.log("appState.currentTitle "+appState.currentTitle)}
+        }        
     }
 
     // This item will contain the views that we switch between
@@ -177,8 +176,7 @@ Rectangle {
                 // Set the discovery view to show the proper category:                
                 discoveryView.categoryTitle = category
                 discoveryView.discoveryUrl = categoryView.selectedCategoryUrl
-                appState.selectedFeedTitle = categoryView.expandedCategoryTitle                
-                Util.log("appState.currentTitle "+appState.currentTitle)
+                appState.selectedFeedTitle = categoryView.expandedCategoryTitle                                
                 appState.fromLeft = true;
                 appState.currentViewName = "discoveryView";
                 appState.currentTitle = "Manage "+category+" Feeds"
