@@ -59,9 +59,6 @@ Item {
         }
     }
 
-    FocusScope {
-        anchors.fill:  parent
-
     ListView {
         id: list
 
@@ -112,8 +109,6 @@ Item {
             right: parent.right
         }
         text: ""
-    }
-
     }
 
     // ScrollBar indicator. Take the bottommost search field height into account.
