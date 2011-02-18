@@ -4,9 +4,9 @@ import "Util.js" as Util
 Item {
     id: container
 
-    property string fontName: "Helvetica"
-    property int fontSize: 12
-    property color fontColor: "black"
+    property string fontName: visual.defaultFontFamily
+    property int fontSize: visual.defaultFontSize
+    property color fontColor: visual.defaultFontColor
     property string itemTitle: ""
     property string itemDescription: ""
     property string itemUrl: ""
@@ -45,6 +45,7 @@ Item {
             bgImage: './gfx/list_subitem.png' // Lighter than default gfx.
             onClicked: {
                 Util.log("Clicked on "+title + " "+enclosureUrl)
+                list.focus = true // Unfocus text field
                 container.itemTitle = title
                 container.itemDescription = description
                 container.itemUrl = url
@@ -57,6 +58,9 @@ Item {
             }
         }
     }
+
+    FocusScope {
+        anchors.fill:  parent
 
     ListView {
         id: list
@@ -88,11 +92,19 @@ Item {
         anchors.margins: 8
         fillMode: Image.PreserveAspectFit
         smooth: true
+        MouseArea {
+            // Allow unfocus of text field here.
+            anchors.fill: parent
+            onClicked: list.focus = true
+        }
     }
 
     TextEntry {
         id: textEntry
         height: 61
+        fontName: container.fontName
+        fontColor: container.fontColor
+        fontSize: container.fontSize
         anchors {
             leftMargin: 8
             bottom: parent.bottom
@@ -100,6 +112,8 @@ Item {
             right: parent.right
         }
         text: ""
+    }
+
     }
 
     // ScrollBar indicator. Take the bottommost search field height into account.
