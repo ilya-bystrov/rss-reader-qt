@@ -78,6 +78,20 @@ Item {
         visible: !listModel.loading
     }
 
+    TextEntry {
+        id: textEntry
+        height: 61
+        fontName: container.fontName
+        fontColor: container.fontColor
+        fontSize: container.fontSize
+        anchors {
+            leftMargin: 8
+            bottom: parent.bottom
+            left: icon.horizontalCenter
+            right: parent.right
+        }
+        text: ""
+    }
 
     Image {
         id: icon
@@ -94,21 +108,6 @@ Item {
             anchors.fill: parent
             onClicked: list.focus = true
         }
-    }
-
-    TextEntry {
-        id: textEntry
-        height: 61
-        fontName: container.fontName
-        fontColor: container.fontColor
-        fontSize: container.fontSize
-        anchors {
-            leftMargin: 8
-            bottom: parent.bottom
-            left: icon.right
-            right: parent.right
-        }
-        text: ""
     }
 
     // ScrollBar indicator. Take the bottommost search field height into account.
