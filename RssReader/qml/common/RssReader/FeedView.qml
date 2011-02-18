@@ -1,7 +1,7 @@
 import QtQuick 1.0
 import "Util.js" as Util
 
-Item {
+FocusScope {
     id: container
 
     property string fontName: visual.defaultFontFamily
@@ -34,7 +34,7 @@ Item {
     Component {
         id: listDelegate
 
-        ListItem {
+        ListItem {            
             text: title
             property bool filtered: title.match(new RegExp(textEntry.text,"i")) != null
             width: container.width
@@ -76,6 +76,7 @@ Item {
         // Hide list until loading complete to avoid showing previously loaded
         // content.
         visible: !listModel.loading
+        onMovementStarted: focus = true
     }
 
     TextEntry {
