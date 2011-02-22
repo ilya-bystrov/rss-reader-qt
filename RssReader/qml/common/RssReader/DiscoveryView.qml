@@ -39,7 +39,7 @@ Item {
             fontName: view.fontName
             fontSize: view.fontSize
             fontColor: view.fontColor
-            bgImage: './gfx/list_subitem.png' // Lighter than default gfx.
+            bgImage: visual.theme.images.listSubitem // Lighter than default gfx.
             onClicked: {
                 if(subscribed) {
                     categoryView.model.removeFromCategory(categoryTitle, url)
@@ -51,7 +51,7 @@ Item {
                 id: star
                 fillMode: "PreserveAspectFit"
                 height: parent.height*0.5
-                source: parent.subscribed ? "gfx/favourited.png" : "gfx/favourited_not.png"
+                source: parent.subscribed ? visual.theme.images.favourited : visual.theme.images.notFavourited
                 smooth: true
                 anchors {
                     right: parent.right

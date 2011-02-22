@@ -34,6 +34,15 @@ Item {
         anchors.fill: parent
         clip: true
 
+        bgImage: visual.theme.images.listItem
+        bgImageSelected: visual.theme.images.listItemSelected
+        bgImagePressed: visual.theme.images.listItemPressed
+        bgImageActive: visual.theme.images.listItemActive
+        bgImageSubItem: visual.theme.images.listSubitem
+
+        settingsIcon: visual.theme.images.settingsIcon
+        arrow: visual.theme.images.arrow
+
         headerItemFontName: container.headerItemFontName
         headerItemFontSize: container.headerItemFontSize
         headerItemFontColor: container.headerItemFontColor

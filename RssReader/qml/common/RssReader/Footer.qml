@@ -20,8 +20,11 @@ Item {
             margins: 8
         }
 
+        bgImage: visual.theme.images.button
+        bgImagePressed: visual.theme.images.buttonPressed
+
         Image {
-            source: 'gfx/settings_icon.png'
+            source: visual.theme.images.settingsIcon
             anchors.fill: parent
             anchors.margins: 8
             fillMode: Image.PreserveAspectFit

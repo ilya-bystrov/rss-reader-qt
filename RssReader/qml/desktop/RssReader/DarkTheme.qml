@@ -3,15 +3,15 @@ import QtQuick 1.0
 
 Item {
     property alias images: images
-    property color windowActiveTextColor: "black"
+    property color windowActiveTextColor: "#f0f0f0"
     property color buttonPassiveColor: "grey"
-    property color buttonActiveColor: Qt.darker(buttonPassiveColor)
-    property color buttonTextColor: "black"
-    property color buttonBorderColor: Qt.darker(buttonPassiveColor)
+    property color buttonActiveColor: Qt.lighter(buttonPassiveColor)
+    property color buttonTextColor: "#f0f0f0"
+    property color buttonBorderColor: Qt.lighter(buttonPassiveColor)
 
     Item {
         id: images
-        property string path: "gfx/"
+        property string path: "DarkTheme/"
 
         property string arrow: path+"arrow.png"
         property string backButton: path+"back_button.png"
@@ -50,7 +50,7 @@ Item {
     }
 
     // Main window
-    property color applicationBackgroundColor: "#f8f8f8"
+    property color applicationBackgroundColor: "#333333"
 
     // Splash screen
     property int splashTimeout: 2500
@@ -59,14 +59,14 @@ Item {
     property int generalMargin: 4
     property int scrollBarWidth: 2*generalMargin
     property string defaultFontFamily: "Helvetica"
-    property color defaultFontColor: "black"
+    property color defaultFontColor: "#f0f0f0"
 
     // Title bar
     property string titleBarFont: defaultFontFamily
     property int titleBarFontSize: 16
     property int titleBarSmallerFontSize: 12
     property int titleBarSmallestFontSize: 10
-    property color titlebarFontColor: "#44aa33"
+    property color titlebarFontColor: "#c0da07"
     property color titleBarBackgroundColor: "transparent"
     property int titleBarHeight: 60
 

@@ -95,6 +95,10 @@ Item {
         width: parent.width
         height: 61
         text: qsTr("Read full article")
+
+        bgImage: visual.theme.images.button
+        bgImagePressed: visual.theme.images.buttonPressed
+
         fontName: container.fontName
         fontSize: container.fontSize
         fontColor: container.fontColor

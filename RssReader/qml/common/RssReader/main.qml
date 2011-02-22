@@ -2,10 +2,15 @@ import QtQuick 1.0
 import "Util.js" as Util
 
 // Follow http://doc.qt.nokia.com/4.7/qml-coding-conventions.html
-Rectangle {
+Rectangle {    
     id: mainWindow
 
-    Visual { id: visual }
+    Loader {
+        id: visual
+        property alias theme: visual.item
+        source: "visual.qml"
+        //onItemChanged: visual.item.id = theme
+    }
 
     // Properties.
     AppStateVars {
@@ -20,9 +25,9 @@ Rectangle {
 
     // Object properties
     anchors.centerIn: parent
-    width: visual.appWidth ? visual.appWidth: screenWidth
-    height: visual.appHeight ? visual.appHeight : screenHeight
-    color: visual.applicationBackgroundColor
+    width: visual.theme.appWidth ? visual.theme.appWidth: screenWidth
+    height: visual.theme.appHeight ? visual.theme.appHeight : screenHeight
+    color: visual.theme.applicationBackgroundColor
 
     // We start out showing the splash screen
     state: "showingSplashScreen"
@@ -49,7 +54,7 @@ Rectangle {
         // By default splash screen is not visible
         opacity: 0.0
         // Splash screen timeout
-        timeout: visual.splashTimeout
+        timeout: visual.theme.splashTimeout
         image: "../RssReader/gfx/splash_screen.png"
         // When splash screen times out, move to default state
         onSplashTimeout: {
@@ -68,14 +73,20 @@ Rectangle {
             left: mainWindow.left
             right: mainWindow.right
         }
+
+        backButtonSource: visual.theme.images.backButton
+        backButtonPressedSource: visual.theme.images.backButtonPressed
+        exitButtonSource: visual.theme.images.exitButton
+        exitButtonPressedSource: visual.theme.images.exitButtonPressed
+
         fontBold: true
-        fontName: visual.titleBarFont
-        fontSize: visual.titleBarFontSize
-        fontColor: visual.titlebarFontColor
-        color: visual.titleBarBackgroundColor
-        height: visual.titleBarHeight
+        fontName: visual.theme.titleBarFont
+        fontSize: visual.theme.titleBarFontSize
+        fontColor: visual.theme.titlebarFontColor
+        color: visual.theme.titleBarBackgroundColor
+        height: visual.theme.titleBarHeight
         text: appState.currentTitle
-        iconSource: "gfx/rss_logo.png"
+        iconSource: visual.theme.images.rssLogo
         showingBackButton: appState.showBackButton
         onBackButtonClicked: {
             Util.log("Back-button clicked. Came from view: " + viewName);
@@ -126,9 +137,13 @@ Rectangle {
             id: settingsView
             anchors.fill: parent
             opacity: 0
-            fontName: visual.settingsViewFont
-            fontSize: visual.settingsViewFontSize
-            fontColor: visual.settingsViewFontColor
+            fontName: visual.theme.settingsViewFont
+            fontSize: visual.theme.settingsViewFontSize
+            fontColor: visual.theme.settingsViewFontColor
+            onThemeChanged: {
+                visual.source = theme+".qml";
+                console.log("using theme "+theme)
+            }
         }
 
         // Discovery view to add more subscriptions
@@ -142,9 +157,9 @@ Rectangle {
             width:  parent.width
             // The views that are not visible should be set to 0 opacity or visible: false
             opacity: 0
-            fontName: visual.discoveryViewFont
-            fontSize: visual.discoveryViewFontSize
-            fontColor: visual.discoveryViewFontColor
+            fontName: visual.theme.discoveryViewFont
+            fontSize: visual.theme.discoveryViewFontSize
+            fontColor: visual.theme.discoveryViewFontColor
         }
 
         // Main view containing your subscriptions
@@ -155,13 +170,13 @@ Rectangle {
                 bottom: parent.bottom
             }
             width:  parent.width
-            headerItemFontName: visual.categoryViewHeaderItemFont
-            headerItemFontSize: visual.categoryViewHeaderItemFontSize
-            headerItemFontColor: visual.categoryViewHeaderItemFontColor
+            headerItemFontName: visual.theme.categoryViewHeaderItemFont
+            headerItemFontSize: visual.theme.categoryViewHeaderItemFontSize
+            headerItemFontColor: visual.theme.categoryViewHeaderItemFontColor
 
-            subItemFontName: visual.categoryViewSubItemFont
-            subItemFontSize: visual.categoryViewSubItemFontSize
-            subItemFontColor: visual.categoryViewSubItemFontColor
+            subItemFontName: visual.theme.categoryViewSubItemFont
+            subItemFontSize: visual.theme.categoryViewSubItemFontSize
+            subItemFontColor: visual.theme.categoryViewSubItemFontColor
 
             opacity: 1
             onFeedSelected: {
@@ -191,11 +206,11 @@ Rectangle {
                 bottom: parent.bottom
             }
             width:  parent.width
-            scrollBarWidth: visual.scrollBarWidth
+            scrollBarWidth: visual.theme.scrollBarWidth
             opacity: 0
-            fontName: visual.feedViewFont
-            fontSize: visual.feedViewFontSize
-            fontColor: visual.feedViewFontColor
+            fontName: visual.theme.feedViewFont
+            fontSize: visual.theme.feedViewFontSize
+            fontColor: visual.theme.feedViewFontColor
             feedName: categoryView.selectedCategoryTitle
             feedUrl: categoryView.selectedCategoryUrl
             onFeedItemSelected: {
@@ -213,11 +228,11 @@ Rectangle {
                 bottom: parent.bottom
             }
             width:  parent.width
-            scrollBarWidth: visual.scrollBarWidth
+            scrollBarWidth: visual.theme.scrollBarWidth
             opacity: 0
-            fontName: visual.feedItemViewFont
-            fontSize: visual.feedItemViewFontSize
-            fontColor: visual.feedItemViewFontColor
+            fontName: visual.theme.feedItemViewFont
+            fontSize: visual.theme.feedItemViewFontSize
+            fontColor: visual.theme.feedItemViewFontColor
 
             itemTitle: feedView.itemTitle
             itemDescription: feedView.itemDescription
@@ -227,7 +242,7 @@ Rectangle {
 
         BorderImage {
             id: frame
-            source: "gfx/frame.png"
+            source: visual.theme.images.frame
             border { left: 8; top: 8; right: 8; bottom: 8 }
             width: contentPane.width
             // Adjust the background frame a bit when in feedView or feedItemView to give some
@@ -240,7 +255,7 @@ Rectangle {
 
     Footer {
         id: footer
-        height: visual.footerHeight
+        height: visual.theme.footerHeight
         property bool show: false
         state: show ? "visible" : "hidden"
         anchors {
@@ -300,7 +315,7 @@ Rectangle {
                 showBackButton: false;
                 currentTitle: qsTr("RSS Reader");
             }
-            PropertyChanges { target: footer; show: false }
+            PropertyChanges { target: footer; show: true }
             // Animate the view switch with viewSwitcher
             StateChangeScript { script: viewSwitcher.switchView(categoryView, appState.fromLeft, 0); }
         },
@@ -315,7 +330,7 @@ Rectangle {
             }
             PropertyChanges {
                 target: titleBar
-                fontSize: visual.titleBarSmallerFontSize
+                fontSize: visual.theme.titleBarSmallerFontSize
             }
             // Animate the view switch with viewSwitcher
             StateChangeScript { script: viewSwitcher.switchView(feedView, appState.fromLeft, 0); }
@@ -332,7 +347,7 @@ Rectangle {
             }
             PropertyChanges {
                 target: titleBar
-                fontSize: visual.titleBarSmallerFontSize
+                fontSize: visual.theme.titleBarSmallerFontSize
             }
             // Animate the view switch with viewSwitcher
             StateChangeScript { script: viewSwitcher.switchView(feedItemView, appState.fromLeft, 0); }
