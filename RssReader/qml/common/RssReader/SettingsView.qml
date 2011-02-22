@@ -7,6 +7,7 @@ Item {
     property int fontSize: 12
     property color fontColor: "black"
     property double margins: 8
+    signal themeChanged(string theme)
     Column {
         anchors.fill: parent
         anchors.margins: container.margins
@@ -33,6 +34,12 @@ Item {
                 id: themeSwitch
                 anchors.right: parent.right
                 anchors.margins: container.margins
+                imageOn: visual.theme.images.switchOn
+                imageOff:  visual.theme.images.switchOff
+                onSwitched: {
+                    var theme = position ? "Visual" : "DarkTheme";
+                    themeChanged(theme);
+                }
             }
         }
         /*

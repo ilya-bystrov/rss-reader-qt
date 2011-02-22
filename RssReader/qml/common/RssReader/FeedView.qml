@@ -42,7 +42,7 @@ FocusScope {
             fontName: container.fontName
             fontSize: container.fontSize
             fontColor: container.fontColor
-            bgImage: './gfx/list_subitem.png' // Lighter than default gfx.
+            bgImage: visual.theme.images.listSubitem // Lighter than default gfx.
             onClicked: {
                 Util.log("Clicked on "+title + " "+enclosureUrl)
                 list.focus = true // Unfocus text field
@@ -82,6 +82,10 @@ FocusScope {
     TextEntry {
         id: textEntry
         height: 61
+
+        bgImage: visual.theme.images.textField
+        bgImageActive: visual.theme.images.buttonPressed
+
         fontName: container.fontName
         fontColor: container.fontColor
         fontSize: container.fontSize
@@ -96,7 +100,7 @@ FocusScope {
 
     Image {
         id: icon
-        source: 'gfx/search_icon.png'
+        source: visual.theme.images.searchIcon
         anchors {
             left: parent.left
             bottom: parent.bottom

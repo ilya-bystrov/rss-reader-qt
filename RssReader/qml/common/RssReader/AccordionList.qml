@@ -14,11 +14,14 @@ Item {
     property string selectedUrl: ""
     property alias model: mainModel
 
-    property string bgImageSubItem: "./gfx/list_subitem.png"
+    property string bgImageSubItem: './gfx/list_subitem.png'
     property string bgImage: './gfx/list_item.png'
     property string bgImageSelected: './gfx/list_item_selected.png'
     property string bgImagePressed: './gfx/list_item_pressed.png'
     property string bgImageActive: './gfx/list_item_active.png'
+
+    property string settingsIcon: './gfx/settingsIcon.png'
+    property string arrow: './gfx/arrow.png'
 
     property string headerItemFontName: "Helvetica"
     property int headerItemFontSize: 12
@@ -95,7 +98,7 @@ Item {
                     id: arrow
                     fillMode: "PreserveAspectFit"
                     height: parent.height*0.3
-                    source: "gfx/arrow.png"
+                    source: item.arrow
                     rotation: container.expanded ? 90 : 0
                     smooth: true
                     anchors {
@@ -145,7 +148,7 @@ Item {
                             // When the item is Manage/Discover button, alter
                             // the look a little.
                             textIndent: type == "discover" ? 0 : item.indent
-                            icon: type == "discover" ? "gfx/settings_icon.png" : ""
+                            icon: type == "discover" ? item.settingsIcon : ""
                             iconOpacity: type == "discover" ? 0.5 : 1.0
                             iconIndent: type == "discover" ? item.indent : 0
                             onPressAndHold: {
