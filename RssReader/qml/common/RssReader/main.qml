@@ -46,8 +46,6 @@ Rectangle {
         // Put splash screen on top of everything. Otherwise you would need to lay it out as the last objects
         // in the layout for it to be on top of all other objects. But with z-property we get same results
         z: 100
-        // By default splash screen is not visible
-        opacity: 0.0
         // Splash screen timeout
         timeout: visual.splashTimeout
         image: "../RssReader/gfx/splash_screen.png"
@@ -274,8 +272,9 @@ Rectangle {
             name: "showingSplashScreen"
             PropertyChanges {
                 target: splashScreen
-                // We use opacity so we can animate, instead of visible
-                opacity: 1.0
+                // Show the splash screen. It's internal implementation will
+                // take care of smooth transitioning.
+                show: true
             }
         },
         State {
@@ -348,20 +347,6 @@ Rectangle {
             }
             // Animate the view switch with viewSwitcher
             StateChangeScript { script: viewSwitcher.switchView(settingsView, appState.fromLeft, 0); }
-        }
-    ]
-
-    // Transitions
-    transitions: [
-        Transition {
-            from: ""
-            to: "showingSplashScreen"
-            reversible: true
-            // Animate the opacity change in 0,5s
-            PropertyAnimation {
-                property: "opacity"
-                duration: 500
-            }
         }
     ]
 }
