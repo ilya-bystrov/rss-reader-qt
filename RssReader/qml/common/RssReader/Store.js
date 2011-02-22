@@ -3,13 +3,13 @@
 Qt.include("Util.js")
 
 function getDb() {
-    return openDatabaseSync("RssReaderDB", "1.0", "RssReaderDB SQL", 1000);
+    return openDatabaseSync("RSSReaderDB", "1.0", "RSSReaderDB SQL", 5000 /*initial size in bytes*/);
 }
 
 function clearDb() {
     var db = getDb();
     db.transaction( function(tx) { try {
-                           tx.executeSql('DROP TABLE Category;');
+                           tx.executeSql('DROP TABLE Entry;');
                        } catch(error) {/*ignore*/} }
                    );
 }
@@ -24,20 +24,28 @@ function modelToJSON(model,writer) {
         // (not including attributes).
         for(var prop in obj) {
             if(!prop.match("^attributes")) {
-                json += "\""+prop+"\": \"" + obj[prop] +"\",";
+                json += "\""+prop+"\": \"" + obj[prop] + "\",";
             }
         }
+
         // Loop through entry attributes
-        json += "\"attributes\":["
-        for(var y=0; y < obj.attributes.count; y++) {
-            if(y > 0) json += ","
-            var attr = obj.attributes.get(y)
-            // Here the whole attribute can be written as is
-            // so JSON.stringify is used
-            json += JSON.stringify(attr)
+        if(obj.attributes) {
+            json += "\"attributes\":["
+            for(var y=0; y < obj.attributes.count; y++) {
+                if(y > 0) json += ","
+                var attr = obj.attributes.get(y)
+                // Here the whole attribute can be written as is
+                // so JSON.stringify is used
+                json += JSON.stringify(attr)
+            }
+            json += "]"
+        } else {
+            // Remove last comma
+            json = json.slice(0, -1)
         }
-        json += "]}"
-        writer(i,json)
+
+        json += "}"
+        writer(i,json)        
         //confirm validity: var parsed = JSON.parse(json)
     }
 }
@@ -46,11 +54,10 @@ function modelToJSON(model,writer) {
 function store(model) {
     // Writes one JSON-formatted ListModel entry to storage.
     function writeEntry(id, json) {
-        //log ("WriteEntry "+id+", "+json);
         var db = getDb();
         db.transaction( function(tx) {
-                           tx.executeSql('CREATE TABLE IF NOT EXISTS Category(id INT, json TEXT)');
-                           tx.executeSql('INSERT INTO Category VALUES(?, ?)', [id, json]);
+                           tx.executeSql('CREATE TABLE IF NOT EXISTS Entry(id INT, json TEXT)');
+                           tx.executeSql('INSERT INTO Entry VALUES(?, ?)', [id, json]);
                        } );
     }
 
@@ -70,7 +77,6 @@ function restore(model)
 
     // Appends one JSON-formatted entry to ListModel
     function readEntry(json) {
-        //log("Reading->"+json)
         var parsed = JSON.parse(json)
         if(!cleared) {
             // Succesfully read an parsed something.
@@ -84,7 +90,7 @@ function restore(model)
 
     db.transaction( function(tx) {
                        try {
-                           var rs = tx.executeSql('SELECT * FROM Category');
+                           var rs = tx.executeSql('SELECT * FROM Entry');
                            for(var i = 0; i < rs.rows.length; i++) {
                                readEntry(rs.rows.item(i).json)
                            }
