@@ -2,14 +2,14 @@
 import QtQuick 1.0
 
 Item {
-	property alias images: images
+    property alias images: images
     property color windowActiveTextColor: "black"
     property color buttonPassiveColor: "grey"
     property color buttonActiveColor: Qt.darker(buttonPassiveColor)
     property color buttonTextColor: "black"
     property color buttonBorderColor: Qt.darker(buttonPassiveColor)
 
-	Item {
+    Item {
         id: images
         property string path: "gfx/"
 

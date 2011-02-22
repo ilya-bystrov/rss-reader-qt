@@ -8,7 +8,7 @@ Rectangle {
     Loader {
         id: visual
         property alias theme: visual.item
-        source: "visual.qml"
+        source: "Visual.qml"
         //onItemChanged: visual.item.id = theme
     }
 

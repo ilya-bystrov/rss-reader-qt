@@ -20,7 +20,7 @@ Item {
     property string bgImagePressed: './gfx/list_item_pressed.png'
     property string bgImageActive: './gfx/list_item_active.png'
 
-    property string settingsIcon: './gfx/settingsIcon.png'
+    property string settingsIcon: './gfx/settings_icon.png'
     property string arrow: './gfx/arrow.png'
 
     property string headerItemFontName: "Helvetica"
