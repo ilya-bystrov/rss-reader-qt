@@ -37,9 +37,9 @@ Rectangle {
     // Wait indicator is also not visible by default, only when mainWindow.loading === true
     WaitIndicator {
         id: waitIndicator
-        anchors.centerIn: mainWindow
-        width: mainWindow.width
-        height: mainWindow.height
+        anchors.centerIn: contentPane
+        width: contentPane.width
+        height: contentPane.height
         z: 120
         show: appState.loading
     }
