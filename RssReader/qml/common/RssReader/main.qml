@@ -38,8 +38,8 @@ Rectangle {
     WaitIndicator {
         id: waitIndicator
         anchors.centerIn: mainWindow
-        width: 120
-        height: 120
+        width: mainWindow.width
+        height: mainWindow.height
         z: 120
         show: appState.loading
     }

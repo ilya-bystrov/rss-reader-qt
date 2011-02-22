@@ -4,18 +4,22 @@ import QtQuick 1.0
 Rectangle {
     id: faderRect
 
-    // Fader assumes that "screenWidth/Height" is declared as a context property
-    // (e.g. at main.cpp). This is because it needs to catch the (touch) events
-    // all around the UI, when it's being faded.
-    width: screenWidth      // Take control over the full screen.
-    height: screenHeight
-    opacity: 0
+    // Fader area should always be explicitely set from calling parent who knows
+    // how big area has to be faded and where the touch events need to be captured.
+    // By default, use the S³ portrait resolution.
+    width: 360
+    height: 640
+
+    // Fading colour can be defined, if e.g. a "lighter" fade is required.
     color: "black"
 
-    // Used to define how fast the fade in / fade out will be done (in milliseconds)
+    // Used to define how fast the fade in / fade out will be done (in milliseconds).
     property int transitionDuration: 300
-    // Change this, if you want to have deeper/lighter fade
+    // Change this, if you want to have deeper/lighter fade.
     property double fadingOpacity: 0.7
+
+    // Initially hidden. Not really meant to be modified directly.
+    opacity: 0
 
     // This rectangle captures all of the key events so that underlying buttons
     // etc. can't be pressed.
@@ -24,9 +28,9 @@ Rectangle {
 
         MouseArea {
             id: mouseArea
-            width: screenWidth
-            height: screenHeight
-            z: 100 // Make sure that this is on top of everything.
+            width: faderRect.width
+            height: faderRect.height
+            z: 100 // Make sure that this is on top.
             onClicked: console.log("Click captured by Fader!")
         }
     }
