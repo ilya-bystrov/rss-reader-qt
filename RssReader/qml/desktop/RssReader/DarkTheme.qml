@@ -69,13 +69,14 @@ Item {
     property color titlebarFontColor: "#c0da07"
     property color titleBarBackgroundColor: "transparent"
     property int titleBarHeight: 60
+    property int settingHeight: 32
 
     // Footer
     property int footerHeight: 60
 
     // Settings view
     property string settingsViewFont: defaultFontFamily
-    property int settingsViewFontSize: 14
+    property int settingsViewFontSize: 12
     property color settingsViewFontColor: defaultFontColor
 
     // Discovery view
