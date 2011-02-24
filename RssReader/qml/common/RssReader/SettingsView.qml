@@ -7,33 +7,40 @@ Item {
     property int fontSize: 12
     property color fontColor: "black"
     property double margins: 8
+    property int settingHeight: visual.theme.settingHeight
     signal themeChanged(string theme)
+
     Column {
         anchors.fill: parent
         anchors.margins: container.margins
         spacing: container.margins
-
-        Row {
-            width: parent.width
-            spacing: container.margins
-
+        Item {
+            height: container.settingHeight
+            anchors.left: parent.left
+            anchors.right: parent.right
             Text {
                 id: switchLabel
-                anchors.left:  parent.left
+                anchors.left: parent.left
                 anchors.right: themeSwitch.left
-                anchors.margins: container.margins
+                height: container.settingHeight
                 color: container.fontColor
                 font {
                     family: container.fontName
-                    pixelSize: container.fontSize
+                    pointSize: container.fontSize
                 }
                 text: qsTr("Theme")
+                verticalAlignment: Text.AlignVCenter
             }
-
             Switch {
                 id: themeSwitch
                 anchors.right: parent.right
-                anchors.margins: container.margins
+                height: container.settingHeight
+                spacing: container.margins
+                fontName: container.fontName
+                fontSize: container.fontSize
+                fontColor: container.fontColor
+                textOn: qsTr("Light")
+                textOff: qsTr("Dark")
                 imageOn: visual.theme.images.switchOn
                 imageOff:  visual.theme.images.switchOff
                 onSwitched: {
@@ -42,12 +49,5 @@ Item {
                 }
             }
         }
-        /*
-        Slider {
-            anchor {
-                left: parent.left
-                right: parent.right
-            }
-        }*/
     }
 }

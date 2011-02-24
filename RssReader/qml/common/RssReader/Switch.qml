@@ -11,49 +11,45 @@ Item {
     property bool switchedOn: true
     property alias textOn: textOn.text
     property alias textOff: textOff.text
-    width: toggleSwitch.width + textOn.width + textOff.width
+    property alias spacing: row.spacing
+    width: row.width
     height: 44
 
-    Text {
-        id: textOn
-        anchors.right: toggleSwitch.left
-        anchors.margins: 8
-        text: "On"
-        color: container.fontColor
-        font {
-            family: container.fontName
-            pixelSize: container.fontSize
+    Row {
+        id: row
+        spacing: 8
+        Text {
+            id: textOn
+            text: "On"
+            height: container.height
+            color: container.fontColor
+            font {
+                family: container.fontName
+                pointSize: container.fontSize
+            }
+            verticalAlignment: Text.AlignVCenter
         }
-        elide: Text.ElideRight
-    }
-
-    Image {
-        id: toggleSwitch
-        height: parent.height
-        anchors.right: textOff.left
-        anchors.margins: 8
-        source: switchedOn ? imageOn : imageOff
-        fillMode: Image.PreserveAspectFit
-        smooth: true
-    }
-
-    Text {
-        id: textOff
-        anchors.right: container.right
-        anchors.margins: 8
-        text: "Off"
-        color: container.fontColor
-        font {
-            family: container.fontName
-            pixelSize: container.fontSize
+        Image {
+            id: toggleSwitch
+            height: container.height
+            source: switchedOn ? imageOn : imageOff
+            fillMode: Image.PreserveAspectFit
+            smooth: true
         }
-        elide: Text.ElideLeft
+        Text {
+            id: textOff
+            height: container.height
+            text: "Off"
+            color: container.fontColor
+            font {
+                family: container.fontName
+                pointSize: container.fontSize
+            }
+            verticalAlignment: Text.AlignVCenter
+        }
     }
-
     MouseArea {
-        anchors.fill: parent
+        anchors.fill: row
         onClicked: { switchedOn = !switchedOn; switched(switchedOn) }
     }
-
-    Component.onCompleted: console.log("textOn width "+textOn.width+" textOff "+ textOff.width+" container "+container.width)
 }
