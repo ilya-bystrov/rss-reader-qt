@@ -24,9 +24,9 @@ Rectangle {
     // Handle orientation changes
 
     // Object properties
-    anchors.centerIn: parent
-    width: visual.theme.appWidth ? visual.theme.appWidth: screenWidth
-    height: visual.theme.appHeight ? visual.theme.appHeight : screenHeight
+    anchors.centerIn: parent    
+    width: screenWidth
+    height: screenHeight
     color: visual.theme.applicationBackgroundColor
 
     // We start out showing the splash screen
