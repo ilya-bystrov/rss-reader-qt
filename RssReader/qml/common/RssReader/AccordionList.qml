@@ -155,9 +155,9 @@ Item {
                                 if(type == "discover") {
                                     // No action when longtapping this button.
                                 } else {
-                                    // Transform tap coordinats to parent coordinates first.
-                                    var obj = parent.mapToItem(item, mouseX, mouseY)
-                                    item.itemLongTapped(categoryTitle, url, obj.x, obj.y)
+                                    // Transform tap coordinates to parent coordinates first.
+                                    var obj = parent.mapToItem(item, mouseX, y)
+                                    item.itemLongTapped(categoryTitle, url, obj.x, obj.y+mouseY)
                                 }
                             }
                             onClicked: {
