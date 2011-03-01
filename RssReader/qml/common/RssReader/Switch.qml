@@ -2,16 +2,24 @@ import QtQuick 1.0
 
 Item {
     id: container
+
+    // Signal that gets fired when switch state has been toggled
     signal switched(bool position)
+    // Font properties
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
+    // Images for switch states
     property string imageOn: 'gfx/switch_on.png'
     property string imageOff: 'gfx/switch_off.png'
+    // Property indicating current state
     property bool switchedOn: true
+    // Labels for the states
     property alias textOn: textOn.text
     property alias textOff: textOff.text
+    // Spacing between labels and switch
     property alias spacing: row.spacing
+
     width: row.width
     height: 44
 
