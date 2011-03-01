@@ -9,7 +9,6 @@ Rectangle {
         id: visual
         property alias theme: visual.item
         source: "Visual.qml"
-        //onItemChanged: visual.item.id = theme
     }
 
     // Properties.
@@ -64,6 +63,7 @@ Rectangle {
     // All views have a title bar
     TitleBar {
         id: titleBar
+        enabled: !viewSwitcher.running
         // Anchors titlebar to left,top and right. Then set height
         // Use grouping if possible.
         anchors {

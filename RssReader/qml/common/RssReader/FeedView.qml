@@ -25,6 +25,8 @@ FocusScope {
     width: screenWidth
     height: screenHeight
 
+    onOpacityChanged: if(listModel.loading && opacity == 0) appState.loading = false
+
     FeedViewModel {
         id: listModel
         feedUrl: container.feedUrl
