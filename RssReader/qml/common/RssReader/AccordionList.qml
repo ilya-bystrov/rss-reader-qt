@@ -76,7 +76,6 @@ Item {
                 id: headerItemRect
                 x: 0; y: 0
                 width: parent.width
-                //width: delegate.ListView
                 height: parent.itemHeight
                 text: categoryTitle
                 icon: iconUrl ? iconUrl : ""
