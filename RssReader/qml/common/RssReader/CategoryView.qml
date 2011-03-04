@@ -72,9 +72,9 @@ Item {
         PopUp {
             id: unfollowPopUp
             text: "Unfollow"
-            fontName:  subItemFontName
-            fontColor: subItemFontColor
-            fontSize: subItemFontSize
+            fontName:  container.subItemFontName
+            fontColor: container.subItemFontColor
+            fontSize: container.subItemFontSize
             onClicked: {
                 model.removeFromCategory(expandedCategoryTitle, longTappedFeedUrl)
             }

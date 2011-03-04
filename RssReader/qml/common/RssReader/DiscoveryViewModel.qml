@@ -6,14 +6,6 @@ XmlListModel {
     id: model
 
     property string categoryTitle: ""
-    property string url: ""
-
-    // Where the feed discovery OPML is located.
-    // Url property above is currently ignored.
-
-    // The discovery.xml file is located on ruthenium in path:
-    // /var/www/ruthenium.futurice.com/discovery.xml
-    //source: "http://ruthenium.futurice.com:8080/discovery.xml"
 
     // Alternatively, use local:
     source: "discovery.xml"

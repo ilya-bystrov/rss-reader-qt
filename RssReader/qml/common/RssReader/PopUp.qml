@@ -39,9 +39,9 @@ Item {
         x: parent.posX - width/2
         y: parent.posY - height/2
 
-        fontSize: parent.fontSize
-        fontName: parent.fontName
-        fontColor: parent.fontColor
+        fontSize: container.fontSize
+        fontName: container.fontName
+        fontColor: container.fontColor
 
         onClicked: {
             container.show = false

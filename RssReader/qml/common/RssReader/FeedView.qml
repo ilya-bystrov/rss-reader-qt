@@ -4,9 +4,9 @@ import "Util.js" as Util
 FocusScope {
     id: container
 
-    property string fontName: visual.defaultFontFamily
-    property int fontSize: visual.defaultFontSize
-    property color fontColor: visual.defaultFontColor
+    property string fontName: "Helvetica"
+    property int fontSize: 12
+    property color fontColor: "black"
     property string itemTitle: ""
     property string itemDescription: ""
     property string itemUrl: ""
