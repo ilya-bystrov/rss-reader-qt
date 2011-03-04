@@ -91,7 +91,7 @@ function restore(model)
     db.transaction( function(tx) {
                        try {
                            var rs = tx.executeSql('SELECT * FROM Entry');
-                           for(var i = 0; i < rs.rows.length; i++) {
+                           for (var i = 0; i < rs.rows.length; i++) {
                                readEntry(rs.rows.item(i).json)
                            }
                        } catch (error) {
