@@ -41,6 +41,7 @@ Item {
         Image {
             id: toggleSwitch
             height: container.height
+            width: 2.22 * height
             source: switchedOn ? imageOn : imageOff
             fillMode: Image.PreserveAspectFit
             smooth: true

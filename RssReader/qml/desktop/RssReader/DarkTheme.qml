@@ -69,7 +69,7 @@ Item {
     property color titlebarFontColor: "#c0da07"
     property color titleBarBackgroundColor: "transparent"
     property int titleBarHeight: 60
-    property int settingHeight: 32
+    property int settingHeight: 64
 
     // Footer
     property int footerHeight: 60
