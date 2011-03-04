@@ -31,8 +31,8 @@ ListModel {
         Util.log("removeFromCategory: "+categoryName+" "+url)
         try {
             var category = findCategory(categoryName)
-            for(var a = 0; a < category.attributes.count; a++) {
-                if(url == category.attributes.get(a).url) {
+            for (var a = 0; a < category.attributes.count; a++) {
+                if (url == category.attributes.get(a).url) {
                     category.attributes.remove(a)
                     break;
                 }
@@ -44,9 +44,9 @@ ListModel {
     }
 
     function findCategory(categoryName) {
-        for(var i = 0; i < model.count; i++ ) {
+        for (var i = 0; i < model.count; i++ ) {
             var category = model.get(i)
-            if(category.categoryTitle == categoryName) {
+            if (category.categoryTitle == categoryName) {
                 return category
             }
         }
@@ -56,14 +56,14 @@ ListModel {
     // Check whether a feed exists in any category in the model.
     function feedExists(feedUrl) {
         var found = false
-        for(var i = 0; i < model.count; i++ ) {
+        for (var i = 0; i < model.count; i++ ) {
             var category = model.get(i)
-            if(category.attributes === undefined) {
+            if (category.attributes === undefined) {
                 continue;
             }
-            for(var a = 0; a < category.attributes.count; a++) {
+            for (var a = 0; a < category.attributes.count; a++) {
                 var url = category.attributes.get(a).url
-                if(url == feedUrl) {
+                if (url == feedUrl) {
                     found = true
                     break
                 }

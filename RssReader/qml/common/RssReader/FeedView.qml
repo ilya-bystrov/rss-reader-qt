@@ -25,7 +25,7 @@ FocusScope {
     width: screenWidth
     height: screenHeight
 
-    onOpacityChanged: if(listModel.loading && opacity == 0) appState.loading = false
+    onOpacityChanged: if (listModel.loading && opacity == 0) appState.loading = false
 
     FeedViewModel {
         id: listModel
@@ -51,7 +51,7 @@ FocusScope {
                 container.itemTitle = title
                 container.itemDescription = description
                 container.itemUrl = url
-                if(enclosureType.substring(0,5) == "image") {
+                if (enclosureType.substring(0,5) == "image") {
                     container.itemImageUrl = enclosureUrl
                 } else {
                     container.itemImageUrl = ""

@@ -22,17 +22,17 @@ function modelToJSON(model,writer) {
         var obj = model.get(i)
         // Create pairs of "name":"value" from object properties
         // (not including attributes).
-        for(var prop in obj) {
-            if(!prop.match("^attributes")) {
+        for (var prop in obj) {
+            if (!prop.match("^attributes")) {
                 json += "\""+prop+"\": \"" + obj[prop] + "\",";
             }
         }
 
         // Loop through entry attributes
-        if(obj.attributes) {
+        if (obj.attributes) {
             json += "\"attributes\":["
-            for(var y=0; y < obj.attributes.count; y++) {
-                if(y > 0) json += ","
+            for (var y=0; y < obj.attributes.count; y++) {
+                if (y > 0) json += ","
                 var attr = obj.attributes.get(y)
                 // Here the whole attribute can be written as is
                 // so JSON.stringify is used
@@ -78,7 +78,7 @@ function restore(model)
     // Appends one JSON-formatted entry to ListModel
     function readEntry(json) {
         var parsed = JSON.parse(json)
-        if(!cleared) {
+        if (!cleared) {
             // Succesfully read an parsed something.
             // Clear previous data before writing data
             // from storage.

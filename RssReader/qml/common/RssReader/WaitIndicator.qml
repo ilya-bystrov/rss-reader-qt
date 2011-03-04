@@ -66,6 +66,6 @@ Item {
 
     onShowChanged: {
         // Handle rotator exit.
-        if(show == false) opacity = 0
+        if (show == false) opacity = 0
     }
 }

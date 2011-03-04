@@ -65,12 +65,11 @@ Item {
 
             // Flag to indicate if this delegate is expanded
             property bool expanded: false
+            property string expandedCategoryTitle: categoryTitle
 
             x: 0; y: 0;
             width: parent.width
             height: headerItemRect.height + subItemsRect.height
-
-            property string expandedCategoryTitle: categoryTitle
 
             ListItem {
                 id: headerItemRect
@@ -79,11 +78,6 @@ Item {
                 height: parent.itemHeight
                 text: categoryTitle
                 icon: iconUrl ? iconUrl : ""
-                onClicked: {
-                    Util.log("Clicked on " + categoryTitle + " at " +index);
-                    container.expanded = !container.expanded
-                    item.expandedTitle = categoryTitle
-                }
                 bgImage: item.bgImage
                 bgImageSelected: item.bgImageSelected
                 bgImagePressed: item.bgImageSelected
@@ -92,6 +86,12 @@ Item {
                 fontSize: item.headerItemFontSize
                 fontColor: item.headerItemFontColor
                 fontBold: true
+
+                onClicked: {
+                    Util.log("Clicked on " + categoryTitle + " at " +index);
+                    container.expanded = !container.expanded
+                    item.expandedTitle = categoryTitle
+                }
 
                 Image {
                     id: arrow
@@ -110,14 +110,15 @@ Item {
 
             Item {
                 id: subItemsRect
+
                 property int itemHeight: container.itemHeight-10
 
                 y: headerItemRect.height
                 width: parent.width
                 height: parent.expanded ? parent.expandedItemCount * (itemHeight) : 0
                 clip: true
-
                 opacity: 1
+
                 Behavior on height {
                     // Animate subitem expansion. After the final height is reached,
                     // ensure that it is visible to the user.
@@ -132,11 +133,13 @@ Item {
 
                     Repeater {
                         id: subItemRepeater
+
                         model: attributes
                         width: subItemsRect.width
 
                         ListItem {
                             id: subListItem
+
                             width: container.width
                             height: subItemsRect.itemHeight
                             text: categoryTitle
@@ -150,8 +153,9 @@ Item {
                             icon: type == "discover" ? item.settingsIcon : ""
                             iconOpacity: type == "discover" ? 0.5 : 1.0
                             iconIndent: type == "discover" ? item.indent : 0
+
                             onPressAndHold: {
-                                if(type == "discover") {
+                                if (type == "discover") {
                                     // No action when longtapping this button.
                                 } else {
                                     // Transform tap coordinates to parent coordinates first.
@@ -164,7 +168,7 @@ Item {
                                 item.selectedUrl = url
                                 item.expandedTitle = expandedCategoryTitle
 
-                                if(type == "discover") {
+                                if (type == "discover") {
                                     Util.log("Clicked on discovery in " + expandedCategoryTitle);
                                     item.discoveryClicked(expandedCategoryTitle);
                                 } else {

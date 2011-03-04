@@ -26,11 +26,11 @@ XmlListModel {
     XmlRole { name: "description"; query: "description/string()" }
 
     onStatusChanged: {
-        if(status == XmlListModel.Ready) {
+        if (status == XmlListModel.Ready) {
             Util.log("DiscoveryModel status: ready")
-        } else if(status == XmlListModel.Error) {
+        } else if (status == XmlListModel.Error) {
             Util.log("DiscoveryModel Status: error")
-        } else if(status == XmlListModel.Loading) {
+        } else if (status == XmlListModel.Loading) {
             Util.log("DiscoveryModel Status: loading")
         }
     }

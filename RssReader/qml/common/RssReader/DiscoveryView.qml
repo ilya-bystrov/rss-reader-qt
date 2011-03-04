@@ -42,7 +42,7 @@ Item {
             fontColor: view.fontColor
             bgImage: visual.theme.images.listSubitem // Lighter than default gfx.
             onClicked: {
-                if(subscribed) {
+                if (subscribed) {
                     categoryView.model.removeFromCategory(categoryTitle, url)
                 } else {
                     categoryView.model.addToCategory(categoryTitle, title, url)
@@ -62,9 +62,4 @@ Item {
             }
         }
     }
-
-    Component.onCompleted: {
-        Util.log("DiscoveryView completed")
-    }
 }
-

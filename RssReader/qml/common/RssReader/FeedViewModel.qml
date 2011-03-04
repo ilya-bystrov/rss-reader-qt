@@ -17,11 +17,11 @@ XmlListModel {
     XmlRole { name: "enclosureType"; query: "enclosure/@type/string()" }
 
     onStatusChanged: {
-        if(status == XmlListModel.Ready) {
+        if (status == XmlListModel.Ready) {
             Util.log("FeedViewModel Status: ready")
-        } else if(status == XmlListModel.Error) {
+        } else if (status == XmlListModel.Error) {
             Util.log("FeedViewModel Status: error")
-        } else if(status == XmlListModel.Loading) {
+        } else if (status == XmlListModel.Loading) {
             Util.log("FeedViewModel Status: loading")
         }
     }
