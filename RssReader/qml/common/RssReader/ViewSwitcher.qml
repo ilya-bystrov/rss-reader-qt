@@ -2,11 +2,10 @@ import Qt 4.7
 
 QtObject {
     id: container
+
     property Item currentView
     property Item previousView
-
     property Item root
-
     property int duration: 250
     property bool running: switchAnimation.running
     property bool direction

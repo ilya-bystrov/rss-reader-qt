@@ -8,6 +8,7 @@ Item {
     property color fontColor: "black"
     property double margins: 8
     property int settingHeight: visual.theme.settingHeight
+
     signal themeChanged(string theme)
 
     Column {

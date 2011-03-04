@@ -3,6 +3,8 @@ import QtQuick 1.0
 import "Util.js" as Util
 
 XmlListModel {
+    id: model
+
     property string categoryTitle: ""
     property string url: ""
 

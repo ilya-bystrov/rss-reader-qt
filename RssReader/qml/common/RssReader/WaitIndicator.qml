@@ -7,13 +7,6 @@ import QtQuick 1.0
 Item {
     id: rotator
 
-    // The width and height are meant to be replaced by the parent, e.g. by
-    // using anchors.fill. So remember to modify these when instantiating
-    // a ModalNote. This size defines also the dimming & key capture area.
-    // If no dimensions are defined, it'll just use S³ default resolution.
-    width: 360
-    height: 640
-
     // Defines whether or not the RoTaToR is shown.
     property bool show: false
     // Defines the size of the rolling graphics.
@@ -21,6 +14,13 @@ Item {
     property int imageHeight: 128
     // Defines how long to wait before showing the wait indicator (in ms).
     property int delay: 700
+
+    // The width and height are meant to be replaced by the parent, e.g. by
+    // using anchors.fill. So remember to modify these when instantiating
+    // a ModalNote. This size defines also the dimming & key capture area.
+    // If no dimensions are defined, it'll just use S³ default resolution.
+    width: 360
+    height: 640
 
     // Use opacity to hide/show the indicator. Also animate the enterance/exit
     // by using Behaviour on opacity.
@@ -34,7 +34,7 @@ Item {
         // Bind our visibility status with Fader show/hide states.
         state: rotator.opacity == 1 ? "faded" : ""
         transitionDuration: 250
-	// Use the whole available area for fading & capturing key clicks.
+  // Use the whole available area for fading & capturing key clicks.
         anchors.fill: parent
         // Use "light" fading color.
         color: "#f5f5f5"

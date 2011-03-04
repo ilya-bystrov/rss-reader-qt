@@ -4,19 +4,19 @@ import QtQuick 1.0
 Rectangle {
     id: faderRect
 
+    // Used to define how fast the fade in / fade out will be done (in milliseconds).
+    property int transitionDuration: 300
+    // Change this, if you want to have deeper/lighter fade.
+    property double fadingOpacity: 0.7
+
     // Fader area should always be explicitely set from calling parent who knows
     // how big area has to be faded and where the touch events need to be captured.
-    // By default, use the S³ portrait resolution.
+    // By default, use the s3 portrait resolution.
     width: 360
     height: 640
 
     // Fading colour can be defined, if e.g. a "lighter" fade is required.
     color: "black"
-
-    // Used to define how fast the fade in / fade out will be done (in milliseconds).
-    property int transitionDuration: 300
-    // Change this, if you want to have deeper/lighter fade.
-    property double fadingOpacity: 0.7
 
     // Initially hidden. Not really meant to be modified directly.
     opacity: 0

@@ -5,6 +5,14 @@ import "Util.js" as Util
 Rectangle {    
     id: mainWindow
 
+    anchors.centerIn: parent    
+    width: screenWidth
+    height: screenHeight
+    color: visual.theme.applicationBackgroundColor
+
+    // We start out showing the splash screen
+    state: "showingSplashScreen"
+
     Loader {
         id: visual
         property alias theme: visual.item
@@ -15,23 +23,6 @@ Rectangle {
     AppStateVars {
         id: appState
     }
-
-    // Signals
-
-    // Functions
-
-    // Handle orientation changes
-
-    // Object properties
-    anchors.centerIn: parent    
-    width: screenWidth
-    height: screenHeight
-    color: visual.theme.applicationBackgroundColor
-
-    // We start out showing the splash screen
-    state: "showingSplashScreen"
-
-    // Child objects
 
     // Wait indicator is also not visible by default, only when mainWindow.loading === true
     WaitIndicator {

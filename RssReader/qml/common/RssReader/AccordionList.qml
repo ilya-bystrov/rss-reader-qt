@@ -3,8 +3,6 @@ import "Util.js" as Util
 
 Item {
     id: item
-    width: 360
-    height: 640
 
     property int animationDuration: 100
     property int indent: 20
@@ -35,6 +33,9 @@ Item {
     signal itemLongTapped(string title, string url, int mouseX, int mouseY)
     signal discoveryClicked(string title)
 
+    width: 360
+    height: 640
+
     AccordionListModel {
         id: mainModel
     }
@@ -53,7 +54,6 @@ Item {
     }
 
     ScrollBar { scrollArea: listView; width: item.scrollBarWidth; anchors.top: listView.top; anchors.right: listView.right; anchors.bottom: listView.bottom; z: 100 }
-
 
     Component {
         id: listViewDelegate

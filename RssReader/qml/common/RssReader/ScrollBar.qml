@@ -47,8 +47,6 @@ Item {
     property variant scrollArea
     property variant orientation: Qt.Vertical
 
-    opacity: 0
-
     function position()
     {
         var ny = 0;
@@ -82,6 +80,8 @@ Item {
             if (nh > t) return t; else return nh;
         } else return nh + ny;
     }
+
+    opacity: 0
 
     Rectangle { anchors.fill: parent; color: "Black"; opacity: 0.3 }
 

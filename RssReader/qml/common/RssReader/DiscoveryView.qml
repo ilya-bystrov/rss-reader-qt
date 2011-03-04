@@ -3,8 +3,6 @@ import "Util.js" as Util
 
 Item {
     id: view
-    width: screenWidth
-    height: screenHeight
 
     // Display feeds belonging to this category
     property alias categoryTitle: listModel.categoryTitle
@@ -14,6 +12,9 @@ Item {
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
+
+    width: 360
+    height: 640
 
     DiscoveryViewModel {
         id:listModel

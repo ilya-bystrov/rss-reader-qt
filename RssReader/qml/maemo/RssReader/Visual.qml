@@ -48,7 +48,7 @@ Item {
         property string sporstsIcon: path+"sports_icon.png"
         property string techIcon: path+"tech_icon.png"
     }
-	
+  
     // Main window
     property color applicationBackgroundColor: "#f8f8f8"
 

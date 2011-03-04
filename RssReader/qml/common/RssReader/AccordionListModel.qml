@@ -12,48 +12,6 @@ import "Store.js" as Store
 ListModel {
     id: model
 
-    ListElement {
-        categoryTitle: "News"
-        iconUrl: 'gfx/news_icon.png'
-        attributes: [
-            ListElement { categoryTitle: "Reuters Top News" ; type: "rss"; url: "http://feeds.reuters.com/reuters/topNews" },
-            ListElement { categoryTitle: "Manage"; type: "discover"; url: "discovery.xml"}
-        ]
-    }
-    ListElement {
-        categoryTitle: "Entertainment"
-        iconUrl: 'gfx/entertainment_icon.png'
-        attributes: [
-            ListElement { categoryTitle: "Reuters Entertainment"; type: "rss"; url: "http://feeds.reuters.com/reuters/entertainment" },
-            ListElement { categoryTitle: "Manage"; type: "discover"; url: "discovery.xml"}
-        ]
-    }
-    ListElement {
-        categoryTitle: "Sports"
-        iconUrl: 'gfx/sports_icon.png'
-        attributes: [
-            ListElement { categoryTitle: "Reuters Sports"; type: "rss"; url: "http://feeds.reuters.com/reuters/sportsNews" },
-            ListElement { categoryTitle: "Manage"; type: "discover"; url: "discovery.xml"}
-        ]
-    }
-    ListElement {
-        categoryTitle: "Tech"
-        iconUrl: 'gfx/tech_icon.png'
-        attributes: [
-            ListElement { categoryTitle: "Reuters Technology News"; type: "rss"; url: "http://feeds.reuters.com/reuters/technologyNews" },
-            ListElement { categoryTitle: "Manage"; type: "discover"; url: "discovery.xml"}
-        ]
-    }
-
-    Component.onCompleted: {
-        // Comment the following line and run once to restore the initial state with predefined content.
-        Store.restore(model);
-    }
-
-    Component.onDestruction: {
-        Store.store(model)
-    }
-
     // Adds a feed to category.
     function addToCategory(category, name, url) {
         Util.log("addToCategory: "+category+" "+name+" "+" "+url)
@@ -114,5 +72,46 @@ ListModel {
         return found
     }
 
+    ListElement {
+        categoryTitle: "News"
+        iconUrl: 'gfx/news_icon.png'
+        attributes: [
+            ListElement { categoryTitle: "Reuters Top News" ; type: "rss"; url: "http://feeds.reuters.com/reuters/topNews" },
+            ListElement { categoryTitle: "Manage"; type: "discover"; url: "discovery.xml"}
+        ]
+    }
+    ListElement {
+        categoryTitle: "Entertainment"
+        iconUrl: 'gfx/entertainment_icon.png'
+        attributes: [
+            ListElement { categoryTitle: "Reuters Entertainment"; type: "rss"; url: "http://feeds.reuters.com/reuters/entertainment" },
+            ListElement { categoryTitle: "Manage"; type: "discover"; url: "discovery.xml"}
+        ]
+    }
+    ListElement {
+        categoryTitle: "Sports"
+        iconUrl: 'gfx/sports_icon.png'
+        attributes: [
+            ListElement { categoryTitle: "Reuters Sports"; type: "rss"; url: "http://feeds.reuters.com/reuters/sportsNews" },
+            ListElement { categoryTitle: "Manage"; type: "discover"; url: "discovery.xml"}
+        ]
+    }
+    ListElement {
+        categoryTitle: "Tech"
+        iconUrl: 'gfx/tech_icon.png'
+        attributes: [
+            ListElement { categoryTitle: "Reuters Technology News"; type: "rss"; url: "http://feeds.reuters.com/reuters/technologyNews" },
+            ListElement { categoryTitle: "Manage"; type: "discover"; url: "discovery.xml"}
+        ]
+    }
+
+    Component.onCompleted: {
+        // Comment the following line and run once to restore the initial state with predefined content.
+        Store.restore(model);
+    }
+
+    Component.onDestruction: {
+        Store.store(model)
+    }
 }
 

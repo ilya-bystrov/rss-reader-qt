@@ -4,23 +4,21 @@ import "Components.js" as Util
 Rectangle {
     id: container
 
-    signal exitButtonClicked
-    signal backButtonClicked(string viewName)
-
     property bool showingBackButton: false
     property int margin: 8
-
     property string iconSource: "gfx/placeholder_icon.png"
     property string backButtonSource: "gfx/back_button.png"
     property string backButtonPressedSource: "gfx/back_button_pressed.png"
     property string exitButtonSource: "gfx/exit_button.png"
     property string exitButtonPressedSource: "gfx/exit_button_pressed.png"
-
     property string text: "TITLE"
     property string fontName: "Helvetica"
     property int fontSize: 24
     property color fontColor: "black"
     property bool fontBold: false
+
+    signal exitButtonClicked
+    signal backButtonClicked(string viewName)
 
     // Default values, change when using
     width: 360

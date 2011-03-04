@@ -3,6 +3,7 @@ import "Util.js" as Util
 
 Item {
     id: container
+
     // Feed model holds my subscriptions
     property alias expandedCategoryTitle: accordionList.expandedTitle
     property alias selectedCategoryTitle: accordionList.selectedTitle

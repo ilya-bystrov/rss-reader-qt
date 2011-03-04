@@ -9,7 +9,6 @@ Item {
     property bool fontBold: false
     property string text: "NOT SET"
     property string bgImage: './gfx/list_item.png'
-
     property string bgImageSelected: './gfx/list_item_selected.png'
     property string bgImagePressed: './gfx/list_item_pressed.png'
     property string bgImageActive: './gfx/list_item_active.png'
@@ -19,13 +18,14 @@ Item {
     property int iconIndent: 0
     property string icon: ""
     property double iconOpacity: 1
+
     signal clicked
     signal pressAndHold(int mouseX, int mouseY)
-
 
     width: 360
     height: 64
     clip: true
+
     onSelectedChanged: selected ?  state = 'selected' : state = ''
 
     BorderImage {

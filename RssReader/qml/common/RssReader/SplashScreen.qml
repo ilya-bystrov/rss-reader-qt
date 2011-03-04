@@ -6,9 +6,6 @@ import QtQuick 1.0
 Rectangle {
     id: splashMain
 
-    // Emit a signal when timeout is reached
-    signal splashTimeout()
-
     // Timeout that defines how long the Splash Screen should be shown at max.
     property int timeout: 2500  // 2,5s by default.
 
@@ -19,8 +16,14 @@ Rectangle {
     // Defines whether or not the Splash Screen is shown.
     property bool show: false
 
+    // Emit a signal when timeout is reached
+    signal splashTimeout()
+
     // State is being deduced from the "show" property.
     state: show ? "showingSplashScreen" : ""
+
+    // Splash is hidden by default.
+    opacity: 0.0
 
     // Start the splash timer when SplashScreen becomes visible.
     onStateChanged: {
@@ -28,9 +31,6 @@ Rectangle {
             splashTimer.start();
         }
     }
-
-    // Splash is hidden by default.
-    opacity: 0.0
 
     // Image shown.
     Image {

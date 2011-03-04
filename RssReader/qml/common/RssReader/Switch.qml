@@ -3,8 +3,6 @@ import QtQuick 1.0
 Item {
     id: container
 
-    // Signal that gets fired when switch state has been toggled
-    signal switched(bool position)
     // Font properties
     property string fontName: "Helvetica"
     property int fontSize: 12
@@ -19,6 +17,9 @@ Item {
     property alias textOff: textOff.text
     // Spacing between labels and switch
     property alias spacing: row.spacing
+
+    // Signal that gets fired when switch state has been toggled
+    signal switched(bool position)
 
     width: row.width
     height: 44

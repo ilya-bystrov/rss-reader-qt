@@ -2,19 +2,19 @@ import QtQuick 1.0
 
 Item {
     id: container
+
     property alias text: button.text
     property bool show: false
     property int posX: 0
     property int posY: 0
-
     property string fontName: "Helvetica"
     property int fontSize: 10
     property color fontColor: "black"
 
+    signal clicked
+
     anchors.fill: parent
     opacity: show == true ? 1 : 0
-
-    signal clicked
 
     Behavior on opacity {
         NumberAnimation {

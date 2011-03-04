@@ -3,6 +3,7 @@ import QtQuick 1.0
 import "Util.js" as Util
 
 XmlListModel {
+    id: model
 
     property string feedUrl: ""
     property bool loading: status == XmlListModel.Loading

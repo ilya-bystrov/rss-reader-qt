@@ -2,6 +2,7 @@ import QtQuick 1.0
 
 Item {
     id: container
+
     signal settingsButtonClicked
 
     width: 360

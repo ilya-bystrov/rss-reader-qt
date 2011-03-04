@@ -5,17 +5,13 @@ Item {
 
     property string target: "NOT SET"
     property alias text: input.text
-
     property string fontName: "Helvetica"
     property int fontSize: 14
     property color fontColor: "black"
-
     property bool active: false
-
     property string bgImage: 'gfx/text_field.png'
     property string bgImagePressed: bgImageActive
     property string bgImageActive: 'gfx/button_pressed.png'
-
     property Component bg: defaultBackground
     property Component bgPressed: defaultPressedBackground
     property Component bgActive: defaultActiveBackground
