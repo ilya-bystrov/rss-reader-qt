@@ -68,16 +68,16 @@ Item {
     property int titleBarSmallestFontSize: 18
     property color titlebarFontColor: "#c0da07"
     property color titleBarBackgroundColor: "transparent"
-    property int titleBarHeight: 60
+    property int titleBarHeight: 80
 
     // Footer
-    property int footerHeight: 60
+    property int footerHeight: 80
 
     // Settings view
     property string settingsViewFont: defaultFontFamily
     property int settingsViewFontSize: 18
     property color settingsViewFontColor: defaultFontColor
-    property int settingHeight: 40
+    property int settingHeight: 80
 
     // Discovery view
     property string discoveryViewFont: defaultFontFamily
