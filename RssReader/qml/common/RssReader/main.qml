@@ -139,8 +139,7 @@ Rectangle {
             fontSize: visual.theme.settingsViewFontSize
             fontColor: visual.theme.settingsViewFontColor
             onThemeChanged: {
-                visual.source = theme+".qml";
-                console.log("using theme "+theme)
+                visual.source = theme+".qml";                
             }
         }
 
@@ -187,8 +186,7 @@ Rectangle {
                 Util.log("Discover from " + category
                                          + ", url:" + categoryView.selectedCategoryUrl);
                 // Set the discovery view to show the proper category:                
-                discoveryView.categoryTitle = category
-                discoveryView.discoveryUrl = categoryView.selectedCategoryUrl
+                discoveryView.categoryTitle = category                
                 appState.selectedFeedTitle = categoryView.expandedCategoryTitle                                
                 appState.fromLeft = true;
                 appState.currentViewName = "discoveryView";
@@ -341,8 +339,7 @@ Rectangle {
                 // Set all state variable changes to appState
                 target: appState
                 showBackButton: true
-                currentTitle: appState.selectedFeedTitle
-                //currentTitle: appState.selectedFeedItemTitle
+                currentTitle: appState.selectedFeedTitle                
             }
             PropertyChanges {
                 target: titleBar

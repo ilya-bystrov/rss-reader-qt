@@ -8,7 +8,6 @@ Item {
 
     // Display feeds belonging to this category
     property alias categoryTitle: listModel.categoryTitle
-    property alias discoveryUrl: listModel.url
     property int itemHeight: 50
 
     property string fontName: "Helvetica"
