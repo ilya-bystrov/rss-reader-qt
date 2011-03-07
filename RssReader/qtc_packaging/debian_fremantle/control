@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Juha Ristolainen <juha.ristolainen@futurice.com>
 Build-Depends: debhelper (>= 5), libqt4-dev
 Standards-Version: 3.7.3
-Homepage: http://projects.forum.nokia.com
+Homepage: http://bit.ly/qmlrssreader
 
 Package: rssreader
 Architecture: any
