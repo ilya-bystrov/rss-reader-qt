@@ -95,11 +95,11 @@ Item {
 
     // Feed view
     property string feedViewFont: defaultFontFamily
-    property int feedViewFontSize: 6
+    property int feedViewFontSize: 8
     property color feedViewFontColor: defaultFontColor
 
     // Feed item view
     property string feedItemViewFont: defaultFontFamily
-    property int feedItemViewFontSize: 6
+    property int feedItemViewFontSize: 7
     property color feedItemViewFontColor: defaultFontColor
 }
