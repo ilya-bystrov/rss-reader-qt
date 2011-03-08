@@ -40,7 +40,7 @@ FocusScope {
             text: title
             property bool filtered: title.match(new RegExp(textEntry.text,"i")) != null
             width: container.width
-            height: filtered ? 64 : 0
+            height: filtered ? 54 : 0
             fontName: container.fontName
             fontSize: container.fontSize
             fontColor: container.fontColor

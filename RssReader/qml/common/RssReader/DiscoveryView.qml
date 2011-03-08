@@ -6,7 +6,7 @@ Item {
 
     // Display feeds belonging to this category
     property alias categoryTitle: listModel.categoryTitle
-    property int itemHeight: 50
+    property int itemHeight: 54
 
     property string fontName: "Helvetica"
     property int fontSize: 12
