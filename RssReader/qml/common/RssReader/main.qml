@@ -290,6 +290,10 @@ Rectangle {
                 showBackButton: true;
                 //currentTitle: qsTr("Manage "+""+" feeds")
             }
+            PropertyChanges {
+                target: titleBar
+                fontSize: visual.theme.titleBarSmallestFontSize
+            }
             // Animate the view switch with viewSwitcher
             StateChangeScript { script: viewSwitcher.switchView(discoveryView, appState.fromLeft, 0); }
         },

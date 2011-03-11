@@ -65,8 +65,8 @@ Item {
     property string titleBarFont: defaultFontFamily
     property int titleBarFontSize: 10
     property int titleBarSmallerFontSize: 8
-    property int titleBarSmallestFontSize: 8
-    property color titlebarFontColor: "#c0da07"
+    property int titleBarSmallestFontSize: 6
+    property color titlebarFontColor: "#44aa33"
     property color titleBarBackgroundColor: "transparent"
     property int titleBarHeight: 80
 
@@ -81,7 +81,7 @@ Item {
 
     // Discovery view
     property string discoveryViewFont: defaultFontFamily
-    property int discoveryViewFontSize: 8
+    property int discoveryViewFontSize: 6
     property color discoveryViewFontColor: defaultFontColor
 
     // Category view
@@ -95,11 +95,11 @@ Item {
 
     // Feed view
     property string feedViewFont: defaultFontFamily
-    property int feedViewFontSize: 6
+    property int feedViewFontSize: 8
     property color feedViewFontColor: defaultFontColor
 
     // Feed item view
     property string feedItemViewFont: defaultFontFamily
-    property int feedItemViewFontSize: 6
+    property int feedItemViewFontSize: 7
     property color feedItemViewFontColor: defaultFontColor
 }
