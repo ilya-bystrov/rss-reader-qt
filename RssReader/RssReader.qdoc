@@ -1,0 +1,11 @@
+\title QML RSS Reader example 
+
+The RSS Reader Example Application demonstrates the use of RSS feed resources on 
+the net. It contains a rich UI with view navigation, search, accordion list and 
+animations. The UI components are designed to be reusable in other applications. 
+RSS Reader uses the QML local storage to store the feeds that the user has 
+subscribed. The application also demonstrates how the graphical theme can be 
+switched from the settings view.
+
+\image reader1.png
+
