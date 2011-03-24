@@ -36,7 +36,7 @@ There are two ways to install the application on the device.
 0. The Qt libraries (4.7.2 or higher) must be installed. See the section 
    COMPATIBILITY for more information about the installation.
 
-1. a) Drag the rssreader_0.1.7.sis file to the Nokia Ovi Suite when the device is 
+1. a) Drag the rssreader_1.0.0.sis file to the Nokia Ovi Suite when the device is 
       connected with the USB cable.
    
    OR
@@ -58,7 +58,7 @@ Mobile device (Maemo)
 0. The Qt libraries (4.7.0 or higher) must be installed. See the section 
    COMPATIBILITY for more information about the installation.
 
-1. Copy the rssreader_0.1.7_armel.deb file into a specific folder on the 
+1. Copy the rssreader_1.0.0_armel.deb file into a specific folder on the 
    device (for example, 'MyDocs').
 
 2. Start XTerm. Type 'sudo gainroot' to get root access.
@@ -67,7 +67,7 @@ Mobile device (Maemo)
    (for example, 'cd MyDocs').
 
 4. As root, install the package:
-   dpkg -i rssreader_0.1.7_armel.deb
+   dpkg -i rssreader_1.0.0_armel.deb
 
 5. Launch the Applications menu.
 
