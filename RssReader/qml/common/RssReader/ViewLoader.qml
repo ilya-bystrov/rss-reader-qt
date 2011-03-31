@@ -1,3 +1,10 @@
+/**
+ * The view framework for loading and switching views is borrowed from the
+ * blog article by Juha Turunen.
+ *
+ * See http://juhaturunen.com/blog/
+ */
+
 import QtQuick 1.0
 import "Components.js" as Util
 
@@ -29,5 +36,4 @@ Loader {
     anchors.bottom: parent.bottom
     width: parent.width
     opacity: 0
-
 }

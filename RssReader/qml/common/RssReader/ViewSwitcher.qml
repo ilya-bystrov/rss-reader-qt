@@ -1,4 +1,11 @@
-import Qt 4.7
+/**
+ * The view framework for loading and switching views is borrowed from the
+ * blog article by Juha Turunen.
+ *
+ * See http://juhaturunen.com/blog/
+ */
+
+import QtQuick 1.0
 
 QtObject {
     id: container
