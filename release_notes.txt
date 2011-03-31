@@ -1,12 +1,12 @@
 QML RSS Reader
-===================
+==============
 
-The RSS Reader Example Application demonstrates the use of RSS feed resources on 
-the net. It contains a rich UI with view navigation, search, accordion list and 
-animations. The UI components are designed to be reusable in other applications. 
-RSS Reader uses the QML local storage to store the feeds that the user has 
-subscribed. The application also demonstrates how the graphical theme can be 
-switched from the settings view.
+The RSS Reader Example Application demonstrates the use of RSS feed resources 
+on the net. It contains a rich UI with view navigation, search, accordion 
+list, and animations. The UI components are designed to be reusable in other 
+applications. RSS Reader uses the QML local storage to store the feeds that 
+the user has subscribed to. The application also demonstrates how the 
+graphical theme can be switched from the settings view.
 
 
 FILES
@@ -18,7 +18,8 @@ design/*
 
 RssReader/*
 
-- The application itself. Contains a .pro-file that can be opened in Qt SDK 1.1beta.
+- The application itself. Contains a .pro file that can be opened in 
+  Qt SDK 1.1beta.
 
 screenhots/*
 
@@ -36,8 +37,8 @@ There are two ways to install the application on the device.
 0. The Qt libraries (4.7.2 or higher) must be installed. See the section 
    COMPATIBILITY for more information about the installation.
 
-1. a) Drag the rssreader_1.0.0.sis file to the Nokia Ovi Suite when the device is 
-      connected with the USB cable.
+1. a) Drag the rssreader_1.0.0.sis file to the Nokia Ovi Suite while the 
+      device is connected with the USB cable.
    
    OR
    
@@ -49,9 +50,6 @@ There are two ways to install the application on the device.
    
 3. Locate the RestaurantApp icon and select it to launch the application.
 
-
-Maemo device
-~~~~~~~~~~~~
 
 Mobile device (Maemo)
 ~~~~~~~~~~~~~~~~~~~~~
@@ -90,7 +88,6 @@ COMPATIBILITY
 
   1. Use Nokia Ovi Suite to update the device's firmware to PR1.3.
 
-  
    
 Tested on:
 
