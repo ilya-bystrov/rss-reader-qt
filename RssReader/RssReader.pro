@@ -2,6 +2,8 @@
 common_qml.source = qml/common/RssReader
 common_qml.target = qml
 
+VERSION = 1.0.1
+
 # Platform specific files and configuration
 symbian {
     TARGET.UID3 = 0xE1E1B70E
@@ -13,6 +15,10 @@ symbian {
     platform_qml.source = qml/maemo/RssReader
     platform_qml.target = qml
     QML_IMPORT_PATH = qml/maemo/RssReader
+} else:simulator {
+    platform_qml.source = qml/symbian/RssReader
+    platform_qml.target = qml
+    QML_IMPORT_PATH = qml/symbian/RssReader
 } else:win32{
     # Windows
     platform_qml.source = qml/desktop/RssReader
