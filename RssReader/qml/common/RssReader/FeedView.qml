@@ -94,7 +94,7 @@ FocusScope {
         anchors {
             leftMargin: 8
             bottom: parent.bottom
-            left: icon.horizontalCenter
+            left: icon.right
             right: parent.right
         }
         text: ""

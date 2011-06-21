@@ -10,6 +10,8 @@ Item {
     property string bgImage: "gfx/exit_button.png"
     property string bgImagePressed: "gfx/exit_button_pressed.png"
 
+    property alias enabled: mouseArea.enabled
+
     signal clicked(string button)
 
     width: 50

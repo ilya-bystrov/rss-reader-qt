@@ -2,7 +2,7 @@
 common_qml.source = qml/common/RssReader
 common_qml.target = qml
 
-VERSION = 1.0.1
+VERSION = 1.1.0
 
 # Platform specific files and configuration
 symbian {
@@ -25,10 +25,18 @@ symbian {
     platform_qml.target = qml
     QML_IMPORT_PATH = qml/desktop/RssReader
 } else:unix {
-    # OS X, Linux, Unix
-    platform_qml.source = qml/desktop/RssReader
+    # Harmattan, at the moment we can't differentiate unix and Harmattan.
+    QT += opengl
+    DEFINES += Q_WS_HARMATTAN
+    platform_qml.source = qml/harmattan/RssReader
     platform_qml.target = qml
-    QML_IMPORT_PATH = qml/desktop/RssReader
+    QML_IMPORT_PATH = qml/harmattan/RssReader
+
+    # TODO: Enable these, when Unix/OsX can be separated from Harmattan!
+    # e.g. else:desktop {...    
+#    platform_qml.source = qml/desktop/RssReader
+#    platform_qml.target = qml
+#    QML_IMPORT_PATH = qml/desktop/RssReader
 }
 
 DEPLOYMENTFOLDERS = common_qml platform_qml
@@ -72,4 +80,10 @@ OTHER_FILES += \
     debian/control \
     debian/copyright \
     debian/README \
-    debian/rules
+    debian/rules \
+    qtc_packaging/debian_harmattan/rules \
+    qtc_packaging/debian_harmattan/README \
+    qtc_packaging/debian_harmattan/copyright \
+    qtc_packaging/debian_harmattan/control \
+    qtc_packaging/debian_harmattan/compat \
+    qtc_packaging/debian_harmattan/changelog

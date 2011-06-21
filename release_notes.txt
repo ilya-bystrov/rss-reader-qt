@@ -1,8 +1,8 @@
 QML RSS Reader
 ==============
 
-The RSS Reader Example Application demonstrates the use of RSS feed resources 
-on the net. It contains a rich UI with view navigation, search, accordion 
+The RSS Reader example application demonstrates the use of RSS feed resources 
+on the Internet. It contains a rich UI with view navigation, search, accordion 
 list, and animations. The UI components are designed to be reusable in other 
 applications. RSS Reader uses the QML local storage to store the feeds that 
 the user has subscribed to. The application also demonstrates how the 
@@ -18,7 +18,7 @@ design/*
 
 RssReader/*
 
-- The application itself. Contains a .pro file that can be opened in 
+- The application itself. Contains a PRO file that can be opened in 
   Qt SDK 1.1beta.
 
 screenhots/*
@@ -45,7 +45,7 @@ There are two ways to install the application on the device.
    b) Send the application directly to the Messaging Inbox (for example,
       through Bluetooth).
 
-2. After the installation is complete, return to the Application menu and
+2. After the installation is complete, return to the application menu and
    select the Applications folder.
    
 3. Locate the RestaurantApp icon and select it to launch the application.
@@ -53,6 +53,7 @@ There are two ways to install the application on the device.
 
 Mobile device (Maemo)
 ~~~~~~~~~~~~~~~~~~~~~
+
 0. The Qt libraries (4.7.0 or higher) must be installed. See the section 
    COMPATIBILITY for more information about the installation.
 
@@ -75,7 +76,7 @@ Mobile device (Maemo)
 COMPATIBILITY
 -------------------------------------------------------------------------------
 
-- Symbian^3 with Qt version 4.7.2 or higher.
+- Symbian^3 with Qt version 4.7.2 or higher
 
   1. Download Qt for Symbian (4.7.2 or higher) from qt.nokia.com.
   
@@ -84,22 +85,26 @@ COMPATIBILITY
      of Qt for Symbian (4.7.2 or higher).
      
      
-- Maemo with PR1.3 which includes Qt 4.7.0.
+- Maemo with PR1.3 which includes Qt 4.7.0
 
   1. Use Nokia Ovi Suite to update the device's firmware to PR1.3.
 
-   
+- MeeGo 1.2 Harmattan
+
 Tested on:
 
 - Nokia N8-00
 - Nokia E7-00
 - Nokia N900
+- Nokia N950
 
 Developed with:
 
--QtSDK 1.1beta
+- Qt SDK 1.1
 
 
 VERSION HISTORY
 -------------------------------------------------------------------------------
+v1.1 Added MeeGo 1.2 Harmattan support.
+v1.0 Initial release.
 v0.1.7 Initial version published in Forum Nokia Projects.

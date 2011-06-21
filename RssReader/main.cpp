@@ -3,7 +3,7 @@
 #include <QtDeclarative/QDeclarativeContext>
 #include "qmlapplicationviewer.h"
 
-#ifdef Q_WS_MAEMO_5
+#if defined(Q_WS_MAEMO_5) || defined(Q_WS_HARMATTAN)
 #include <QtOpenGL/QGLWidget>
 #endif
 
@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     QmlApplicationViewer viewer;
 
     // For Maemo 5 and Symbian use screen resolution but for desktop use different size
-#if defined(Q_WS_MAEMO_5) || defined(Q_OS_SYMBIAN)
+#if defined(Q_WS_MAEMO_5) || defined(Q_OS_SYMBIAN) || defined(Q_WS_HARMATTAN)
     // Get screen dimensions
     QDesktopWidget *desktop = QApplication::desktop();
     const QRect screenRect = desktop->screenGeometry();
@@ -38,8 +38,8 @@ int main(int argc, char *argv[])
     viewer.setMainQmlFile(QLatin1String("qml/RssReader/main.qml"));
     viewer.addImportPath(QLatin1String("qml/Components"));
 
-    // For N900 set OpenGL rendering
-#ifdef Q_WS_MAEMO_5
+    // For N900 and Harmattan set OpenGL rendering
+#if defined(Q_WS_MAEMO_5) || defined(Q_WS_HARMATTAN)
     QGLFormat fmt = QGLFormat::defaultFormat();
     fmt.setDirectRendering(true);
     fmt.setDoubleBuffer(true);
@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 #endif
 
 
-#if defined(Q_WS_MAEMO_5) || defined(Q_OS_SYMBIAN)
+#if defined(Q_WS_MAEMO_5) || defined(Q_OS_SYMBIAN) || defined(Q_WS_HARMATTAN)
     viewer.showFullScreen();
 #else
     viewer.show();

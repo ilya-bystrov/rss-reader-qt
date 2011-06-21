@@ -16,6 +16,7 @@ Rectangle {
     property int fontSize: 24
     property color fontColor: "black"
     property bool fontBold: false
+    property bool exitButtonVisible: true
 
     signal exitButtonClicked
     signal backButtonClicked(string viewName)
@@ -77,6 +78,7 @@ Rectangle {
         anchors.margins: 0
         bgImage: container.exitButtonSource
         bgImagePressed: container.exitButtonPressedSource
+        enabled: container.exitButtonVisible
 
         onClicked: {
             container.exitButtonClicked()

@@ -8,6 +8,7 @@ Item {
     property color buttonActiveColor: Qt.darker(buttonPassiveColor)
     property color buttonTextColor: "black"
     property color buttonBorderColor: Qt.darker(buttonPassiveColor)
+    property bool exitButtonVisible: true
 
     Item {
         id: images

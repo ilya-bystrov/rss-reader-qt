@@ -2,7 +2,7 @@ import QtQuick 1.0
 import "Util.js" as Util
 
 // Follow http://doc.qt.nokia.com/4.7/qml-coding-conventions.html
-Rectangle {    
+AppWindow {
     id: mainWindow
 
     anchors.centerIn: parent    
@@ -37,7 +37,7 @@ Rectangle {
     // Splash screen is full screen but visible only at the start
     SplashScreen {
         id: splashScreen
-        anchors.fill: mainWindow
+        anchors.fill: parent
         // Put splash screen on top of everything. Otherwise you would need to lay it out as the last objects
         // in the layout for it to be on top of all other objects. But with z-property we get same results
         z: 100
@@ -58,15 +58,16 @@ Rectangle {
         // Anchors titlebar to left,top and right. Then set height
         // Use grouping if possible.
         anchors {
-            top: mainWindow.top
-            left: mainWindow.left
-            right: mainWindow.right
+            top: parent.top
+            left: parent.left
+            right: parent.right
         }
 
         backButtonSource: visual.theme.images.backButton
         backButtonPressedSource: visual.theme.images.backButtonPressed
         exitButtonSource: visual.theme.images.exitButton
         exitButtonPressedSource: visual.theme.images.exitButtonPressed
+        exitButtonVisible: visual.theme.exitButtonVisible
 
         fontBold: true
         fontName: visual.theme.titleBarFont
@@ -104,8 +105,8 @@ Rectangle {
         clip: true
         anchors {
             top: titleBar.bottom
-            left: mainWindow.left
-            right: mainWindow.right
+            left: parent.left
+            right: parent.right
             bottom: footer.top
             margins: 8
         }
@@ -246,17 +247,17 @@ Rectangle {
         property bool show: false
         state: show ? "visible" : "hidden"
         anchors {
-            left: mainWindow.left
-            right: mainWindow.right
+            left: parent.left
+            right: parent.right
         }
         states: [
             State {
                 name: "visible"
-                AnchorChanges { target: footer; anchors.bottom: mainWindow.bottom; anchors.top: undefined }
+                AnchorChanges { target: footer; anchors.bottom: parent.bottom; anchors.top: undefined }
             },
             State {
                 name: "hidden"
-                AnchorChanges { target: footer; anchors.bottom: undefined; anchors.top: mainWindow.bottom }
+                AnchorChanges { target: footer; anchors.bottom: undefined; anchors.top: parent.bottom }
             }
         ]
 
