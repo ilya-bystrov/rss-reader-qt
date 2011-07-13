@@ -22,14 +22,14 @@ Item {
             margins: 8
         }
 
-        iconSource: pressed ? visual.theme.images.buttonPressed : visual.theme.images.button
+        iconSource: visual.theme.images.settingsIcon
 
-        Image {
-            source: visual.theme.images.settingsIcon
-            anchors.fill: parent
-            anchors.margins: 8
-            fillMode: Image.PreserveAspectFit
-            smooth: true
-        }
+//        Image {
+//            source: visual.theme.images.settingsIcon
+//            anchors.fill: parent
+//            anchors.margins: 8
+//            fillMode: Image.PreserveAspectFit
+//            smooth: true
+//        }
     }
 }

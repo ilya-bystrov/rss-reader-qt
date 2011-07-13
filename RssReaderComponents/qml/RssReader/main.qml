@@ -151,7 +151,6 @@ Window {
         SettingsView {
             id: settingsView
             anchors.fill: parent
-            opacity: 1
             fontName: visual.theme.settingsViewFont
             fontSize: visual.theme.settingsViewFontSize
             fontColor: visual.theme.settingsViewFontColor
@@ -170,7 +169,6 @@ Window {
             // Must use width and not anchor to left&right for left/right animations to work
             width:  parent.width
             // The views that are not visible should be set to 0 opacity or visible: false
-            opacity: 1
             fontName: visual.theme.discoveryViewFont
             fontSize: visual.theme.discoveryViewFontSize
             fontColor: visual.theme.discoveryViewFontColor
@@ -193,7 +191,6 @@ Window {
             subItemFontSize: visual.theme.categoryViewSubItemFontSize
             subItemFontColor: visual.theme.categoryViewSubItemFontColor
 
-            opacity: 1
             onFeedSelected: {
                 Util.log("Selected feed: " + feedName)
                 appState.selectedFeedTitle = feedName;
@@ -221,7 +218,6 @@ Window {
             }
             width:  parent.width
             scrollBarWidth: visual.theme.scrollBarWidth
-            opacity: 1
             fontName: visual.theme.feedViewFont
             fontSize: visual.theme.feedViewFontSize
             fontColor: visual.theme.feedViewFontColor
@@ -243,7 +239,6 @@ Window {
             }
             width:  parent.width
             scrollBarWidth: visual.theme.scrollBarWidth
-            opacity: 1
             fontName: visual.theme.feedItemViewFont
             fontSize: visual.theme.feedItemViewFontSize
             fontColor: visual.theme.feedItemViewFontColor

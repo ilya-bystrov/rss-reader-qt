@@ -88,26 +88,24 @@ Page {
 
     Button {
         id: buttonPart
+
         anchors {
             bottom: parent.bottom
             left: parent.left
             right: parent.right
         }
+        visible: itemUrl.length > 0
         width: parent.width
         height: 61
         text: qsTr("Read full article")
 
-        iconSource: pressed ? visual.theme.images.buttonPressed : visual.theme.images.button
-
-        // TODO: Can something corresponding be defined?
-//        fontName: container.fontName
-//        fontSize: container.fontSize
-//        fontColor: container.fontColor
-        visible: itemUrl.length > 0
+        font {
+            family: container.fontName
+            pointSize: container.fontSize
+        }
 
         onClicked: {
             Qt.openUrlExternally(itemUrl)
         }
     }
-
 }

@@ -71,14 +71,12 @@ Rectangle {
     Button {
         id: exitButton
         visible: !showingBackButton        
-//        width: container.height
-//        height: container.height
-//        scale: 0.8
+
         anchors.top: container.top
         anchors.right: container.right
         anchors.margins: 10
 
-        iconSource: pressed ? container.exitButtonSource : container.exitButtonPressedSource
+        iconSource: pressed ? container.exitButtonPressedSource : container.exitButtonSource
         enabled: container.exitButtonVisible
 
         onClicked: {
@@ -92,12 +90,8 @@ Rectangle {
         anchors.top: container.top
         anchors.right: container.right
         anchors.margins: 10
-//        width: container.height
-//        height: container.height
-//        scale: 0.8
-//        bgImage: container.backButtonSource
-//        bgImagePressed: container.backButtonPressedSource
-        iconSource: pressed ? container.backButtonSource : container.backButtonPressedSource
+
+        iconSource: pressed ? container.backButtonPressedSource : container.backButtonSource
 
         onClicked: {
             container.backButtonClicked(appState.currentViewName)
