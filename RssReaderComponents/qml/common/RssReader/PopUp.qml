@@ -40,9 +40,10 @@ Item {
         x: parent.posX - width/2
         y: parent.posY - height/2
 
-//        fontSize: container.fontSize
-//        fontName: container.fontName
-//        fontColor: container.fontColor
+        font {
+            family: container.fontName
+            pointSize: container.fontSize
+        }
 
         onClicked: {
             container.show = false

@@ -70,8 +70,6 @@ Page {
             unfollowPopUp.show = true
         }
 
-        // TODO: Change this to QtQuick Dialog component!
-        // (And delete the PopUp.qml!)
         PopUp {
             id: unfollowPopUp
             text: "Unfollow"

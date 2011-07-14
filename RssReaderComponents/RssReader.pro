@@ -1,7 +1,6 @@
 # Add more folders to ship with the application, here
-folder_01.source = qml/RssReader
-folder_01.target = qml
-DEPLOYMENTFOLDERS = folder_01
+common_qml.source = qml/common/RssReader
+common_qml.target = qml
 
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =
@@ -15,13 +14,55 @@ symbian:TARGET.UID3 = 0xE1075E42
 # 0x2002CCCF value if protected UID is given to the application
 #symbian:DEPLOYMENT.installer_header = 0x2002CCCF
 
-# Allow network access on Symbian
-symbian:TARGET.CAPABILITY += NetworkServices
+# Platform specific files and configuration
+symbian {
+    TARGET.UID3 = 0xE1E1B70E
+    # Allow network access on Symbian
+    TARGET.CAPABILITY += NetworkServices
+    platform_qml.source = qml/symbian/RssReader
+    platform_qml.target = qml
+    QML_IMPORT_PATH = qml/symbian/RssReader
+} else:maemo5 {
+    QT += opengl
+    platform_qml.source = qml/maemo/RssReader
+    platform_qml.target = qml
+    QML_IMPORT_PATH = qml/maemo/RssReader
+} else:simulator {
+    platform_qml.source = qml/symbian/RssReader
+    platform_qml.target = qml
+    QML_IMPORT_PATH = qml/symbian/RssReader
+} else:win32{
+    # Windows
+    platform_qml.source = qml/desktop/RssReader
+    platform_qml.target = qml
+    QML_IMPORT_PATH = qml/desktop/RssReader
+} else:unix {
+    # Harmattan, at the moment we can't differentiate unix and Harmattan.
+    QT += opengl
+    DEFINES += Q_WS_HARMATTAN
+    platform_qml.source = qml/harmattan/RssReader
+    platform_qml.target = qml
+    QML_IMPORT_PATH = qml/harmattan/RssReader
+
+    # TODO: Enable these, when Unix/OsX can be separated from Harmattan!
+    # e.g. else:desktop {...
+#    platform_qml.source = qml/desktop/RssReader
+#    platform_qml.target = qml
+#    QML_IMPORT_PATH = qml/desktop/RssReader
+}
+
+DEPLOYMENTFOLDERS = common_qml platform_qml
 
 # If your application uses the Qt Mobility libraries, uncomment the following
 # lines and add the respective components to the MOBILITY variable.
 # CONFIG += mobility
 # MOBILITY +=
+
+# Put generated temp-files under tmp
+MOC_DIR = tmp
+OBJECTS_DIR = tmp
+RCC_DIR = tmp
+UI_DIR = tmp
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp

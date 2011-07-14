@@ -8,7 +8,7 @@ Item {
     id: splashMain
 
     // Timeout that defines how long the Splash Screen should be shown at max.
-    property int timeout: 2500  // 2,5s by default.
+    property int timeout: 1000  // 2,5s by default.
 
     // Default Splash image, user should set the correct one set when
     // instantiating the SplashScreen.
