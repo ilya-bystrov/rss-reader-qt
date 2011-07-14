@@ -1,5 +1,5 @@
 # Add more folders to ship with the application, here
-common_qml.source = qml/common/RssReader
+common_qml.source = qml/common/RssReaderComponents
 common_qml.target = qml
 
 # Additional import path used to resolve QML modules in Creator's code model
@@ -19,30 +19,30 @@ symbian {
     TARGET.UID3 = 0xE1E1B70E
     # Allow network access on Symbian
     TARGET.CAPABILITY += NetworkServices
-    platform_qml.source = qml/symbian/RssReader
+    platform_qml.source = qml/symbian/RssReaderComponents
     platform_qml.target = qml
-    QML_IMPORT_PATH = qml/symbian/RssReader
+    QML_IMPORT_PATH = qml/symbian/RssReaderComponents
 } else:maemo5 {
     QT += opengl
-    platform_qml.source = qml/maemo/RssReader
+    platform_qml.source = qml/maemo/RssReaderComponents
     platform_qml.target = qml
-    QML_IMPORT_PATH = qml/maemo/RssReader
+    QML_IMPORT_PATH = qml/maemo/RssReaderComponents
 } else:simulator {
-    platform_qml.source = qml/symbian/RssReader
+    platform_qml.source = qml/symbian/RssReaderComponents
     platform_qml.target = qml
-    QML_IMPORT_PATH = qml/symbian/RssReader
+    QML_IMPORT_PATH = qml/symbian/RssReaderComponents
 } else:win32{
     # Windows
-    platform_qml.source = qml/desktop/RssReader
+    platform_qml.source = qml/desktop/RssReaderComponents
     platform_qml.target = qml
-    QML_IMPORT_PATH = qml/desktop/RssReader
+    QML_IMPORT_PATH = qml/desktop/RssReaderComponents
 } else:unix {
     # Harmattan, at the moment we can't differentiate unix and Harmattan.
     QT += opengl
     DEFINES += Q_WS_HARMATTAN
-    platform_qml.source = qml/harmattan/RssReader
+    platform_qml.source = qml/harmattan/RssReaderComponents
     platform_qml.target = qml
-    QML_IMPORT_PATH = qml/harmattan/RssReader
+    QML_IMPORT_PATH = qml/harmattan/RssReaderComponents
 
     # TODO: Enable these, when Unix/OsX can be separated from Harmattan!
     # e.g. else:desktop {...
