@@ -2,7 +2,7 @@
 import QtQuick 1.0
 
 Item {
-  property alias images: images
+    property alias images: images
     property color windowActiveTextColor: "black"
     property color buttonPassiveColor: "grey"
     property color buttonActiveColor: Qt.darker(buttonPassiveColor)
@@ -10,7 +10,7 @@ Item {
     property color buttonBorderColor: Qt.darker(buttonPassiveColor)
     property bool exitButtonVisible: true
 
-  Item {
+    Item {
         id: images
         property string path: "gfx/"
 
@@ -49,7 +49,7 @@ Item {
         property string sporstsIcon: path+"sports_icon.png"
         property string techIcon: path+"tech_icon.png"
     }
-  
+
     // Main window
     property color applicationBackgroundColor: "#f8f8f8"
 

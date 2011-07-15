@@ -1,5 +1,5 @@
 import QtQuick 1.0
-import com.nokia.symbian 1.0
+import com.nokia.meego 1.0
 
 Page {
     id: container
@@ -16,37 +16,42 @@ Page {
         anchors.fill: parent
         anchors.margins: container.margins
         spacing: container.margins
+
         Item {
             height: container.settingHeight
             anchors.left: parent.left
             anchors.right: parent.right
+
             Text {
                 id: switchLabel
+
                 anchors.left: parent.left
                 anchors.right: themeSwitch.left
                 height: container.settingHeight
                 color: container.fontColor
+                verticalAlignment: Text.AlignVCenter
                 font {
                     family: container.fontName
                     pointSize: container.fontSize
                 }
-                text: qsTr("Theme")
-                verticalAlignment: Text.AlignVCenter
+
+                text: themeSwitch.checked ? qsTr("Theme: Light") : qsTr("Theme: Dark")
+		// WORKAROUND FOR NO clicked() SIGNAL ON HARMATTAN / MEEGO!
+                onTextChanged: {
+                    var theme = checked ? "Visual" : "DarkTheme";
+                    themeChanged(theme);
+                }
             }
+
             Switch {
                 id: themeSwitch
+
                 anchors.right: parent.right
                 height: container.settingHeight
-//                spacing: container.margins
-//                fontName: container.fontName
-//                fontSize: container.fontSize
-//                fontColor: container.fontColor
-//                textOn: qsTr("Light")
-//                textOff: qsTr("Dark")
-//                imageOn: visual.theme.images.switchOn
-//                imageOff:  visual.theme.images.switchOff
-//                onSwitched: {
-//                    var theme = position ? "Visual" : "DarkTheme";
+                // NOTE: There's no clicked() signal on Harmattan/Meego
+                // QtQuick Components!
+//                onClicked: {
+//                    var theme = checked ? "Visual" : "DarkTheme";
 //                    themeChanged(theme);
 //                }
             }

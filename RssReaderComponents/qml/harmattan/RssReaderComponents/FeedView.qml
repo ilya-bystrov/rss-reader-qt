@@ -1,5 +1,5 @@
 import QtQuick 1.0
-import com.nokia.symbian 1.0
+import com.nokia.meego 1.0
 import "Util.js" as Util
 
 Page {
@@ -41,8 +41,9 @@ Page {
             id: listDelegate
 
             MyListItem {
-                text: title
                 property bool filtered: title.match(new RegExp(textEntry.text,"i")) != null
+
+                text: title
                 width: container.width
                 height: filtered ? 54 : 0
                 fontName: container.fontName
@@ -106,6 +107,7 @@ Page {
 
         Image {
             id: icon
+
             source: visual.theme.images.searchIcon
             anchors {
                 left: parent.left
@@ -124,10 +126,11 @@ Page {
         // ScrollBar indicator. Take the bottommost search field height into account.
         ScrollBar {
             id: scrollBar
-            flickableItem: list
+
             height: list.height
             width: container.scrollBarWidth
             anchors.right: parent.right
+            flickableItem: list
         }
 
         function activationComplete() {

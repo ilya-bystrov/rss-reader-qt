@@ -22,6 +22,7 @@ Page {
 
     ListView {
         id: listView
+
         anchors.fill: parent        
         clip: true
         delegate: listDelegate
@@ -33,6 +34,7 @@ Page {
 
         MyListItem {
             property bool subscribed: categoryView.model.feedExists(url)
+
             text: title
             width: listView.width
             // ListItem is not selectable.
@@ -47,9 +49,11 @@ Page {
                 } else {
                     categoryView.model.addToCategory(categoryTitle, title, url)
                 }
-            }           
+            }
+
             Image {
                 id: star
+
                 fillMode: "PreserveAspectFit"
                 height: parent.height*0.5
                 source: parent.subscribed ? visual.theme.images.favourited : visual.theme.images.notFavourited

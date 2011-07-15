@@ -84,25 +84,30 @@ Page {
         }
     }
 
-    ScrollBar { flickableItem: flicker; width: container.scrollBarWidth; anchors.top: flicker.top; anchors.right: flicker.right; anchors.bottom: flicker.bottom }
+    ScrollBar {
+        flickableItem: flicker;
+        width: container.scrollBarWidth;
+        anchors.top: flicker.top;
+        anchors.right: flicker.right;
+        anchors.bottom: flicker.bottom }
 
     Button {
         id: buttonPart
 
+        visible: itemUrl.length > 0
+        width: parent.width
+        height: 61
         anchors {
             bottom: parent.bottom
             left: parent.left
             right: parent.right
         }
-        visible: itemUrl.length > 0
-        width: parent.width
-        height: 61
-        text: qsTr("Read full article")
-
         font {
             family: container.fontName
             pointSize: container.fontSize
         }
+
+        text: qsTr("Read full article")
 
         onClicked: {
             Qt.openUrlExternally(itemUrl)

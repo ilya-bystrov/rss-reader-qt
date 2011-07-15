@@ -15,16 +15,16 @@ Window {
         color: visual.theme.applicationBackgroundColor
     }
 
-//    color: visual.theme.applicationBackgroundColor
-
     // We start out showing the splash screen
     state: "showingSplashScreen"
 
-    // TODO: Change the Visual stuff into use here!
+    // Change the Visual stuff into use here!
     Loader {
         id: visual
         property alias theme: visual.item
-        source: "Visual.qml"
+        // Use the "Dark" theme by default
+        source: "DarkTheme.qml"
+//        source: "Visual.qml"
     }
 
     // Properties.
@@ -62,9 +62,8 @@ Window {
     // All views have a title bar
     TitleBar {
         id: titleBar
-//        enabled: !viewSwitcher.running
-        enabled: true
 
+        enabled: true
         // Anchors titlebar to left,top and right. Then set height
         // Use grouping if possible.
         anchors {
@@ -88,6 +87,7 @@ Window {
         text: appState.currentTitle
         iconSource: visual.theme.images.rssLogo
         showingBackButton: appState.showBackButton
+
         onBackButtonClicked: {
             Util.log("Back-button clicked. Came from view: " + viewName);
             if (viewName === "feedView") {
@@ -136,24 +136,17 @@ Window {
             margins: 8
         }
 
-//        // View switcher component, handles the view switching and animation
-//        ViewSwitcher {
-//            id: viewSwitcher
-//            // Rooted in contentPane
-//            root: contentPane
-//            // Start from feedListView
-//            currentView: categoryView
-//        }
 
-        // Our views inside the contentPane
-
+        // Views inside the contentPane:
         // Settings view
         SettingsView {
             id: settingsView
+
             anchors.fill: parent
             fontName: visual.theme.settingsViewFont
             fontSize: visual.theme.settingsViewFontSize
             fontColor: visual.theme.settingsViewFontColor
+
             onThemeChanged: {
                 visual.source = theme+".qml";                
             }
@@ -162,6 +155,7 @@ Window {
         // Discovery view to add more subscriptions
         DiscoveryView {
             id: discoveryView
+
             anchors {
                 top: parent.top
                 bottom: parent.bottom
@@ -177,6 +171,7 @@ Window {
         // Main view containing your subscriptions
         CategoryView {
             id: categoryView
+
             anchors {
                 top: parent.top
                 bottom: parent.bottom
@@ -212,6 +207,7 @@ Window {
         // Feed view showing selected feed's items
         FeedView {
             id: feedView
+
             anchors {
                 top: parent.top
                 bottom: parent.bottom
@@ -223,6 +219,7 @@ Window {
             fontColor: visual.theme.feedViewFontColor
             feedName: categoryView.selectedCategoryTitle
             feedUrl: categoryView.selectedCategoryUrl
+
             onFeedItemSelected: {
                 Util.log("Selected feed item");
                 appState.selectedFeedItemTitle = title;
@@ -233,6 +230,7 @@ Window {
 
         FeedItemView {
             id: feedItemView
+
             anchors {
                 top: parent.top
                 bottom: parent.bottom
@@ -251,6 +249,7 @@ Window {
 
         BorderImage {
             id: frame
+
             source: visual.theme.images.frame
             border { left: 8; top: 8; right: 8; bottom: 8 }
             width: contentPane.width
@@ -264,13 +263,16 @@ Window {
 
     Footer {
         id: footer
-        height: visual.theme.footerHeight
+
         property bool show: false
+
+        height: visual.theme.footerHeight
         state: show ? "visible" : "hidden"
         anchors {
             left: parent.left
             right: parent.right
         }
+
         states: [
             State {
                 name: "visible"
@@ -281,21 +283,16 @@ Window {
                 AnchorChanges { target: footer; anchors.bottom: undefined; anchors.top: parent.bottom }
             }
         ]
-
         transitions: Transition { AnchorAnimation { duration: 400;  easing.type: Easing.InOutQuad } }
+
         onSettingsButtonClicked: {
             appState.fromLeft = true
             appState.currentViewName = "settingsView"
         }
     }
 
-//    Component.onCompleted: {
-//        console.log("Main.qml completed, pushing CategoryView into PageStack");
-//        pageStack.push(categoryView);
-//    }
 
     // States
-
 
     // Default state is implicit, all other states are defined here
     states: [
