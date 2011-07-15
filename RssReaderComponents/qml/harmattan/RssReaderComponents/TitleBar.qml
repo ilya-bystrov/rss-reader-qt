@@ -48,7 +48,7 @@ Rectangle {
             top: titleIcon.top
             bottom: titleIcon.bottom
             left: titleIcon.right
-            right: exitButton.left
+            right: backButton.left
             leftMargin: container.margin
             rightMargin: container.margin
         }
@@ -68,28 +68,35 @@ Rectangle {
         horizontalAlignment: Text.AlignHCenter
     }
 
-    Button {
-        id: exitButton
-        visible: !showingBackButton        
+    // In Harmattan / Meego we are only showing the back button.
+    // Also, there's no need to show the exit button.
+//    Button {
+//        id: exitButton
+//        visible: !showingBackButton
 
+//        anchors.top: container.top
+//        anchors.right: container.right
+//        anchors.margins: container.margin
+//        width: container.height
+//        height: container.height
+
+//        iconSource: pressed ? container.exitButtonPressedSource : container.exitButtonSource
+//        enabled: container.exitButtonVisible
+
+//        onClicked: {
+//            container.exitButtonClicked()
+//        }
+//    }
+
+    Button {
+        id: backButton
+
+        visible: container.showingBackButton
         anchors.top: container.top
         anchors.right: container.right
-        anchors.margins: 10
-
-        iconSource: pressed ? container.exitButtonPressedSource : container.exitButtonSource
-        enabled: container.exitButtonVisible
-
-        onClicked: {
-            container.exitButtonClicked()
-        }
-    }
-
-    Button {
-        visible: showingBackButton
-        y: 10
-        anchors.top: container.top
-        anchors.right: container.right
-        anchors.margins: 10
+        anchors.margins: container.margin
+        width: container.height-2
+        height: container.height-2
 
         iconSource: pressed ? container.backButtonPressedSource : container.backButtonSource
 

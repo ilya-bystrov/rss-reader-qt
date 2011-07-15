@@ -85,7 +85,7 @@ Page {
     }
 
     ScrollBar {
-        flickableItem: flicker;
+        scrollArea: flicker;
         width: container.scrollBarWidth;
         anchors.top: flicker.top;
         anchors.right: flicker.right;

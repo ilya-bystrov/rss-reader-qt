@@ -54,7 +54,14 @@ Item {
         spacing: 0
     }
 
-    ScrollBar { flickableItem: listView; width: item.scrollBarWidth; anchors.top: listView.top; anchors.right: listView.right; anchors.bottom: listView.bottom; z: 100 }
+    ScrollBar {
+        scrollArea: listView;
+        width: item.scrollBarWidth;
+        anchors.top: listView.top;
+        anchors.right: listView.right;
+        anchors.bottom: listView.bottom;
+        z: 100;
+    }
 
     Component {
         id: listViewDelegate

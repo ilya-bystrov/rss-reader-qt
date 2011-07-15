@@ -130,7 +130,7 @@ Page {
             height: list.height
             width: container.scrollBarWidth
             anchors.right: parent.right
-            flickableItem: list
+            scrollArea: list
         }
 
         function activationComplete() {

@@ -38,7 +38,7 @@ Page {
                 text: themeSwitch.checked ? qsTr("Theme: Light") : qsTr("Theme: Dark")
 		// WORKAROUND FOR NO clicked() SIGNAL ON HARMATTAN / MEEGO!
                 onTextChanged: {
-                    var theme = checked ? "Visual" : "DarkTheme";
+                    var theme = themeSwitch.checked ? "Visual" : "DarkTheme";
                     themeChanged(theme);
                 }
             }

@@ -12,7 +12,9 @@ Item {
     Button {
         id: settings_button
 
-        text: ""
+        //text: ""
+        width: parent.height
+        height: parent.height
 
         onClicked: container.settingsButtonClicked()
         anchors {
