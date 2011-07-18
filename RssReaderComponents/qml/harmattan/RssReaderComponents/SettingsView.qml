@@ -35,10 +35,11 @@ Page {
                     pointSize: container.fontSize
                 }
 
-                text: themeSwitch.checked ? qsTr("Theme: Light") : qsTr("Theme: Dark")
-		// WORKAROUND FOR NO clicked() SIGNAL ON HARMATTAN / MEEGO!
+                text: themeSwitch.checked ? qsTr("Theme: Dark") : qsTr("Theme: Light")
+                // WORKAROUND FOR THERE'S NO clicked() SIGNAL
+                // for "Switch" component ON HARMATTAN / MEEGO!
                 onTextChanged: {
-                    var theme = themeSwitch.checked ? "Visual" : "DarkTheme";
+                    var theme = themeSwitch.checked ? "DarkTheme" : "Visual";
                     themeChanged(theme);
                 }
             }
