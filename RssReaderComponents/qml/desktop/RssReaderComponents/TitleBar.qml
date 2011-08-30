@@ -24,15 +24,21 @@ Rectangle {
 
     // Default values, change when using
     width: 360
-    height: 80
-    color: "lightgray"
+    height: 30
+
+    // VKN TODO: GRADIENT TO BE DEFINED FROM OUTSIDE???
+    gradient: Gradient {
+        GradientStop { position: 0.0; color: Qt.rgba(71/255,136/255,71/255,1.0) }
+        GradientStop { position: 0.6; color: Qt.rgba(104/255,164/255,78/255,1.0) }
+        GradientStop { position: 1.0; color: Qt.rgba(78/255,124/255,64/255,1.0) }
+    }
 
     Image {
         id: titleIcon
         source: parent.iconSource
         fillMode: "PreserveAspectFit"
         smooth: true
-        height: container.height-2*margin
+        height: container.height-margin
         anchors {
             left: parent.left
             verticalCenter: parent.verticalCenter
@@ -48,7 +54,7 @@ Rectangle {
             top: titleIcon.top
             bottom: titleIcon.bottom
             left: titleIcon.right
-            right: exitButton.left
+            right: parent.right
             leftMargin: container.margin
             rightMargin: container.margin
         }
@@ -65,36 +71,6 @@ Rectangle {
         textFormat: Text.RichText
         wrapMode: Text.Wrap
         verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignHCenter
-    }
-
-    Button {
-        id: exitButton
-        visible: !showingBackButton        
-
-        anchors.top: container.top
-        anchors.right: container.right
-        anchors.margins: 10
-
-        iconSource: pressed ? container.exitButtonPressedSource : container.exitButtonSource
-        enabled: container.exitButtonVisible
-
-        onClicked: {
-            container.exitButtonClicked()
-        }
-    }
-
-    Button {
-        visible: showingBackButton
-        y: 10
-        anchors.top: container.top
-        anchors.right: container.right
-        anchors.margins: 10
-
-        iconSource: pressed ? container.backButtonPressedSource : container.backButtonSource
-
-        onClicked: {
-            container.backButtonClicked(appState.currentViewName)
-        }
+        horizontalAlignment: Text.AlignLeft
     }
 }

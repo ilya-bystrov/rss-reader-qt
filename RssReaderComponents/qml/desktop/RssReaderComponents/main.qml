@@ -15,6 +15,10 @@ Window {
         color: visual.theme.applicationBackgroundColor
     }
 
+    StatusBar {
+        id: statusBar
+    }
+
     // We start out showing the splash screen
     state: "showingSplashScreen"
 
@@ -50,7 +54,8 @@ Window {
         // in the layout for it to be on top of all other objects. But with z-property we get same results
         z: 100
         // Splash screen timeout
-        timeout: visual.theme.splashTimeout
+        // VKN TODO: REMEMBER TO REVERT BACK TO ORIGINAL!
+        timeout: 200 //visual.theme.splashTimeout
         image: "gfx/splash_screen.png"
         // When splash screen times out, move to default state
         onSplashTimeout: {
@@ -67,7 +72,7 @@ Window {
         // Anchors titlebar to left,top and right. Then set height
         // Use grouping if possible.
         anchors {
-            top: parent.top
+            top: statusBar.bottom
             left: parent.left
             right: parent.right
         }
@@ -78,7 +83,6 @@ Window {
         exitButtonPressedSource: visual.theme.images.exitButtonPressed
         exitButtonVisible: visual.theme.exitButtonVisible
 
-        fontBold: true
         fontName: visual.theme.titleBarFont
         fontSize: visual.theme.titleBarFontSize
         fontColor: visual.theme.titlebarFontColor
@@ -86,27 +90,77 @@ Window {
         height: visual.theme.titleBarHeight
         text: appState.currentTitle
         iconSource: visual.theme.images.rssLogo
-        showingBackButton: appState.showBackButton
+//        showingBackButton: appState.showBackButton
 
-        onBackButtonClicked: {
-            Util.log("Back-button clicked. Came from view: " + viewName);
-            if (viewName === "feedView") {
-                appState.fromLeft = true;
-                appState.currentViewName = "categoryView";
-            } else if (viewName === "feedItemView") {
-                appState.fromLeft = true;
-                appState.currentViewName = "feedView";
-            } else if (viewName === "discoveryView") {
-                appState.fromLeft = false;
-                appState.currentViewName = "categoryView";
-            } else if (viewName === "settingsView") {
-                appState.fromLeft = false;
-                appState.currentViewName = "categoryView";
+//        onBackButtonClicked: {
+//            Util.log("Back-button clicked. Came from view: " + viewName);
+//            if (viewName === "feedView") {
+//                appState.fromLeft = true;
+//                appState.currentViewName = "categoryView";
+//            } else if (viewName === "feedItemView") {
+//                appState.fromLeft = true;
+//                appState.currentViewName = "feedView";
+//            } else if (viewName === "discoveryView") {
+//                appState.fromLeft = false;
+//                appState.currentViewName = "categoryView";
+//            } else if (viewName === "settingsView") {
+//                appState.fromLeft = false;
+//                appState.currentViewName = "categoryView";
+//            }
+//        }
+//        onExitButtonClicked: {
+//            Util.exitApp("Exit-button clicked");
+//        }
+    }
+
+    ToolBarLayout {
+        id: defaultTools
+
+        ToolButton {
+            iconSource: visual.theme.images.backButton
+
+            onClicked: {
+                var viewName = appState.currentViewName;
+                Util.log("Back-button clicked. Came from view: " + viewName);
+                if (viewName === "feedView") {
+                    appState.fromLeft = true;
+                    appState.currentViewName = "categoryView";
+                } else if (viewName === "feedItemView") {
+                    appState.fromLeft = true;
+                    appState.currentViewName = "feedView";
+                } else if (viewName === "discoveryView") {
+                    appState.fromLeft = false;
+                    appState.currentViewName = "categoryView";
+                } else if (viewName === "settingsView") {
+                    appState.fromLeft = false;
+                    appState.currentViewName = "categoryView";
+                }
+            }
+//            onClicked: {
+//                if (appState.showBackButton == true) {
+//                    Util.log("Back-button clicked");
+//                    appState.showBackButton = false;
+//                    pageStack.pop();
+//                } else {
+//                    Util.exitApp("Back-button clicked");
+//                }
+//            }
+        }
+
+        ToolButton {
+            iconSource: visual.theme.images.settingsIcon
+
+            onClicked: {
+                appState.fromLeft = true
+                appState.currentViewName = "settingsView"
             }
         }
-        onExitButtonClicked: {
-            Util.exitApp("Exit-button clicked");
-        }        
+    }
+
+    ToolBar {
+        id: commonTools
+        anchors.bottom: parent.bottom
+        tools: defaultTools
     }
 
     // PageStack for navigation between the views
@@ -118,7 +172,8 @@ Window {
             top: titleBar.bottom
             left: parent.left
             right: parent.right
-            bottom: footer.top
+//            bottom: footer.top
+            bottom: commonTools.top
             margins: 8
         }
     }
@@ -132,7 +187,8 @@ Window {
             top: titleBar.bottom
             left: parent.left
             right: parent.right
-            bottom: footer.top
+//            bottom: footer.top
+            bottom: commonTools.top
             margins: 8
         }
 
@@ -261,35 +317,35 @@ Window {
         }
     }
 
-    Footer {
-        id: footer
+//    Footer {
+//        id: footer
 
-        property bool show: false
+//        property bool show: false
 
-        height: visual.theme.footerHeight
-        state: show ? "visible" : "hidden"
-        anchors {
-            left: parent.left
-            right: parent.right
-        }
+//        height: visual.theme.footerHeight
+//        state: show ? "visible" : "hidden"
+//        anchors {
+//            left: parent.left
+//            right: parent.right
+//        }
 
-        states: [
-            State {
-                name: "visible"
-                AnchorChanges { target: footer; anchors.bottom: parent.bottom; anchors.top: undefined }
-            },
-            State {
-                name: "hidden"
-                AnchorChanges { target: footer; anchors.bottom: undefined; anchors.top: parent.bottom }
-            }
-        ]
-        transitions: Transition { AnchorAnimation { duration: 400;  easing.type: Easing.InOutQuad } }
+//        states: [
+//            State {
+//                name: "visible"
+//                AnchorChanges { target: footer; anchors.bottom: parent.bottom; anchors.top: undefined }
+//            },
+//            State {
+//                name: "hidden"
+//                AnchorChanges { target: footer; anchors.bottom: undefined; anchors.top: parent.bottom }
+//            }
+//        ]
+//        transitions: Transition { AnchorAnimation { duration: 400;  easing.type: Easing.InOutQuad } }
 
-        onSettingsButtonClicked: {
-            appState.fromLeft = true
-            appState.currentViewName = "settingsView"
-        }
-    }
+//        onSettingsButtonClicked: {
+//            appState.fromLeft = true
+//            appState.currentViewName = "settingsView"
+//        }
+//    }
 
 
     // States
@@ -331,7 +387,7 @@ Window {
                 showBackButton: false;
                 currentTitle: qsTr("RSS Reader");
             }
-            PropertyChanges { target: footer; show: true }
+//            PropertyChanges { target: footer; show: true }
             // Animate the view switch with viewSwitcher
             StateChangeScript { script: console.log("Changing Page to: CategoryView"); }
             StateChangeScript { script: pageStack.replace(categoryView); }

@@ -64,13 +64,12 @@ Item {
 
     // Title bar
     property string titleBarFont: defaultFontFamily
-    property int titleBarFontSize: 16
-    property int titleBarSmallerFontSize: 12
-    property int titleBarSmallestFontSize: 10
-    property color titlebarFontColor: "#c0da07"
-    property color titleBarBackgroundColor: "transparent"
-    property int titleBarHeight: 60
-    property int settingHeight: 64
+    property int titleBarFontSize: 12
+    property int titleBarSmallerFontSize: 10
+    property int titleBarSmallestFontSize: 8
+    property color titlebarFontColor: "white"
+    property color titleBarBackgroundColor: "#478847"
+    property int titleBarHeight: 30
 
     // Footer
     property int footerHeight: 60
@@ -79,6 +78,7 @@ Item {
     property string settingsViewFont: defaultFontFamily
     property int settingsViewFontSize: 12
     property color settingsViewFontColor: defaultFontColor
+    property int settingHeight: 64
 
     // Discovery view
     property string discoveryViewFont: defaultFontFamily
