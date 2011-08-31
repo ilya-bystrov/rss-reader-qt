@@ -275,6 +275,7 @@ Window {
             fontColor: visual.theme.feedViewFontColor
             feedName: categoryView.selectedCategoryTitle
             feedUrl: categoryView.selectedCategoryUrl
+            defaultText: "Tap to search"
 
             onFeedItemSelected: {
                 Util.log("Selected feed item");
@@ -303,49 +304,19 @@ Window {
             itemImageUrl: feedView.itemImageUrl
         }
 
-        BorderImage {
-            id: frame
+//        BorderImage {
+//            id: frame
 
-            source: visual.theme.images.frame
-            border { left: 8; top: 8; right: 8; bottom: 8 }
-            width: contentPane.width
-            // Adjust the background frame a bit when in feedView or feedItemView to give some
-            // space for the button there.
-            height: appState.currentViewName == "feedItemView" || appState.currentViewName == "feedView"
-                    ? contentPane.height - 75  : contentPane.height
-            anchors { top: contentPane.top; left: contentPane.left }
-        }
+//            source: visual.theme.images.frame
+//            border { left: 8; top: 8; right: 8; bottom: 8 }
+//            width: contentPane.width
+//            // Adjust the background frame a bit when in feedView or feedItemView to give some
+//            // space for the button there.
+//            height: appState.currentViewName == "feedItemView" || appState.currentViewName == "feedView"
+//                    ? contentPane.height - 75  : contentPane.height
+//            anchors { bottom: contentPane.bottom; left: contentPane.left }
+//        }
     }
-
-//    Footer {
-//        id: footer
-
-//        property bool show: false
-
-//        height: visual.theme.footerHeight
-//        state: show ? "visible" : "hidden"
-//        anchors {
-//            left: parent.left
-//            right: parent.right
-//        }
-
-//        states: [
-//            State {
-//                name: "visible"
-//                AnchorChanges { target: footer; anchors.bottom: parent.bottom; anchors.top: undefined }
-//            },
-//            State {
-//                name: "hidden"
-//                AnchorChanges { target: footer; anchors.bottom: undefined; anchors.top: parent.bottom }
-//            }
-//        ]
-//        transitions: Transition { AnchorAnimation { duration: 400;  easing.type: Easing.InOutQuad } }
-
-//        onSettingsButtonClicked: {
-//            appState.fromLeft = true
-//            appState.currentViewName = "settingsView"
-//        }
-//    }
 
 
     // States

@@ -17,6 +17,8 @@ Page {
     property string feedUrl: ""
 
     property string filter: ""
+    property string defaultText: ""
+
 
     property int scrollBarWidth: 8
     property int spacing: 10
@@ -41,11 +43,12 @@ Page {
             id: listDelegate
 
             MyListItem {
+
                 property bool filtered: title.match(new RegExp(textEntry.text,"i")) != null
 
                 text: title
                 width: container.width
-                height: filtered ? 54 : 0
+                height: (textEntry.inDefaultState ? 54 : (filtered ? 54 : 0))
                 fontName: container.fontName
                 fontSize: container.fontSize
                 fontColor: container.fontColor
@@ -66,15 +69,35 @@ Page {
             }
         }
 
-        ListView {
-            id: list
+        TextEntry {
+            id: textEntry
 
+            property bool inDefaultState: textEntry.text == container.defaultText
+            height: 36
+
+            bgImage: visual.theme.images.textField
+            bgImageActive: visual.theme.images.buttonPressed
+
+            fontName: container.fontName
+            fontColor: container.fontColor
+            fontSize: container.fontSize
             anchors {
                 top: parent.top
                 left: parent.left
                 right: parent.right
-                bottom: icon.top
-                bottomMargin: 24
+            }
+            text: active ? "" : container.defaultText
+        }
+
+        ListView {
+            id: list
+
+            anchors {
+                left: parent.left
+                right: parent.right
+                top: textEntry.bottom
+                bottom: parent.bottom
+                topMargin: 12
             }
 
             clip: true
@@ -86,49 +109,13 @@ Page {
             onMovementStarted: focus = true
         }
 
-        TextEntry {
-            id: textEntry
-            height: 61
-
-            bgImage: visual.theme.images.textField
-            bgImageActive: visual.theme.images.buttonPressed
-
-            fontName: container.fontName
-            fontColor: container.fontColor
-            fontSize: container.fontSize
-            anchors {
-                leftMargin: 8
-                bottom: parent.bottom
-                left: icon.right
-                right: parent.right
-            }
-            text: ""
-        }
-
-        Image {
-            id: icon
-
-            source: visual.theme.images.searchIcon
-            anchors {
-                left: parent.left
-                bottom: parent.bottom
-            }
-            anchors.margins: 8
-            fillMode: Image.PreserveAspectFit
-            smooth: true
-            MouseArea {
-                // Allow unfocus of text field here.
-                anchors.fill: parent
-                onClicked: list.focus = true
-            }
-        }
-
         // ScrollBar indicator. Take the bottommost search field height into account.
         ScrollBar {
             id: scrollBar
 
             height: list.height
             width: container.scrollBarWidth
+            anchors.top: list.top
             anchors.right: parent.right
             flickableItem: list
         }
