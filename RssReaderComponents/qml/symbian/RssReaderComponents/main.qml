@@ -139,6 +139,7 @@ Window {
                 } else {
                     Util.exitApp("Exit-button clicked");
                 }
+            }
 
 //            onClicked: {
 //                if (appState.showBackButton == true) {
