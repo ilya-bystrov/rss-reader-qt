@@ -64,12 +64,12 @@ Item {
 
     // Title bar
     property string titleBarFont: defaultFontFamily
-    property int titleBarFontSize: 10
-    property int titleBarSmallerFontSize: 8
-    property int titleBarSmallestFontSize: 6
-    property color titlebarFontColor: "#44aa33"
-    property color titleBarBackgroundColor: "transparent"
-    property int titleBarHeight: 80
+    property int titleBarFontSize: 8
+    property int titleBarSmallerFontSize: 7
+    property int titleBarSmallestFontSize: 5
+    property color titlebarFontColor: "white"
+    property color titleBarBackgroundColor: "#478847"
+    property int titleBarHeight: 30
 
     // Footer
     property int footerHeight: 60
