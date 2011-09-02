@@ -2,7 +2,7 @@ import QtQuick 1.0
 
 QtObject {
     property bool loading: false
-    property bool showBackButton: false;
+    property bool showBackButton: false
     property bool fromLeft: false
     property string currentViewName: ""
     property string cameFromView: ""
@@ -14,5 +14,7 @@ QtObject {
     property string selectedFeedItemTitle: ""
     // theme-dir name
     property string themeDir: ""
+    // Current titlebar bg gradient
+    property variant currentGradient: visual.item.mainGradient
 }
 

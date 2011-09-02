@@ -51,14 +51,14 @@ Item {
     }
 
     // Main window
-    property color applicationBackgroundColor: "#333333"
+    property color applicationBackgroundColor: "#2D2D2D"
 
     // Splash screen
     property int splashTimeout: 2500
 
     // Generic
     property int generalMargin: 4
-    property int scrollBarWidth: 2*generalMargin
+    property int scrollBarWidth: 3*generalMargin
     property string defaultFontFamily: "Helvetica"
     property color defaultFontColor: "#f0f0f0"
 

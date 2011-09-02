@@ -89,14 +89,15 @@ Page {
         width: container.scrollBarWidth;
         anchors.top: flicker.top;
         anchors.right: flicker.right;
-        anchors.bottom: flicker.bottom }
+        anchors.bottom: flicker.bottom
+    }
 
     Button {
         id: buttonPart
 
         visible: itemUrl.length > 0
         width: parent.width
-        height: 61
+        height: 46
         anchors {
             bottom: parent.bottom
             left: parent.left
@@ -107,7 +108,7 @@ Page {
             pointSize: container.fontSize
         }
 
-        text: qsTr("Read full article")
+        text: qsTr("Read the full article")
 
         onClicked: {
             Qt.openUrlExternally(itemUrl)
