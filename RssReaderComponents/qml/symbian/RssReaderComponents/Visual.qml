@@ -58,7 +58,7 @@ Item {
 
     // Generic
     property int generalMargin: 4
-    property int scrollBarWidth: 2*generalMargin
+    property int scrollBarWidth: 3*generalMargin
     property string defaultFontFamily: "Helvetica"
     property color defaultFontColor: "black"
 

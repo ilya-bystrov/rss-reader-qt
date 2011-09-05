@@ -86,31 +86,11 @@ Window {
         fontName: visual.theme.titleBarFont
         fontSize: visual.theme.titleBarFontSize
         fontColor: visual.theme.titlebarFontColor
-        color: visual.theme.titleBarBackgroundColor
+//        color: visual.theme.titleBarBackgroundColor
+        gradient: appState.currentGradient
         height: visual.theme.titleBarHeight
         text: appState.currentTitle
         iconSource: visual.theme.images.rssLogo
-//        showingBackButton: appState.showBackButton
-
-//        onBackButtonClicked: {
-//            Util.log("Back-button clicked. Came from view: " + viewName);
-//            if (viewName === "feedView") {
-//                appState.fromLeft = true;
-//                appState.currentViewName = "categoryView";
-//            } else if (viewName === "feedItemView") {
-//                appState.fromLeft = true;
-//                appState.currentViewName = "feedView";
-//            } else if (viewName === "discoveryView") {
-//                appState.fromLeft = false;
-//                appState.currentViewName = "categoryView";
-//            } else if (viewName === "settingsView") {
-//                appState.fromLeft = false;
-//                appState.currentViewName = "categoryView";
-//            }
-//        }
-//        onExitButtonClicked: {
-//            Util.exitApp("Exit-button clicked");
-//        }
     }
 
     ToolBarLayout {
@@ -140,16 +120,6 @@ Window {
                     Util.exitApp("Exit-button clicked");
                 }
             }
-
-//            onClicked: {
-//                if (appState.showBackButton == true) {
-//                    Util.log("Back-button clicked");
-//                    appState.showBackButton = false;
-//                    pageStack.pop();
-//                } else {
-//                    Util.exitApp("Back-button clicked");
-//                }
-//            }
         }
 
         ToolButton {
@@ -179,7 +149,7 @@ Window {
             right: parent.right
 //            bottom: footer.top
             bottom: commonTools.top
-            margins: 8
+            margins: 2
         }
     }
 
@@ -194,7 +164,7 @@ Window {
             right: parent.right
 //            bottom: footer.top
             bottom: commonTools.top
-            margins: 8
+            margins: 2
         }
 
 
@@ -209,7 +179,7 @@ Window {
             fontColor: visual.theme.settingsViewFontColor
 
             onThemeChanged: {
-                visual.source = theme+".qml";                
+                visual.source = theme+".qml";
             }
         }
 
@@ -235,6 +205,7 @@ Window {
 
             anchors {
                 top: parent.top
+                topMargin: 2
                 bottom: parent.bottom
             }
 
@@ -248,10 +219,23 @@ Window {
             subItemFontColor: visual.theme.categoryViewSubItemFontColor
 
             onFeedSelected: {
-                Util.log("Selected feed: " + feedName)
+                Util.log("Selected feed: " + feedName + " from " + expandedCategory + " category.")
                 appState.selectedFeedTitle = feedName;
                 appState.fromLeft = false;
                 appState.currentViewName = "feedView";
+
+                // Select, which gradient to show behind the TitleBar
+                if (expandedCategory == "News") {
+                    appState.currentGradient = titleBar.newsGradient
+                } else if (expandedCategory == "Entertainment") {
+                    appState.currentGradient = titleBar.entertainmentGradient
+                } else if (expandedCategory == "Sports") {
+                    appState.currentGradient = titleBar.sportsGradient
+                } else if (expandedCategory == "Tech" ) {
+                    appState.currentGradient = titleBar.techGradient
+                } else {
+                    appState.currentGradient = titleBar.mainGradient
+                }
             }
             onDiscoverFromCategory: {                
                 Util.log("Discover from " + category
@@ -273,7 +257,7 @@ Window {
                 top: parent.top
                 bottom: parent.bottom
             }
-            width:  parent.width
+            width: parent.width
             scrollBarWidth: visual.theme.scrollBarWidth
             fontName: visual.theme.feedViewFont
             fontSize: visual.theme.feedViewFontSize
@@ -308,19 +292,6 @@ Window {
             itemUrl: feedView.itemUrl
             itemImageUrl: feedView.itemImageUrl
         }
-
-//        BorderImage {
-//            id: frame
-
-//            source: visual.theme.images.frame
-//            border { left: 8; top: 8; right: 8; bottom: 8 }
-//            width: contentPane.width
-//            // Adjust the background frame a bit when in feedView or feedItemView to give some
-//            // space for the button there.
-//            height: appState.currentViewName == "feedItemView" || appState.currentViewName == "feedView"
-//                    ? contentPane.height - 75  : contentPane.height
-//            anchors { bottom: contentPane.bottom; left: contentPane.left }
-//        }
     }
 
 
@@ -362,6 +333,7 @@ Window {
                 target: appState
                 showBackButton: false;
                 currentTitle: qsTr("RSS Reader");
+                currentGradient: titleBar.mainGradient
             }
 //            PropertyChanges { target: footer; show: true }
             // Animate the view switch with viewSwitcher

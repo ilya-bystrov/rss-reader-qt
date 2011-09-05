@@ -87,7 +87,6 @@ Window {
         fontSize: visual.theme.titleBarFontSize
         fontColor: visual.theme.titlebarFontColor
 //        color: visual.theme.titleBarBackgroundColor
-//        gradient: visual.theme.mainGradient
         gradient: appState.currentGradient
         height: visual.theme.titleBarHeight
         text: appState.currentTitle
@@ -98,7 +97,8 @@ Window {
         id: defaultTools
 
         ToolButton {
-            iconSource: visual.theme.images.backButton
+            //iconSource: visual.theme.images.backButton
+            iconSource: "toolbar-back"
 
             onClicked: {
                 if (appState.showBackButton) {
@@ -180,9 +180,7 @@ Window {
             fontColor: visual.theme.settingsViewFontColor
 
             onThemeChanged: {
-                console.log("Main, theme changing!")
                 visual.source = theme+".qml";
-                console.log("Main, theme changed!")
             }
         }
 

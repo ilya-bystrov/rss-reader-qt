@@ -83,6 +83,7 @@ Page {
             fontSize: container.fontSize
             anchors {
                 top: parent.top
+                topMargin: 8
                 left: parent.left
                 right: parent.right
             }
@@ -97,7 +98,7 @@ Page {
                 right: parent.right
                 top: textEntry.bottom
                 bottom: parent.bottom
-                topMargin: 12
+                topMargin: 10
             }
 
             clip: true
@@ -107,6 +108,12 @@ Page {
             // content.
             visible: !listModel.loading
             onMovementStarted: focus = true
+
+            BorderImage {
+                source: visual.theme.images.frame
+                border { left: 8; top: 8; right: 8; bottom: 8 }
+                anchors.fill: parent
+            }
         }
 
         // ScrollBar indicator. Take the bottommost search field height into account.

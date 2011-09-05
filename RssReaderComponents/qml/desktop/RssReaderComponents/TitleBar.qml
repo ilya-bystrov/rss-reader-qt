@@ -49,13 +49,6 @@ Rectangle {
     width: 360
     height: 30
 
-    // VKN TODO: GRADIENT TO BE DEFINED FROM OUTSIDE???
-//    gradient: Gradient {
-//        GradientStop { position: 0.0; color: Qt.rgba(71/255,136/255,71/255,1.0) }
-//        GradientStop { position: 0.6; color: Qt.rgba(104/255,164/255,78/255,1.0) }
-//        GradientStop { position: 1.0; color: Qt.rgba(78/255,124/255,64/255,1.0) }
-//    }
-
     Image {
         id: titleIcon
         source: parent.iconSource
