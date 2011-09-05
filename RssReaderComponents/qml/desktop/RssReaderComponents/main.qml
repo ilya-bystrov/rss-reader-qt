@@ -87,7 +87,7 @@ Window {
         fontSize: visual.theme.titleBarFontSize
         fontColor: visual.theme.titlebarFontColor
 //        color: visual.theme.titleBarBackgroundColor
-        gradient: appState.currentGradient
+        gradient: mainGradient
         height: visual.theme.titleBarHeight
         text: appState.currentTitle
         iconSource: visual.theme.images.rssLogo
@@ -204,6 +204,21 @@ Window {
         CategoryView {
             id: categoryView
 
+            function setTitleBarGradient(category) {
+                // Select, which gradient to show behind the TitleBar
+                if (category == "News") {
+                    titleBar.gradient = titleBar.newsGradient
+                } else if (category== "Entertainment") {
+                    titleBar.gradient = titleBar.entertainmentGradient
+                } else if (category== "Sports") {
+                    titleBar.gradient = titleBar.sportsGradient
+                } else if (category== "Tech" ) {
+                    titleBar.gradient = titleBar.techGradient
+                } else {
+                    titleBar.gradient = titleBar.mainGradient
+                }
+            }
+
             anchors {
                 top: parent.top
                 topMargin: 2
@@ -225,28 +240,19 @@ Window {
                 appState.fromLeft = false;
                 appState.currentViewName = "feedView";
 
-                // Select, which gradient to show behind the TitleBar
-                if (expandedCategory == "News") {
-                    appState.currentGradient = titleBar.newsGradient
-                } else if (expandedCategory == "Entertainment") {
-                    appState.currentGradient = titleBar.entertainmentGradient
-                } else if (expandedCategory == "Sports") {
-                    appState.currentGradient = titleBar.sportsGradient
-                } else if (expandedCategory == "Tech" ) {
-                    appState.currentGradient = titleBar.techGradient
-                } else {
-                    appState.currentGradient = titleBar.mainGradient
-                }
+                setTitleBarGradient(expandedCategoryTitle);
             }
             onDiscoverFromCategory: {                
                 Util.log("Discover from " + category
                                          + ", url:" + categoryView.selectedCategoryUrl);
-                // Set the discovery view to show the proper category:                
-                discoveryView.categoryTitle = category                
-                appState.selectedFeedTitle = categoryView.expandedCategoryTitle                                
+                // Set the discovery view to show the proper category:
+                discoveryView.categoryTitle = category;
+                appState.selectedFeedTitle = categoryView.expandedCategoryTitle;
                 appState.fromLeft = true;
                 appState.currentViewName = "discoveryView";
-                appState.currentTitle = "Manage "+category+" Feeds"
+                appState.currentTitle = "Manage "+category+" Feeds";
+
+                setTitleBarGradient(category);
             }
         }
 
@@ -334,7 +340,10 @@ Window {
                 target: appState
                 showBackButton: false;
                 currentTitle: qsTr("RSS Reader");
-                currentGradient: titleBar.mainGradient
+            }
+            PropertyChanges {
+                target: titleBar
+                gradient: mainGradient
             }
 //            PropertyChanges { target: footer; show: true }
             // Animate the view switch with viewSwitcher
@@ -383,6 +392,10 @@ Window {
                 target: appState
                 showBackButton: true
                 currentTitle: qsTr("Settings")
+            }
+            PropertyChanges {
+                target: titleBar
+                gradient: mainGradient
             }
             // Animate the view switch with viewSwitcher
             StateChangeScript { script: console.log("Changing Page to: SettingsView"); }

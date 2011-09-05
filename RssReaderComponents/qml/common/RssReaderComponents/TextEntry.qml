@@ -12,42 +12,10 @@ Item {
     property string bgImage: 'gfx/text_field.png'
     property string bgImagePressed: bgImageActive
     property string bgImageActive: 'gfx/button_pressed.png'
-    property Component bg: defaultBackground
-    property Component bgPressed: defaultPressedBackground
-    property Component bgActive: defaultActiveBackground
 
     width: 140
     height: 60
     opacity: enabled ? 1.0 : 0.5    
-
-//    Loader {
-//        id: background
-//        sourceComponent: container.bg
-//        anchors.fill: parent
-//    }
-
-//    Component {
-//        id: defaultBackground
-//        BorderImage {
-//            border { top: 8; bottom: 55; left: 38; right: 38 }
-//            source: bgImage
-//        }
-//    }
-//    Component {
-//        id: defaultPressedBackground
-//        BorderImage {
-//            border { left: 38; top: 37; right: 38; bottom: 15 }
-//            source: bgImagePressed
-//        }
-//    }
-
-//    Component {
-//        id: defaultActiveBackground
-//        BorderImage {
-//            border { top: 11; bottom: 40; left: 38; right: 38; }
-//            source: bgImageActive
-//        }
-//    }
 
     Rectangle {
         anchors.fill: parent
