@@ -60,7 +60,8 @@ Window {
         // When splash screen times out, move to default state
         onSplashTimeout: {
             appState.currentViewName = "categoryView";
-            Util.log("Splash screen finished")
+            pageStack.push(categoryView);
+            Util.log("Splash screen finished");
         }
     }
 
@@ -87,7 +88,7 @@ Window {
         fontSize: visual.theme.titleBarFontSize
         fontColor: visual.theme.titlebarFontColor
 //        color: visual.theme.titleBarBackgroundColor
-        gradient: appState.currentGradient
+        gradient: mainGradient
         height: visual.theme.titleBarHeight
         text: appState.currentTitle
         iconSource: visual.theme.images.rssLogo
@@ -96,26 +97,26 @@ Window {
     ToolBarLayout {
         id: defaultTools
 
+        property string previousViewName: "categoryView"
+
         ToolButton {
-            iconSource: visual.theme.images.backButton
+            iconSource: "toolbar-back"
 
             onClicked: {
                 if (appState.showBackButton) {
                     var viewName = appState.currentViewName;
                     Util.log("Back-button clicked. Came from view: " + viewName);
                     if (viewName === "feedView") {
-                        appState.fromLeft = true;
                         appState.currentViewName = "categoryView";
                     } else if (viewName === "feedItemView") {
-                        appState.fromLeft = true;
                         appState.currentViewName = "feedView";
                     } else if (viewName === "discoveryView") {
-                        appState.fromLeft = false;
                         appState.currentViewName = "categoryView";
                     } else if (viewName === "settingsView") {
-                        appState.fromLeft = false;
-                        appState.currentViewName = "categoryView";
+                        // Return to the previous view.
+                        appState.currentViewName = defaultTools.previousViewName;
                     }
+                    pageStack.pop();
                 } else {
                     Util.exitApp("Exit-button clicked");
                 }
@@ -126,8 +127,11 @@ Window {
             iconSource: visual.theme.images.settingsIcon
 
             onClicked: {
-                appState.fromLeft = true
+                // Save the previous view name so that we can return
+                // back to the correct one.
+                defaultTools.previousViewName = appState.currentViewName;
                 appState.currentViewName = "settingsView"
+                pageStack.push(settingsView);
             }
         }
     }
@@ -138,7 +142,8 @@ Window {
         tools: defaultTools
     }
 
-    // PageStack for navigation between the views
+    // PageStack for navigation between the views. Animation between the views
+    // is performed by the PageStack, when views are pushed / popped.
     PageStack {
         id: pageStack
 
@@ -147,7 +152,6 @@ Window {
             top: titleBar.bottom
             left: parent.left
             right: parent.right
-//            bottom: footer.top
             bottom: commonTools.top
             margins: 2
         }
@@ -162,7 +166,6 @@ Window {
             top: titleBar.bottom
             left: parent.left
             right: parent.right
-//            bottom: footer.top
             bottom: commonTools.top
             margins: 2
         }
@@ -203,6 +206,21 @@ Window {
         CategoryView {
             id: categoryView
 
+            function setTitleBarGradient(category) {
+                // Select, which gradient to show behind the TitleBar
+                if (category == "News") {
+                    titleBar.gradient = titleBar.newsGradient
+                } else if (category== "Entertainment") {
+                    titleBar.gradient = titleBar.entertainmentGradient
+                } else if (category== "Sports") {
+                    titleBar.gradient = titleBar.sportsGradient
+                } else if (category== "Tech" ) {
+                    titleBar.gradient = titleBar.techGradient
+                } else {
+                    titleBar.gradient = titleBar.mainGradient
+                }
+            }
+
             anchors {
                 top: parent.top
                 topMargin: 2
@@ -223,33 +241,28 @@ Window {
                 appState.selectedFeedTitle = feedName;
                 appState.fromLeft = false;
                 appState.currentViewName = "feedView";
+                // Move onwards to show the FeedView.
+                pageStack.push(feedView);
 
-                // Select, which gradient to show behind the TitleBar
-                if (expandedCategory == "News") {
-                    appState.currentGradient = titleBar.newsGradient
-                } else if (expandedCategory == "Entertainment") {
-                    appState.currentGradient = titleBar.entertainmentGradient
-                } else if (expandedCategory == "Sports") {
-                    appState.currentGradient = titleBar.sportsGradient
-                } else if (expandedCategory == "Tech" ) {
-                    appState.currentGradient = titleBar.techGradient
-                } else {
-                    appState.currentGradient = titleBar.mainGradient
-                }
+                setTitleBarGradient(expandedCategoryTitle);
             }
             onDiscoverFromCategory: {                
                 Util.log("Discover from " + category
                                          + ", url:" + categoryView.selectedCategoryUrl);
-                // Set the discovery view to show the proper category:                
-                discoveryView.categoryTitle = category                
-                appState.selectedFeedTitle = categoryView.expandedCategoryTitle                                
+                // Set the discovery view to show the proper category:
+                discoveryView.categoryTitle = category;
+                appState.selectedFeedTitle = categoryView.expandedCategoryTitle;
                 appState.fromLeft = true;
                 appState.currentViewName = "discoveryView";
-                appState.currentTitle = "Manage "+category+" Feeds"
+                appState.currentTitle = "Manage "+category+" Feeds";
+                // Show the DiscoveryView.
+                pageStack.push(discoveryView);
+
+                setTitleBarGradient(category);
             }
         }
 
-        // Feed view showing selected feed's items
+        // Feed view showing selected feed's items.
         FeedView {
             id: feedView
 
@@ -271,9 +284,12 @@ Window {
                 appState.selectedFeedItemTitle = title;
                 appState.fromLeft = false;
                 appState.currentViewName = "feedItemView";
+                // Move into the single feedItemView.
+                pageStack.push(feedItemView);
             }
         }
 
+        // FeedItemView shows selected item's content in rich text.
         FeedItemView {
             id: feedItemView
 
@@ -297,7 +313,7 @@ Window {
 
     // States
 
-    // Default state is implicit, all other states are defined here
+    // Default state is implicit, all other states are defined here.
     states: [
         State {
             name: "showingSplashScreen"
@@ -315,36 +331,33 @@ Window {
                 // Set all state variable changes to appState
                 target: appState
                 showBackButton: true;
-                //currentTitle: qsTr("Manage "+""+" feeds")
             }
             PropertyChanges {
                 target: titleBar
                 fontSize: visual.theme.titleBarSmallestFontSize
             }
-            // Animate the view switch with viewSwitcher
-            StateChangeScript { script: pageStack.replace(discoveryView); }
         },
         State {
             name: "showingCategoryView"
-            // Move to this state when currentView name is set to categoryView
+            // Move to this state when currentView name is set to categoryView.
             when: appState.currentViewName === "categoryView";
             PropertyChanges {
                 // Set all state variable changes to appState
                 target: appState
                 showBackButton: false;
                 currentTitle: qsTr("RSS Reader");
-                currentGradient: titleBar.mainGradient
             }
-//            PropertyChanges { target: footer; show: true }
-            // Animate the view switch with viewSwitcher
+            PropertyChanges {
+                target: titleBar
+                gradient: mainGradient
+            }
             StateChangeScript { script: console.log("Changing Page to: CategoryView"); }
-            StateChangeScript { script: pageStack.replace(categoryView); }
         },
         State {
             name: "showingFeedView"
             when: appState.currentViewName === "feedView";
             PropertyChanges {
-                // Set all state variable changes to appState
+                // Set all state variable changes to appState.
                 target: appState
                 showBackButton: true
                 currentTitle: appState.selectedFeedTitle
@@ -353,15 +366,13 @@ Window {
                 target: titleBar
                 fontSize: visual.theme.titleBarSmallerFontSize
             }
-            // Animate the view switch with viewSwitcher
             StateChangeScript { script: console.log("Changing Page to: FeedView"); }
-            StateChangeScript { script: pageStack.replace(feedView); }
         },
         State {
             name: "showingFeedItemView"
             when: appState.currentViewName === "feedItemView";
             PropertyChanges {
-                // Set all state variable changes to appState
+                // Set all state variable changes to appState.
                 target: appState
                 showBackButton: true
                 currentTitle: appState.selectedFeedTitle                
@@ -370,22 +381,22 @@ Window {
                 target: titleBar
                 fontSize: visual.theme.titleBarSmallerFontSize
             }
-            // Animate the view switch with viewSwitcher
             StateChangeScript { script: console.log("Changing Page to: FeedItemView"); }
-            StateChangeScript { script: pageStack.replace(feedItemView); }
         },
         State {
             name: "showingSettingsView"
             when: appState.currentViewName === "settingsView";
             PropertyChanges {
-                // Set all state variable changes to appState
+                // Set all state variable changes to appState.
                 target: appState
                 showBackButton: true
                 currentTitle: qsTr("Settings")
             }
-            // Animate the view switch with viewSwitcher
+            PropertyChanges {
+                target: titleBar
+                gradient: mainGradient
+            }
             StateChangeScript { script: console.log("Changing Page to: SettingsView"); }
-            StateChangeScript { script: pageStack.replace(settingsView); }
         }
     ]
 }
