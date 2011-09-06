@@ -12,6 +12,7 @@ Item {
     property string bgImage: 'gfx/text_field.png'
     property string bgImagePressed: bgImageActive
     property string bgImageActive: 'gfx/button_pressed.png'
+    property color bgColor: "#ffffff"
 
     width: 140
     height: 60
@@ -19,6 +20,7 @@ Item {
 
     Rectangle {
         anchors.fill: parent
+        color: container.bgColor
         radius: 10
     }
 

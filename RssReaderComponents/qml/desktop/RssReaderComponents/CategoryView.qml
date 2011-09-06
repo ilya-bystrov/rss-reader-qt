@@ -43,7 +43,7 @@ Page {
         bgImageActive: visual.theme.images.listItemActive
         bgImageSubItem: visual.theme.images.listSubitem
 
-        settingsIcon: visual.theme.images.settingsIcon
+        settingsIcon: visual.theme.images.notFavourited
         arrow: visual.theme.images.arrow
 
         headerItemFontName: container.headerItemFontName

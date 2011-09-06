@@ -154,6 +154,7 @@ Item {
                             icon: type == "discover" ? item.settingsIcon : ""
                             iconOpacity: type == "discover" ? 0.5 : 1.0
                             iconIndent: type == "discover" ? item.indent : 0
+                            alignBottom: true
 
                             onPressAndHold: {
                                 if (type == "discover") {

@@ -18,12 +18,17 @@ Item {
     property int iconIndent: 0
     property string icon: ""
     property double iconOpacity: 1
+    property int margin: 4
+    property bool alignBottom: false
+    property bool hide: false
 
     signal clicked
     signal pressAndHold(int mouseX, int mouseY)
 
     width: 360
-    height: 64
+    // Check, if the item needs to be hidden. If not, then the item will be
+    // at least 54px height, but if the wrapped text makes it higher, so be it.
+    height: hide ? 0 : Math.max(54, itemText.itemTextHeight)
     clip: true
 
     onSelectedChanged: selected ?  state = 'selected' : state = ''
@@ -54,15 +59,17 @@ Item {
 
     Text {
         id: itemText
+
+        property int itemTextHeight: height + anchors.topMargin + anchors.bottomMargin
         anchors {
             left: iconId.right
-            top: iconId.top
+            top: iconId.visible ? iconId.top : parent.top
+            bottom: container.alignBottom ? parent.bottom : undefined
             right: parent.right
-            topMargin: 4
-            bottomMargin: 4
-            leftMargin: 8 + textIndent
-            rightMargin: 8
-            verticalCenter: container.verticalCenter
+            topMargin: container.margin
+            bottomMargin: container.margin
+            leftMargin: container.margin*2 + textIndent
+            rightMargin: container.margin*2
         }
         font {
             family: container.fontName
@@ -70,9 +77,9 @@ Item {
             bold: container.fontBold
         }
         color: container.fontColor
-        elide: Text.ElideRight
         text: container.text
         verticalAlignment: Text.AlignVCenter
+        wrapMode: Text.WordWrap
     }
 
     MouseArea {

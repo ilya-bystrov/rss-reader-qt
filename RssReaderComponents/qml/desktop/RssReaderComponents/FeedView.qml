@@ -46,9 +46,10 @@ Page {
 
                 property bool filtered: title.match(new RegExp(textEntry.text,"i")) != null
 
+                hide: textEntry.inDefaultState ? false : (filtered ? false : true)
                 text: title
                 width: container.width
-                height: (textEntry.inDefaultState ? 54 : (filtered ? 54 : 0))
+
                 fontName: container.fontName
                 fontSize: container.fontSize
                 fontColor: container.fontColor
@@ -77,6 +78,7 @@ Page {
 
             bgImage: visual.theme.images.textField
             bgImageActive: visual.theme.images.buttonPressed
+            bgColor: visual.theme.feedSearchBarBgColor
 
             fontName: container.fontName
             fontColor: container.fontColor
