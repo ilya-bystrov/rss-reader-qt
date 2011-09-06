@@ -127,11 +127,13 @@ Window {
             iconSource: visual.theme.images.settingsIcon
 
             onClicked: {
-                // Save the previous view name so that we can return
-                // back to the correct one.
-                defaultTools.previousViewName = appState.currentViewName;
-                appState.currentViewName = "settingsView"
-                pageStack.push(settingsView);
+                if (appState.currentViewName != "settingsView") {
+                    // Save the previous view name so that we can return
+                    // back to the correct one.
+                    defaultTools.previousViewName = appState.currentViewName;
+                    appState.currentViewName = "settingsView"
+                    pageStack.push(settingsView);
+                }
             }
         }
     }
@@ -334,7 +336,7 @@ Window {
             }
             PropertyChanges {
                 target: titleBar
-                fontSize: visual.theme.titleBarSmallestFontSize
+                fontSize: visual.theme.titleBarFontSize
             }
         },
         State {
@@ -364,7 +366,7 @@ Window {
             }
             PropertyChanges {
                 target: titleBar
-                fontSize: visual.theme.titleBarSmallerFontSize
+                fontSize: visual.theme.titleBarFontSize
             }
             StateChangeScript { script: console.log("Changing Page to: FeedView"); }
         },
@@ -379,7 +381,7 @@ Window {
             }
             PropertyChanges {
                 target: titleBar
-                fontSize: visual.theme.titleBarSmallerFontSize
+                fontSize: visual.theme.titleBarFontSize
             }
             StateChangeScript { script: console.log("Changing Page to: FeedItemView"); }
         },

@@ -51,7 +51,7 @@ Item {
     }
 
     // Main window
-    property color applicationBackgroundColor: "#f8f8f8"
+    property color applicationBackgroundColor: "#ffffff"
 
     // Splash screen
     property int splashTimeout: 2500
@@ -103,4 +103,5 @@ Item {
     property string feedItemViewFont: defaultFontFamily
     property int feedItemViewFontSize: 7
     property color feedItemViewFontColor: defaultFontColor
+    property color feedSearchBarBgColor: "#f8f8f8"
 }
