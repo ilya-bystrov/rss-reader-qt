@@ -13,3 +13,5 @@ glob:*.mmp
 glob:moc_*
 glob:*.o
 glob:Makefile
+glob:build-stamp
+glob:configure-stamp
