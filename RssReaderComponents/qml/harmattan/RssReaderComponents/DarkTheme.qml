@@ -27,6 +27,7 @@ Item {
         property string rssLogo: path+"rss_logo.png"
         property string scrollbar: path+"scrollbar.png"
         property string searchIcon: path+"search_icon.png"
+        property string harmattanSettingsIcon: path+"harmattan_settings_icon.png"
         property string settingsIcon: path+"settings_icon.png"
         property string switchOff: path+"switch_off.png"
         property string switchOn: path+"switch_on.png"
@@ -98,7 +99,7 @@ Item {
     property string feedViewFont: defaultFontFamily
     property int feedViewFontSize: 18
     property color feedViewFontColor: defaultFontColor
-    property int searchBoxHeight: 40
+    property int searchBoxHeight: 45
 
     // Feed item view
     property string feedItemViewFont: defaultFontFamily

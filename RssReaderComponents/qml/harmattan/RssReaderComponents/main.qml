@@ -134,14 +134,14 @@ Window {
                     }
                     pageStack.pop();
                 } else {
-//                    Util.exitApp("Exit-button clicked");
+                   // In Harmattan we don't exit.
                 }
             }
         }
 
         ToolButton {
-            iconSource: visual.theme.images.settingsIcon
-            height: 32
+            iconSource: visual.theme.images.harmattanSettingsIcon
+            flat: true
 
             onClicked: {
                 if (appState.currentViewName != "settingsView") {
