@@ -13,8 +13,8 @@ Page {
     property int fontSize: 12
     property color fontColor: "black"
 
-    width: 360
-    height: 640
+    width: 480
+    height: 854
 
     DiscoveryViewModel {
         id:listModel

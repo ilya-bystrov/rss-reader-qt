@@ -13,14 +13,15 @@ Page {
     property string itemUrl
     property string itemImageUrl
     property int scrollBarWidth: 8
+    property int margin: 4
 
-    width: 360
-    height: 640
+    width: 480
+    height: 854
 
     Flickable {
         id: flicker
         width: parent.width
-        anchors.top:  parent.top
+        anchors.top: parent.top
         anchors.bottom: buttonPart.top
         // Space between the bottom of the frame graphics and the button:
         anchors.bottomMargin: 14
@@ -28,13 +29,13 @@ Page {
         clip: true
 
         contentWidth: parent.width
-        contentHeight: imagePart.height + textPart.height
+        contentHeight: titleText.height + imagePart.height + textPart.height
 
         Text {
             id: titleText
             text: appState.selectedFeedItemTitle
             anchors {
-                margins: 8
+                margins: container.margin*2
                 top: parent.top
                 left: parent.left
                 right: parent.right
@@ -55,7 +56,7 @@ Page {
                 top: titleText.bottom
                 left: parent.left
                 right: parent.right
-                margins: 8
+                margins: container.margin*2
             }
             fillMode: Image.PreserveAspectFit
             source: itemImageUrl
@@ -68,7 +69,7 @@ Page {
         Text {
             id: textPart
             anchors {
-                margins: 8
+                margins: container.margin*2
                 top: imagePart.bottom
                 left: parent.left
                 right: parent.right
@@ -89,7 +90,8 @@ Page {
         width: container.scrollBarWidth;
         anchors.top: flicker.top;
         anchors.right: flicker.right;
-        anchors.bottom: flicker.bottom }
+        anchors.bottom: flicker.bottom
+    }
 
     Button {
         id: buttonPart
@@ -99,6 +101,7 @@ Page {
         height: 61
         anchors {
             bottom: parent.bottom
+            bottomMargin: container.margin*3
             left: parent.left
             right: parent.right
         }
@@ -107,7 +110,7 @@ Page {
             pointSize: container.fontSize
         }
 
-        text: qsTr("Read full article")
+        text: qsTr("Read the full article")
 
         onClicked: {
             Qt.openUrlExternally(itemUrl)

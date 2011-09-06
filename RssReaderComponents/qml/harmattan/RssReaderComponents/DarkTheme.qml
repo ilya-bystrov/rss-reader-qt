@@ -67,9 +67,9 @@ Item {
     property int titleBarFontSize: 22
     property int titleBarSmallerFontSize: 22
     property int titleBarSmallestFontSize: 18
-    property color titlebarFontColor: "#c0da07"
-    property color titleBarBackgroundColor: "transparent"
-    property int titleBarHeight: 80
+    property color titlebarFontColor: "white"
+    property color titleBarBackgroundColor: "#478847"
+    property int titleBarHeight: 40
 
     // Footer
     property int footerHeight: 80
@@ -98,9 +98,11 @@ Item {
     property string feedViewFont: defaultFontFamily
     property int feedViewFontSize: 18
     property color feedViewFontColor: defaultFontColor
+    property int searchBoxHeight: 40
 
     // Feed item view
     property string feedItemViewFont: defaultFontFamily
     property int feedItemViewFontSize: 18
     property color feedItemViewFontColor: defaultFontColor
+    property color feedSearchBarBgColor: "#ffffff"
 }

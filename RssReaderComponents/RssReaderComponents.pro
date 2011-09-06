@@ -38,7 +38,7 @@ symbian {
     QML_IMPORT_PATH = qml/desktop/RssReaderComponents
 } else:unix {
     # Harmattan, at the moment we can't differentiate unix and Harmattan.
-    QT += opengl
+#    QT += opengl
     DEFINES += Q_WS_HARMATTAN
     platform_qml.source = qml/harmattan/RssReaderComponents
     platform_qml.target = qml

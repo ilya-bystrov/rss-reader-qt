@@ -69,7 +69,7 @@ Item {
     states: [
         State {
             name: 'active'; when: input.focus
-            PropertyChanges { target: background; sourceComponent: bgActive; }
+//            PropertyChanges { target: background; sourceComponent: bgActive; }
             PropertyChanges { target: container; active: true }
         }
     ]

@@ -17,14 +17,16 @@ Page {
     property string feedUrl: ""
 
     property string filter: ""
+    property string defaultText: ""
+
 
     property int scrollBarWidth: 8
     property int spacing: 10
 
     signal feedItemSelected(string title)
 
-    width: 360
-    height: 640
+    width: 480
+    height: 854
 
     FocusScope {
 
@@ -41,11 +43,13 @@ Page {
             id: listDelegate
 
             MyListItem {
+
                 property bool filtered: title.match(new RegExp(textEntry.text,"i")) != null
 
+                hide: textEntry.inDefaultState ? false : (filtered ? false : true)
                 text: title
                 width: container.width
-                height: filtered ? 54 : 0
+
                 fontName: container.fontName
                 fontSize: container.fontSize
                 fontColor: container.fontColor
@@ -66,15 +70,37 @@ Page {
             }
         }
 
+        TextEntry {
+            id: textEntry
+
+            property bool inDefaultState: textEntry.text == container.defaultText
+            height: visual.theme.searchBoxHeight
+
+            bgImage: visual.theme.images.textField
+            bgImageActive: visual.theme.images.buttonPressed
+            bgColor: visual.theme.feedSearchBarBgColor
+
+            fontName: container.fontName
+            fontColor: container.fontColor
+            fontSize: container.fontSize
+            anchors {
+                top: parent.top
+                topMargin: 8
+                left: parent.left
+                right: parent.right
+            }
+            text: active ? "" : container.defaultText
+        }
+
         ListView {
             id: list
 
             anchors {
-                top: parent.top
                 left: parent.left
                 right: parent.right
-                bottom: icon.top
-                bottomMargin: 24
+                top: textEntry.bottom
+                bottom: parent.bottom
+                topMargin: 10
             }
 
             clip: true
@@ -84,42 +110,11 @@ Page {
             // content.
             visible: !listModel.loading
             onMovementStarted: focus = true
-        }
 
-        TextEntry {
-            id: textEntry
-            height: 61
-
-            bgImage: visual.theme.images.textField
-            bgImageActive: visual.theme.images.buttonPressed
-
-            fontName: container.fontName
-            fontColor: container.fontColor
-            fontSize: container.fontSize
-            anchors {
-                leftMargin: 8
-                bottom: parent.bottom
-                left: icon.right
-                right: parent.right
-            }
-            text: ""
-        }
-
-        Image {
-            id: icon
-
-            source: visual.theme.images.searchIcon
-            anchors {
-                left: parent.left
-                bottom: parent.bottom
-            }
-            anchors.margins: 8
-            fillMode: Image.PreserveAspectFit
-            smooth: true
-            MouseArea {
-                // Allow unfocus of text field here.
+            BorderImage {
+                source: visual.theme.images.frame
+                border { left: 8; top: 8; right: 8; bottom: 8 }
                 anchors.fill: parent
-                onClicked: list.focus = true
             }
         }
 
@@ -129,6 +124,7 @@ Page {
 
             height: list.height
             width: container.scrollBarWidth
+            anchors.top: list.top
             anchors.right: parent.right
             scrollArea: list
         }

@@ -8,7 +8,7 @@ Item {
     property int animationDuration: 100
     property int indent: 20
     property int scrollBarWidth: 8
-    property string expandedTitle:  ""
+    property string expandedTitle: ""
     property string selectedTitle: ""
     property string selectedUrl: ""
     property alias model: mainModel
@@ -30,12 +30,12 @@ Item {
     property int subItemFontSize: 10
     property color subItemFontColor: "black"
 
-    signal itemSelected(string title)
+    signal itemSelected(string title, string expandedCategory)
     signal itemLongTapped(string title, string url, int mouseX, int mouseY)
     signal discoveryClicked(string title)
 
-    width: 360
-    height: 640
+    width: 480
+    height: 854
 
     AccordionListModel {
         id: mainModel
@@ -161,6 +161,7 @@ Item {
                             icon: type == "discover" ? item.settingsIcon : ""
                             iconOpacity: type == "discover" ? 0.5 : 1.0
                             iconIndent: type == "discover" ? item.indent : 0
+                            alignBottom: true
 
                             onPressAndHold: {
                                 if (type == "discover") {
@@ -180,8 +181,8 @@ Item {
                                     Util.log("Clicked on discovery in " + expandedCategoryTitle);
                                     item.discoveryClicked(expandedCategoryTitle);
                                 } else {
-                                    Util.log("Clicked on subitem "+categoryTitle)
-                                    item.itemSelected(categoryTitle)
+                                    Util.log("Clicked on subitem "+categoryTitle+ ", the expCatTitle was: "+expandedCategoryTitle)
+                                    item.itemSelected(categoryTitle, expandedCategoryTitle)
                                 }
                             }
                         }

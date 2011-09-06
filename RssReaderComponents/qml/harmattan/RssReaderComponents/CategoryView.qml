@@ -23,11 +23,11 @@ Page {
     property color subItemFontColor: "black"
 
     // Signals emitted from this component
-    signal feedSelected(string feedName)
+    signal feedSelected(string feedName, string expandedCategory)
     signal discoverFromCategory(string category);
 
-    width: 360
-    height: 640
+    width: 480
+    height: 854
 
     // Layout of the feed view.
     AccordionList {
@@ -36,13 +36,14 @@ Page {
         anchors.fill: parent
         clip: true
 
+        scrollBarWidth: visual.theme.scrollBarWidth
         bgImage: visual.theme.images.listItem
         bgImageSelected: visual.theme.images.listItemSelected
         bgImagePressed: visual.theme.images.listItemPressed
         bgImageActive: visual.theme.images.listItemActive
         bgImageSubItem: visual.theme.images.listSubitem
 
-        settingsIcon: visual.theme.images.settingsIcon
+        settingsIcon: visual.theme.images.notFavourited
         arrow: visual.theme.images.arrow
 
         headerItemFontName: container.headerItemFontName
@@ -55,7 +56,7 @@ Page {
 
         // model: feedListCategoriesModel
         onItemSelected: {
-            container.feedSelected(title)
+            container.feedSelected(title, expandedCategory)
         }
         onDiscoveryClicked: {
             container.discoverFromCategory(title);
@@ -80,5 +81,11 @@ Page {
                 model.removeFromCategory(expandedCategoryTitle, longTappedFeedUrl)
             }
         }
+    }
+
+    BorderImage {
+        source: visual.theme.images.frame
+        border { left: 8; top: 8; right: 8; bottom: 8 }
+        anchors.fill: parent
     }
 }
