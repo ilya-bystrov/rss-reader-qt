@@ -84,3 +84,15 @@ OTHER_FILES += \
     qtc_packaging/debian_fremantle/control \
     qtc_packaging/debian_fremantle/compat \
     qtc_packaging/debian_fremantle/changelog
+
+contains(MEEGO_EDITION,harmattan) {
+    desktopfile.files = $${TARGET}.desktop
+    desktopfile.path = /usr/share/applications
+    INSTALLS += desktopfile
+}
+
+contains(MEEGO_EDITION,harmattan) {
+    icon.files = RssReaderComponents.png
+    icon.path = /usr/share/icons/hicolor/80x80/apps
+    INSTALLS += icon
+}
