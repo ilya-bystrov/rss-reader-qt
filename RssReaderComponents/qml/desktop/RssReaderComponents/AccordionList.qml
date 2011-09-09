@@ -87,6 +87,7 @@ Item {
                 fontSize: item.headerItemFontSize
                 fontColor: item.headerItemFontColor
                 fontBold: true
+                nextArrowVisible: false
 
                 onClicked: {
                     Util.log("Clicked on " + categoryTitle + " at " +index);

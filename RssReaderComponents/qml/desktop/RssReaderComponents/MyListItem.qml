@@ -21,6 +21,8 @@ Item {
     property int margin: 4
     property bool alignBottom: false
     property bool hide: false
+    property int nextArrowHeight: 16
+    property bool nextArrowVisible: true
 
     signal clicked
     signal pressAndHold(int mouseX, int mouseY)
@@ -65,7 +67,7 @@ Item {
             left: iconId.right
             top: iconId.visible ? iconId.top : parent.top
             bottom: container.alignBottom ? parent.bottom : undefined
-            right: parent.right
+            right: nextArrow.visible ? nextArrow.left : parent.right
             topMargin: container.margin
             bottomMargin: container.margin
             leftMargin: container.margin*2 + textIndent
@@ -80,6 +82,21 @@ Item {
         text: container.text
         verticalAlignment: Text.AlignVCenter
         wrapMode: Text.WordWrap
+    }
+
+    Image {
+        id: nextArrow
+
+        visible: nextArrowVisible && itemText.text != "Manage"
+        fillMode: "PreserveAspectFit"
+        height: container.nextArrowHeight
+        source: "image://theme/toolbar-next"
+        smooth: true
+        anchors {
+            right: parent.right
+            verticalCenter: parent.verticalCenter
+            rightMargin: 10
+        }
     }
 
     MouseArea {
