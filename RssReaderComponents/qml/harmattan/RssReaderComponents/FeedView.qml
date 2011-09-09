@@ -54,6 +54,7 @@ Page {
                 fontSize: container.fontSize
                 fontColor: container.fontColor
                 bgImage: visual.theme.images.listSubitem // Lighter than default gfx.
+                nextArrow: visual.theme.images.nextIcon
                 onClicked: {
                     Util.log("Clicked on "+title + " "+enclosureUrl)
                     list.focus = true // Unfocus text field

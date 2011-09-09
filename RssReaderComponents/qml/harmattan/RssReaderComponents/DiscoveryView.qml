@@ -43,6 +43,7 @@ Page {
             fontSize: view.fontSize
             fontColor: view.fontColor
             bgImage: visual.theme.images.listSubitem // Lighter than default gfx.
+            nextArrowVisible: false
             onClicked: {
                 if (subscribed) {
                     categoryView.model.removeFromCategory(categoryTitle, url)

@@ -46,12 +46,9 @@ symbian {
     QML_IMPORT_PATH = qml/harmattan/RssReaderComponents
 
     # Desktop & icon -files
-    desktop.files = RssReaderComponents.desktop
+    desktop.files = rssreadercomponents.desktop
     desktop.path = /usr/share/applications
     INSTALLS += desktop
-#    icon.files = RssReaderComponents80.png
-#    icon.path = /usr/share/icons/hicolor/80x80/apps
-#    INSTALLS += icon
 
     # TODO: Enable these, when Unix/OsX can be separated from Harmattan!
     # e.g. else:desktop {...
@@ -93,3 +90,9 @@ OTHER_FILES += \
     qtc_packaging/debian_fremantle/control \
     qtc_packaging/debian_fremantle/compat \
     qtc_packaging/debian_fremantle/changelog
+
+contains(MEEGO_EDITION,harmattan) {
+    icon.files = RssReaderComponents.svg
+    icon.path = /usr/share/icons/hicolor/scalable/apps
+    INSTALLS += icon
+}

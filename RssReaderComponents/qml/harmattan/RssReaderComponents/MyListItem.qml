@@ -21,6 +21,7 @@ Item {
     property int margin: 4
     property bool alignBottom: false
     property bool hide: false
+    property string nextArrow: './gfx/next.png'
     property int nextArrowHeight: 17
     property bool nextArrowVisible: true
 
@@ -91,6 +92,7 @@ Item {
         fillMode: "PreserveAspectFit"
         height: container.nextArrowHeight
         source: "image://theme/icon-m-toolbar-next-white"
+        //source: container.nextArrow
         smooth: true
         anchors {
             right: parent.right

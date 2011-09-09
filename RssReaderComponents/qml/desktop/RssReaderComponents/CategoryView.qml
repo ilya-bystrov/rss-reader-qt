@@ -45,6 +45,8 @@ Page {
 
         settingsIcon: visual.theme.images.notFavourited
         arrow: visual.theme.images.arrow
+        moreIcon: visual.theme.images.moreIcon
+        lessIcon: visual.theme.images.lessIcon
 
         headerItemFontName: container.headerItemFontName
         headerItemFontSize: container.headerItemFontSize

@@ -41,7 +41,7 @@ Window {
     Loader {
         id: visual
         property alias theme: visual.item
-        // Use the "Dark" theme by default in Harmattan/Meego
+        // Use the "Dark" theme by default
         source: "DarkTheme.qml"
     }
 

@@ -15,6 +15,9 @@ Item {
         property string path: "gfx/"
 
         property string arrow: path+"arrow.png"
+        property string moreIcon: path+"more.png"
+        property string lessIcon: path+"less.png"
+        property string nextIcon: path+"next.png"
         property string backButton: path+"back_button.png"
         property string backButtonPressed: path+"back_button_pressed.png"
         property string exitButton: path+"exit_button.png"

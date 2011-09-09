@@ -10,17 +10,19 @@ Window {
     width: 360
     height: 640
 
+    // We start out showing the splash screen
+    state: "showingSplashScreen"
+
+    // Background color rectangle.
     Rectangle {
         anchors.fill: parent
         color: visual.theme.applicationBackgroundColor
     }
 
+    // Shows the StatusBar!
     StatusBar {
         id: statusBar
     }
-
-    // We start out showing the splash screen
-    state: "showingSplashScreen"
 
     // Change the Visual stuff into use here!
     Loader {
@@ -28,7 +30,6 @@ Window {
         property alias theme: visual.item
         // Use the "Dark" theme by default
         source: "DarkTheme.qml"
-//        source: "Visual.qml"
     }
 
     // Properties.

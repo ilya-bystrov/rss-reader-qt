@@ -21,6 +21,8 @@ Item {
 
     property string settingsIcon: './gfx/settings_icon.png'
     property string arrow: './gfx/arrow.png'
+    property string moreIcon: './gfx/more.png'
+    property string lessIcon: './gfx/less.png'
 
     property string headerItemFontName: "Helvetica"
     property int headerItemFontSize: 12
@@ -99,8 +101,7 @@ Item {
                     id: arrow
                     fillMode: "PreserveAspectFit"
                     height: parent.height*0.3
-                    source: item.arrow
-                    rotation: container.expanded ? 90 : 0
+                    source: container.expanded ? item.lessIcon : item.moreIcon
                     smooth: true
                     anchors {
                         right: parent.right
@@ -156,6 +157,7 @@ Item {
                             iconOpacity: type == "discover" ? 0.5 : 1.0
                             iconIndent: type == "discover" ? item.indent : 0
                             alignBottom: true
+                            nextArrow: visual.theme.images.nextIcon
 
                             onPressAndHold: {
                                 if (type == "discover") {
