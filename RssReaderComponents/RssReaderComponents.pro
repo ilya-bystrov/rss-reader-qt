@@ -22,6 +22,7 @@ symbian {
     platform_qml.source = qml/symbian/RssReaderComponents
     platform_qml.target = qml
     QML_IMPORT_PATH = qml/symbian/RssReaderComponents
+    VERSION = 1.2.1
 } else:maemo5 {
     QT += opengl
     platform_qml.source = qml/maemo/RssReaderComponents
@@ -43,6 +44,14 @@ symbian {
     platform_qml.source = qml/harmattan/RssReaderComponents
     platform_qml.target = qml
     QML_IMPORT_PATH = qml/harmattan/RssReaderComponents
+
+    # Desktop & icon -files
+    desktop.files = RssReaderComponents.desktop
+    desktop.path = /usr/share/applications
+    INSTALLS += desktop
+#    icon.files = RssReaderComponents80.png
+#    icon.path = /usr/share/icons/hicolor/80x80/apps
+#    INSTALLS += icon
 
     # TODO: Enable these, when Unix/OsX can be separated from Harmattan!
     # e.g. else:desktop {...
@@ -84,15 +93,3 @@ OTHER_FILES += \
     qtc_packaging/debian_fremantle/control \
     qtc_packaging/debian_fremantle/compat \
     qtc_packaging/debian_fremantle/changelog
-
-contains(MEEGO_EDITION,harmattan) {
-    desktopfile.files = $${TARGET}.desktop
-    desktopfile.path = /usr/share/applications
-    INSTALLS += desktopfile
-}
-
-contains(MEEGO_EDITION,harmattan) {
-    icon.files = RssReaderComponents.png
-    icon.path = /usr/share/icons/hicolor/80x80/apps
-    INSTALLS += icon
-}
