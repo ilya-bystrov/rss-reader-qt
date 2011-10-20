@@ -9,7 +9,6 @@ Homepage: <insert the upstream URL, if relevant>
 Package: rssreadercomponents
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: RssReader v1.2.1 with QtQuick Components
+Description: RssReader v1.3.0 with QtQuick Components
  <insert long description, indented with spaces>
 XSBC-Maemo-Display-Name: rssseadercomponents
-

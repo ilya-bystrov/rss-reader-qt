@@ -14,6 +14,7 @@ symbian:TARGET.UID3 = 0xE1075E42
 # 0x2002CCCF value if protected UID is given to the application
 #symbian:DEPLOYMENT.installer_header = 0x2002CCCF
 
+VERSION = 1.3.0
 # Platform specific files and configuration
 symbian {
     TARGET.UID3 = 0xE1E1B70E
@@ -22,7 +23,6 @@ symbian {
     platform_qml.source = qml/symbian/RssReaderComponents
     platform_qml.target = qml
     QML_IMPORT_PATH = qml/symbian/RssReaderComponents
-    VERSION = 1.2.1
 } else:maemo5 {
     QT += opengl
     platform_qml.source = qml/maemo/RssReaderComponents
