@@ -14,6 +14,7 @@ Page {
     property string itemImageUrl
     property int scrollBarWidth: 8
     property int margin: 4
+    property int spacing: 4
 
     width: 480
     height: 854
@@ -23,13 +24,11 @@ Page {
         width: parent.width
         anchors.top: parent.top
         anchors.bottom: buttonPart.top
-        // Space between the bottom of the frame graphics and the button:
-        anchors.bottomMargin: 14
         flickableDirection: "VerticalFlick"
         clip: true
 
         contentWidth: parent.width
-        contentHeight: titleText.height + imagePart.height + textPart.height
+        contentHeight: titleText.height + textPart.y + textPart.height + container.margin*4
 
         Text {
             id: titleText
@@ -50,38 +49,47 @@ Page {
             textFormat: Text.RichText
         }
 
-        Image {
-            id: imagePart
+        Grid {
+            id: grid
+
+            property bool inLandscape: container.width > container.height
+            property int cellWidth: inLandscape && imagePart.visible ? width/2 : width
+            onCellWidthChanged: console.log("CellWidth: " + cellWidth)
+
+            rows: inLandscape ? 1 : 2
+            columns: inLandscape ? 2 : 1
+            spacing: container.spacing
             anchors {
                 top: titleText.bottom
+                bottom: parent.bottom
                 left: parent.left
                 right: parent.right
                 margins: container.margin*2
             }
-            fillMode: Image.PreserveAspectFit
-            source: itemImageUrl
-            visible: itemImageUrl != ""
-            onStatusChanged: {
-                Util.log("image status "+status)
-            }
-        }
 
-        Text {
-            id: textPart
-            anchors {
-                margins: container.margin*2
-                top: imagePart.bottom
-                left: parent.left
-                right: parent.right
+            Image {
+                id: imagePart
+                width: grid.cellWidth
+                fillMode: Image.PreserveAspectFit
+                source: itemImageUrl
+                visible: itemImageUrl != ""
+                onStatusChanged: {
+                    Util.log("image status "+status)
+                }
             }
-            font {
-                family: container.fontName
-                pointSize: container.fontSize
+
+            Text {
+                id: textPart
+                width: grid.cellWidth
+                font {
+                    family: container.fontName
+                    pointSize: container.fontSize
+                }
+                color: container.fontColor
+                text: itemDescription
+                wrapMode: Text.Wrap
+                textFormat: Text.RichText
             }
-            color: container.fontColor
-            text: itemDescription
-            wrapMode: Text.Wrap
-            textFormat: Text.RichText
         }
     }
 
