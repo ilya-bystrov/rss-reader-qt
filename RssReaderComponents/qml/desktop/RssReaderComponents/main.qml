@@ -6,6 +6,8 @@ import "Util.js" as Util
 Window {
     id: mainWindow
 
+    property bool isInverted: false
+
     anchors.centerIn: parent    
     width: 360
     height: 640
@@ -186,6 +188,11 @@ Window {
 
             onThemeChanged: {
                 visual.source = theme+".qml";
+
+                // Also invert the platform color scheme.
+                mainWindow.isInverted = !mainWindow.isInverted;
+                commonTools.platformInverted = !commonTools.platformInverted;
+                statusBar.platformInverted = !statusBar.platformInverted;
             }
         }
 

@@ -104,6 +104,7 @@ Page {
     Button {
         id: buttonPart
 
+        platformInverted: mainWindow.isInverted
         visible: itemUrl.length > 0
         width: parent.width
         height: 46
