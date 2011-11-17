@@ -1,4 +1,4 @@
-import QtQuick 1.0
+import QtQuick 1.1
 
 // SplashScreen displays user defined graphics, e.g. during application startup.
 // User can also define the maximum time SplashScreen will stay on screen, and

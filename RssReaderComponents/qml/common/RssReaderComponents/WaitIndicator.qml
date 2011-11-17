@@ -1,4 +1,4 @@
-import QtQuick 1.0
+import QtQuick 1.1
 
 // This item provides waiting indicator, should some long -taking operation be in
 // progress. Effectively WaitIndicator just shows some graphics, which rolls on the UI.

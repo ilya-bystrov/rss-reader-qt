@@ -1,4 +1,4 @@
-import QtQuick 1.0
+import QtQuick 1.1
 
 import "Util.js" as Util
 import "Store.js" as Store
