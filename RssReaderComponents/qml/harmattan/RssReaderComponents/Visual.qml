@@ -52,6 +52,9 @@ Item {
         property string newsIcon: path+"news_icon.png"
         property string sporstsIcon: path+"sports_icon.png"
         property string techIcon: path+"tech_icon.png"
+
+        // Custom ToolButtons
+        property string readFullArticle: path+"qgn_indi_browser_feeds_tb_open_full.svg"
     }
   
     // Main window

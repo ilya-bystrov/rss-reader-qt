@@ -126,6 +126,26 @@ Window {
             }
         }
 
+        // Button for launching the browser for reading the full article.
+        // Show/hide whenever the FeedItemView is visible.
+        ToolButton {
+            iconSource: visual.theme.images.readFullArticle
+            opacity: appState.rssItemUrl !== "" ? 1 : 0
+
+            onClicked: {
+                console.log("Read Article clicked, appState.rssItemUrl: "
+                            + appState.rssItemUrl);
+                if (appState.rssItemUrl !== "") {
+                    Qt.openUrlExternally(appState.rssItemUrl);
+                }
+            }
+
+            // Subtle fade in/out animation for the button appear/disappear.
+            Behavior on opacity {
+                NumberAnimation { duration: 250; easing.type: Easing.InOutQuad }
+            }
+        }
+
         ToolButton {
             iconSource: visual.theme.images.settingsIcon
 

@@ -23,7 +23,7 @@ Page {
         id: flicker
         width: parent.width
         anchors.top: parent.top
-        anchors.bottom: buttonPart.top
+        anchors.bottom: parent.bottom
         flickableDirection: "VerticalFlick"
         clip: true
 
@@ -101,28 +101,16 @@ Page {
         anchors.bottom: flicker.bottom
     }
 
-    Button {
-        id: buttonPart
-
-        platformInverted: mainWindow.isInverted
-        visible: itemUrl.length > 0
-        width: parent.width
-        height: 46
-        anchors {
-            bottom: parent.bottom
-            bottomMargin: container.margin*3
-            left: parent.left
-            right: parent.right
-        }
-        font {
-            family: container.fontName
-            pointSize: container.fontSize
-        }
-
-        text: qsTr("Read the full article")
-
-        onClicked: {
-            Qt.openUrlExternally(itemUrl)
+    // Set/remove the URL to be used for opening the web browser during Page
+    // initialization/deactivation. The 'readFullArticle' ToolButton (main.qml)
+    // will handle opening the browser.
+    onStatusChanged: {
+        if (container.status === PageStatus.Activating) {
+            appState.rssItemUrl = itemUrl;
+        } else if (container.status === PageStatus.Deactivating) {
+            appState.rssItemUrl = "";
+        } else {
+            // Ignore other statuses.
         }
     }
 }

@@ -16,5 +16,7 @@ QtObject {
     property string themeDir: ""
     // Current titlebar bg gradient
     property variant currentGradient: visual.item.mainGradient
+    // URL to the RSS feed item
+    property string rssItemUrl: ""
 }
 
