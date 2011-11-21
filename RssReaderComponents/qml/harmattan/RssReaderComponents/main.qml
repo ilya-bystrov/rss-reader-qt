@@ -1,4 +1,4 @@
-import QtQuick 1.0
+import QtQuick 1.1
 import com.nokia.meego 1.0
 import "Util.js" as Util
 
@@ -114,7 +114,7 @@ Window {
         property string previousViewName: "categoryView"
 
         ToolIcon {
-            iconId: "toolbar-back"
+            platformIconId: "toolbar-back"
             // In Harmattan we don't show the back button for exiting the app.
             opacity: appState.showBackButton ? 1 : 0
 

@@ -1,5 +1,5 @@
 // Visual style for Harmattan
-import QtQuick 1.0
+import QtQuick 1.1
 
 Item {
     property alias images: images
@@ -54,7 +54,7 @@ Item {
         property string techIcon: path+"tech_icon.png"
 
         // Custom ToolButtons
-        property string readFullArticle: path+"qgn_indi_browser_feeds_tb_open_full.svg"
+        property string readFullArticle: path+"qgn_indi_browser_feeds_tb_open_full.png"
     }
   
     // Main window
