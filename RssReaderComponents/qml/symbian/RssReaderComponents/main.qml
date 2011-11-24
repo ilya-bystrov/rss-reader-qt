@@ -13,7 +13,7 @@ Window {
     height: 640
 
     // We start out showing the splash screen
-    state: "showingSplashScreen"
+    state: "start"
 
     // Background color rectangle.
     Rectangle {
@@ -47,25 +47,6 @@ Window {
         height: contentPane.height
         z: 120
         show: appState.loading
-    }
-
-    // Splash screen is full screen but visible only at the start
-    SplashScreen {
-        id: splashScreen
-        anchors.fill: parent
-        // Put splash screen on top of everything. Otherwise you would need to lay it out as the last objects
-        // in the layout for it to be on top of all other objects. But with z-property we get same results
-        z: 100
-        // Splash screen timeout
-        // VKN TODO: REMEMBER TO REVERT BACK TO ORIGINAL!
-        timeout: 200 //visual.theme.splashTimeout
-        image: "gfx/splash_screen.png"
-        // When splash screen times out, move to default state
-        onSplashTimeout: {
-            appState.currentViewName = "categoryView";
-            pageStack.push(categoryView);
-            Util.log("Splash screen finished");
-        }
     }
 
     // All views have a title bar
@@ -342,17 +323,15 @@ Window {
 
 
     // States
-
     // Default state is implicit, all other states are defined here.
     states: [
         State {
-            name: "showingSplashScreen"
-            PropertyChanges {
-                target: splashScreen
-                // Show the splash screen. It's internal implementation will
-                // take care of smooth transitioning.
-                show: true
-            }
+            name: "start"
+            PropertyChanges { target: mainWindow; x: width / 2; opacity: 0 }
+        },
+        State {
+            name: "end"
+            PropertyChanges { target: mainWindow; x: 0; opacity: 1 }
         },
         State {
             name: "showingDiscoveryView"
@@ -429,5 +408,18 @@ Window {
             StateChangeScript { script: console.log("Changing Page to: SettingsView"); }
         }
     ]
+    transitions: Transition {
+        from: "start"; to: "end"
+        ParallelAnimation {
+            PropertyAnimation { properties: "x"; easing.type: Easing.OutQuad; duration: 300 }
+            PropertyAnimation { properties: "opacity"; easing.type: Easing.Linear; duration: 300 }
+        }
+    }
+
+    Component.onCompleted: {
+        console.log("RssReader: main.qml loading completed!")
+        pageStack.push(categoryView);
+        mainWindow.state = "end"
+    }
 }
 

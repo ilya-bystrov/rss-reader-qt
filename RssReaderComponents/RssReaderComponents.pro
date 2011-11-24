@@ -70,8 +70,10 @@ OBJECTS_DIR = tmp
 RCC_DIR = tmp
 UI_DIR = tmp
 
-# The .cpp file which was generated for your project. Feel free to hack it.
-SOURCES += main.cpp
+# The .cpp & .h files
+HEADERS += loadhelper.h
+SOURCES += main.cpp \
+    loadhelper.cpp
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
