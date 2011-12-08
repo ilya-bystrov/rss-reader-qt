@@ -19,28 +19,21 @@ Rectangle {
     property bool fontBold: false
     property bool exitButtonVisible: true
 
-    // Gradient definitions
-    property variant mainGradient: Gradient {
-        GradientStop { position: 0.0; color: Qt.rgba(71/255,136/255,71/255,1.0) }
-        GradientStop { position: 0.6; color: Qt.rgba(104/255,164/255,78/255,1.0) }
-        GradientStop { position: 1.0; color: Qt.rgba(78/255,124/255,64/255,1.0) }
-    }
-    property variant newsGradient: Gradient {
-        GradientStop { position: 0.0; color: Qt.rgba(99/255,196/255,205/255,1.0) }
-        GradientStop { position: 1.0; color: Qt.rgba(14/255,121/255,145/255,1.0) }
-    }
-    property variant entertainmentGradient: Gradient {
-        GradientStop { position: 0.0; color: Qt.rgba(214/255,103/255,165/255,1.0) }
-        GradientStop { position: 1.0; color: Qt.rgba(153/255,23/255,117/255,1.0) }
-    }
-    property variant sportsGradient: Gradient {
-        GradientStop { position: 0.0; color: Qt.rgba(124/255,90/255,142/255,1.0) }
-        GradientStop { position: 1.0; color: Qt.rgba(81/255,48/255,125/255,1.0) }
-    }
-    property variant techGradient: Gradient {
-        GradientStop { position: 0.0; color: Qt.rgba(236/255,154/255,67/255,1.0) }
-        GradientStop { position: 1.0; color: Qt.rgba(159/255,63/255,41/255,1.0) }
-    }
+    // The start and stop colors for the current gradient.
+    property color currentGradientStart: mainGradientStart
+    property color currentGradientEnd: mainGradientEnd
+
+    // Gradient color definitions.
+    property color mainGradientStart: Qt.rgba(104/255,164/255,78/255,1.0)
+    property color mainGradientEnd: Qt.rgba(78/255,124/255,64/255,1.0)
+    property color newsGradientStart: Qt.rgba(99/255,196/255,205/255,1.0)
+    property color newsGradientEnd: Qt.rgba(14/255,121/255,145/255,1.0)
+    property color entertainmentGradientStart: Qt.rgba(214/255,103/255,165/255,1.0)
+    property color entertainmentGradientEnd: Qt.rgba(153/255,23/255,117/255,1.0)
+    property color sportsGradientStart: Qt.rgba(124/255,90/255,142/255,1.0)
+    property color sportsGradientEnd: Qt.rgba(81/255,48/255,125/255,1.0)
+    property color techGradientStart: Qt.rgba(236/255,154/255,67/255,1.0)
+    property color techGradientEnd: Qt.rgba(159/255,63/255,41/255,1.0)
 
     signal exitButtonClicked
     signal backButtonClicked(string viewName)
@@ -48,6 +41,29 @@ Rectangle {
     // Default values, change when using
     width: 360
     height: 30
+
+    gradient: Gradient {
+        GradientStop {
+            id: startGrad
+            position: 0.0;
+            color: container.currentGradientStart
+            Behavior on color {
+                ColorAnimation {
+                    duration: 250;
+                }
+            }
+        }
+        GradientStop {
+            id: endGrad
+            position: 1.0;
+            color: container.currentGradientEnd
+            Behavior on color {
+                ColorAnimation {
+                    duration: 250;
+                }
+            }
+        }
+    }
 
     Image {
         id: titleIcon

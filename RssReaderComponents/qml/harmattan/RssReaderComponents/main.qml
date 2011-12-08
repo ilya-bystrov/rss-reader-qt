@@ -13,13 +13,12 @@ Window {
     // We start out showing the splash screen
     state: "start"
 
-    // On Harmattan platform it is possible to switch between "light" and
-    // "dark" themes.
     Component.onCompleted: {
         console.log("RssReader: main.qml loading completed!")
         pageStack.push(categoryView);
         mainWindow.state = "end"
-        // "theme" comes magically from somewhere. No clue where.
+        // On Harmattan platform it is possible to switch between "light" and
+        // "dark" themes. "theme" comes magically from somewhere. No clue where.
         theme.inverted = true;
     }
     // Method for inverting the theme, as just calling the theme.inverted = xx
@@ -86,7 +85,6 @@ Window {
         fontSize: visual.theme.titleBarFontSize
         fontColor: visual.theme.titlebarFontColor
 //        color: visual.theme.titleBarBackgroundColor
-        gradient: mainGradient
         height: visual.theme.titleBarHeight
         text: appState.currentTitle
         iconSource: visual.theme.images.rssLogo
@@ -237,15 +235,20 @@ Window {
             function setTitleBarGradient(category) {
                 // Select, which gradient to show behind the TitleBar
                 if (category == "News") {
-                    titleBar.gradient = titleBar.newsGradient
+                    titleBar.currentGradientStart = titleBar.newsGradientStart;
+                    titleBar.currentGradientEnd = titleBar.newsGradientEnd;
                 } else if (category== "Entertainment") {
-                    titleBar.gradient = titleBar.entertainmentGradient
+                    titleBar.currentGradientStart = titleBar.entertainmentGradientStart;
+                    titleBar.currentGradientEnd = titleBar.entertainmentGradientEnd;
                 } else if (category== "Sports") {
-                    titleBar.gradient = titleBar.sportsGradient
+                    titleBar.currentGradientStart = titleBar.sportsGradientStart;
+                    titleBar.currentGradientEnd = titleBar.sportsGradientEnd;
                 } else if (category== "Tech" ) {
-                    titleBar.gradient = titleBar.techGradient
+                    titleBar.currentGradientStart = titleBar.techGradientStart;
+                    titleBar.currentGradientEnd = titleBar.techGradientEnd;
                 } else {
-                    titleBar.gradient = titleBar.mainGradient
+                    titleBar.currentGradientStart = titleBar.mainGradientStart;
+                    titleBar.currentGradientEnd = titleBar.mainGradientEnd;
                 }
             }
 
@@ -274,7 +277,7 @@ Window {
 
                 setTitleBarGradient(expandedCategoryTitle);
             }
-            onDiscoverFromCategory: {                
+            onDiscoverFromCategory: {
                 Util.log("Discover from " + category
                                          + ", url:" + categoryView.selectedCategoryUrl);
                 // Set the discovery view to show the proper category:
@@ -340,7 +343,6 @@ Window {
 
 
     // States
-
     // Default state is implicit, all other states are defined here.
     states: [
         State {
@@ -378,7 +380,8 @@ Window {
             }
             PropertyChanges {
                 target: titleBar
-                gradient: mainGradient
+                currentGradientStart: titleBar.mainGradientStart
+                currentGradientEnd: titleBar.mainGradientEnd
             }
             StateChangeScript { script: console.log("Changing Page to: CategoryView"); }
         },
@@ -404,7 +407,7 @@ Window {
                 // Set all state variable changes to appState.
                 target: appState
                 showBackButton: true
-                currentTitle: appState.selectedFeedTitle                
+                currentTitle: appState.selectedFeedTitle
             }
             PropertyChanges {
                 target: titleBar
@@ -423,7 +426,8 @@ Window {
             }
             PropertyChanges {
                 target: titleBar
-                gradient: mainGradient
+                currentGradientStart: titleBar.mainGradientStart
+                currentGradientEnd: titleBar.mainGradientEnd
             }
             StateChangeScript { script: console.log("Changing Page to: SettingsView"); }
         }

@@ -6,14 +6,18 @@ import "Util.js" as Util
 Window {
     id: mainWindow
 
-    property bool isInverted: false
-
-    anchors.centerIn: parent
     width: 360
     height: 640
+    anchors.centerIn: parent
 
     // We start out showing the splash screen
     state: "start"
+
+    Component.onCompleted: {
+        console.log("RssReader: main.qml loading completed!")
+        pageStack.push(categoryView);
+        mainWindow.state = "end"
+    }
 
     // Background color rectangle.
     Rectangle {
@@ -72,7 +76,6 @@ Window {
         fontSize: visual.theme.titleBarFontSize
         fontColor: visual.theme.titlebarFontColor
 //        color: visual.theme.titleBarBackgroundColor
-        gradient: mainGradient
         height: visual.theme.titleBarHeight
         text: appState.currentTitle
         iconSource: visual.theme.images.rssLogo
@@ -200,7 +203,6 @@ Window {
                 visual.source = theme+".qml";
 
                 // Also invert the platform color scheme.
-                mainWindow.isInverted = !mainWindow.isInverted;
                 commonTools.platformInverted = !commonTools.platformInverted;
                 statusBar.platformInverted = !statusBar.platformInverted;
                 backButtonTip.platformInverted = !backButtonTip.platformInverted;
@@ -232,15 +234,20 @@ Window {
             function setTitleBarGradient(category) {
                 // Select, which gradient to show behind the TitleBar
                 if (category == "News") {
-                    titleBar.gradient = titleBar.newsGradient
+                    titleBar.currentGradientStart = titleBar.newsGradientStart;
+                    titleBar.currentGradientEnd = titleBar.newsGradientEnd;
                 } else if (category== "Entertainment") {
-                    titleBar.gradient = titleBar.entertainmentGradient
+                    titleBar.currentGradientStart = titleBar.entertainmentGradientStart;
+                    titleBar.currentGradientEnd = titleBar.entertainmentGradientEnd;
                 } else if (category== "Sports") {
-                    titleBar.gradient = titleBar.sportsGradient
+                    titleBar.currentGradientStart = titleBar.sportsGradientStart;
+                    titleBar.currentGradientEnd = titleBar.sportsGradientEnd;
                 } else if (category== "Tech" ) {
-                    titleBar.gradient = titleBar.techGradient
+                    titleBar.currentGradientStart = titleBar.techGradientStart;
+                    titleBar.currentGradientEnd = titleBar.techGradientEnd;
                 } else {
-                    titleBar.gradient = titleBar.mainGradient
+                    titleBar.currentGradientStart = titleBar.mainGradientStart;
+                    titleBar.currentGradientEnd = titleBar.mainGradientEnd;
                 }
             }
 
@@ -393,7 +400,8 @@ Window {
             }
             PropertyChanges {
                 target: titleBar
-                gradient: mainGradient
+                currentGradientStart: titleBar.mainGradientStart
+                currentGradientEnd: titleBar.mainGradientEnd
             }
             StateChangeScript { script: console.log("Changing Page to: CategoryView"); }
         },
@@ -438,7 +446,8 @@ Window {
             }
             PropertyChanges {
                 target: titleBar
-                gradient: mainGradient
+                currentGradientStart: titleBar.mainGradientStart
+                currentGradientEnd: titleBar.mainGradientEnd
             }
             StateChangeScript { script: console.log("Changing Page to: SettingsView"); }
         }
@@ -449,12 +458,6 @@ Window {
             PropertyAnimation { properties: "x"; easing.type: Easing.OutQuad; duration: 300 }
             PropertyAnimation { properties: "opacity"; easing.type: Easing.Linear; duration: 300 }
         }
-    }
-
-    Component.onCompleted: {
-        console.log("RssReader: main.qml loading completed!")
-        pageStack.push(categoryView);
-        mainWindow.state = "end"
     }
 }
 
