@@ -8,7 +8,7 @@ Window {
 
     property bool isInverted: false
 
-    anchors.centerIn: parent    
+    anchors.centerIn: parent
     width: 360
     height: 640
 
@@ -84,8 +84,11 @@ Window {
         property string previousViewName: "categoryView"
 
         ToolButton {
+            id: backButton
             iconSource: "toolbar-back"
 
+            onPlatformReleased: backButtonTip.opacity = 0;
+            onPlatformPressAndHold: backButtonTip.opacity = 1;
             onClicked: {
                 if (appState.showBackButton) {
                     var viewName = appState.currentViewName;
@@ -110,9 +113,12 @@ Window {
         // Button for launching the browser for reading the full article.
         // Show/hide whenever the FeedItemView is visible.
         ToolButton {
+            id: articleButton
             iconSource: visual.theme.images.readFullArticle
             opacity: appState.rssItemUrl !== "" ? 1 : 0
 
+            onPlatformReleased: articleButtonTip.opacity = 0;
+            onPlatformPressAndHold: articleButtonTip.opacity = 1;
             onClicked: {
                 console.log("Read Article clicked, appState.rssItemUrl: "
                             + appState.rssItemUrl);
@@ -128,8 +134,11 @@ Window {
         }
 
         ToolButton {
+            id: settingsButton
             iconSource: visual.theme.images.settingsIcon
 
+            onPlatformReleased: settingsButtonTip.opacity = 0;
+            onPlatformPressAndHold: settingsButtonTip.opacity = 1;
             onClicked: {
                 if (appState.currentViewName != "settingsView") {
                     // Save the previous view name so that we can return
@@ -194,6 +203,9 @@ Window {
                 mainWindow.isInverted = !mainWindow.isInverted;
                 commonTools.platformInverted = !commonTools.platformInverted;
                 statusBar.platformInverted = !statusBar.platformInverted;
+                backButtonTip.platformInverted = !backButtonTip.platformInverted;
+                articleButtonTip.platformInverted = !articleButtonTip.platformInverted;
+                settingsButtonTip.platformInverted = !settingsButtonTip.platformInverted;
             }
         }
 
@@ -257,7 +269,7 @@ Window {
 
                 setTitleBarGradient(expandedCategoryTitle);
             }
-            onDiscoverFromCategory: {                
+            onDiscoverFromCategory: {
                 Util.log("Discover from " + category
                                          + ", url:" + categoryView.selectedCategoryUrl);
                 // Set the discovery view to show the proper category:
@@ -321,6 +333,27 @@ Window {
         }
     }
 
+    // The ToolTips have to appear above every view, thus defined here.
+    ToolTip {
+        id: backButtonTip
+        text: qsTr("Back")
+        target: backButton
+        visible: false
+    }
+
+    ToolTip {
+        id: articleButtonTip
+        text: qsTr("Read full article")
+        target: articleButton
+        visible: false
+    }
+
+    ToolTip {
+        id: settingsButtonTip
+        text: qsTr("Settings")
+        target: settingsButton
+        visible: false
+    }
 
     // States
     // Default state is implicit, all other states are defined here.
@@ -384,7 +417,7 @@ Window {
                 // Set all state variable changes to appState.
                 target: appState
                 showBackButton: true
-                currentTitle: appState.selectedFeedTitle                
+                currentTitle: appState.selectedFeedTitle
             }
             PropertyChanges {
                 target: titleBar
