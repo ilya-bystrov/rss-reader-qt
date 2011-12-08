@@ -346,10 +346,12 @@ Window {
         State {
             name: "start"
             PropertyChanges { target: mainWindow; x: width / 2; opacity: 0 }
+            PropertyChanges { target: appState; currentTitle: qsTr("RSS Reader")}
         },
         State {
             name: "end"
             PropertyChanges { target: mainWindow; x: 0; opacity: 1 }
+            PropertyChanges { target: appState; currentTitle: qsTr("RSS Reader")}
         },
         State {
             name: "showingDiscoveryView"
