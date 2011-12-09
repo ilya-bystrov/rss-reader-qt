@@ -19,7 +19,7 @@ Item {
 
     Behavior on opacity {
         NumberAnimation {
-            duration: 300
+            duration: visual.generalTransitionTime
             easing.type: Easing.InOutQuad
         }
     }
@@ -39,6 +39,7 @@ Item {
         id: button
         x: parent.posX - width/2
         y: parent.posY - height/2
+        platformInverted: appState.isInverted
 
         font {
             family: container.fontName

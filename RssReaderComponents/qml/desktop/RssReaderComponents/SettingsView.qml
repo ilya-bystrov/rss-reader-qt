@@ -9,6 +9,8 @@ Page {
     property color fontColor: "black"
     property double margins: 8
     property int settingHeight: visual.theme.settingHeight
+    // Selected theme button
+    property variant __selectedButton: darkButton
 
     signal themeChanged(string theme)
 
@@ -35,21 +37,47 @@ Page {
                     pointSize: container.fontSize
                 }
 
-                text: themeSwitch.checked ? qsTr("Theme: Light") : qsTr("Theme: Dark")
+                text: themeSwitch.checkedButton === lightButton ?
+                          qsTr("Theme: Light") : qsTr("Theme: Dark")
             }
 
-            Switch {
+            ButtonRow {
                 id: themeSwitch
 
                 anchors.right: parent.right
-                height: container.settingHeight
-                // NOTE: There's no clicked() signal on Harmattan/Meego
-                // QtQuick Components!
-                onClicked: {
-                    var theme = checked ? "Visual" : "DarkTheme";
-                    themeChanged(theme);
+                //checkedButton: container.__selectedButton
+
+                Button {
+                    id: darkButton
+                    platformInverted: false
+                    text: qsTr("Dark")
+                    onClicked: {
+                        if (themeSwitch.checkedButton != darkButton) {
+                            switchLabel.text = qsTr("Theme: Dark");
+                            container.__selectedButton = darkButton;
+                            themeChanged("DarkTheme");
+                        }
+                    }
+                }
+                Button {
+                    id: lightButton
+                    platformInverted: true
+                    text: qsTr("Light")
+                    onClicked: {
+                        if (themeSwitch.checkedButton != lightButton) {
+                            switchLabel.text = qsTr("Theme: Light");
+                            container.__selectedButton = lightButton;
+                            themeChanged("Visual");
+                        }
+                    }
                 }
             }
+        }
+    }
+
+    onStatusChanged: {
+        if (container.status === PageStatus.Active) {
+            themeSwitch.checkedButton = container.__selectedButton;
         }
     }
 }

@@ -14,6 +14,7 @@ QtObject {
     property string selectedFeedItemTitle: ""
     // theme-dir name
     property string themeDir: ""
+    property bool isInverted: false
     // Current titlebar bg gradient
     property variant currentGradient: visual.item.mainGradient
     // URL to the RSS feed item

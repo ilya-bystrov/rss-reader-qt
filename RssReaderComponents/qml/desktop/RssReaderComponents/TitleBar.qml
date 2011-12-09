@@ -49,7 +49,7 @@ Rectangle {
             color: container.currentGradientStart
             Behavior on color {
                 ColorAnimation {
-                    duration: 250;
+                    duration: visual.generalTransitionTime
                 }
             }
         }
@@ -59,7 +59,7 @@ Rectangle {
             color: container.currentGradientEnd
             Behavior on color {
                 ColorAnimation {
-                    duration: 250;
+                    duration: visual.generalTransitionTime
                 }
             }
         }

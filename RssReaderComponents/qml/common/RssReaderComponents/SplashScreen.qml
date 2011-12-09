@@ -4,6 +4,8 @@ Item {
     id: splash
 
     property bool landscape: width > height
+    property int transitionTime: 300
+
     width: 360
     height: 640
     opacity: 1
@@ -16,7 +18,7 @@ Item {
 
     Behavior on opacity {
         NumberAnimation {
-            duration: 300
+            duration: splash.transitionTime
             easing.type: Easing.InOutQuad
         }
     }

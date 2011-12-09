@@ -3,6 +3,9 @@ import QtQuick 1.1
 
 Item {
     property alias images: images
+
+    // Time used in transitions, given in milliseconds
+    property int generalTransitionTime: 300
     property color windowActiveTextColor: "black"
     property color buttonPassiveColor: "grey"
     property color buttonActiveColor: Qt.darker(buttonPassiveColor)

@@ -17,6 +17,7 @@ DEFINES += VER=\"$${VERSTR}\"
 # Add more folders to ship with the application, here
 common_qml.source = qml/common/RssReaderComponents
 common_qml.target = qml
+DEPLOYMENTFOLDERS = common_qml
 
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =
@@ -47,28 +48,28 @@ symbian {
     TARGET.CAPABILITY += NetworkServices
     platform_qml.source = qml/symbian/RssReaderComponents
     platform_qml.target = qml
-    QML_IMPORT_PATH = qml/symbian/RssReaderComponents
+    QML_IMPORT_PATH += qml/symbian/RssReaderComponents
 } else:maemo5 {
     QT += opengl
     platform_qml.source = qml/maemo/RssReaderComponents
     platform_qml.target = qml
-    QML_IMPORT_PATH = qml/maemo/RssReaderComponents
+    QML_IMPORT_PATH += qml/maemo/RssReaderComponents
 } else:simulator {
     platform_qml.source = qml/symbian/RssReaderComponents
     platform_qml.target = qml
-    QML_IMPORT_PATH = qml/symbian/RssReaderComponents
+    QML_IMPORT_PATH += qml/symbian/RssReaderComponents
 } else:win32{
     # Windows
     platform_qml.source = qml/desktop/RssReaderComponents
     platform_qml.target = qml
-    QML_IMPORT_PATH = qml/desktop/RssReaderComponents
+    QML_IMPORT_PATH += qml/desktop/RssReaderComponents
 }
 contains(MEEGO_EDITION,harmattan) {
     #QT += opengl
     DEFINES += Q_WS_HARMATTAN
     platform_qml.source = qml/harmattan/RssReaderComponents
     platform_qml.target = qml
-    QML_IMPORT_PATH = qml/harmattan/RssReaderComponents
+    QML_IMPORT_PATH += qml/harmattan/RssReaderComponents
 
     # Desktop & icon -files
     desktop.files = rssreadercomponents.desktop
@@ -78,7 +79,7 @@ contains(MEEGO_EDITION,harmattan) {
     INSTALLS += desktop icon_file
 }
 
-DEPLOYMENTFOLDERS = common_qml platform_qml
+DEPLOYMENTFOLDERS += platform_qml
 
 
 # Please do not modify the following two lines. Required for deployment.

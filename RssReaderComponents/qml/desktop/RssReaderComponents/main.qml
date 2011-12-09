@@ -28,6 +28,7 @@ Window {
     // Shows the StatusBar!
     StatusBar {
         id: statusBar
+        platformInverted: appState.isInverted
     }
 
     // Change the Visual stuff into use here!
@@ -132,7 +133,7 @@ Window {
 
             // Subtle fade in/out animation for the button appear/disappear.
             Behavior on opacity {
-                NumberAnimation { duration: 250; easing.type: Easing.InOutQuad }
+                NumberAnimation { duration: visual.generalTransitionTime; easing.type: Easing.InOutQuad }
             }
         }
 
@@ -158,6 +159,7 @@ Window {
         id: commonTools
         anchors.bottom: parent.bottom
         tools: defaultTools
+        platformInverted: appState.isInverted
     }
 
     // PageStack for navigation between the views. Animation between the views
@@ -201,13 +203,8 @@ Window {
 
             onThemeChanged: {
                 visual.source = theme+".qml";
-
                 // Also invert the platform color scheme.
-                commonTools.platformInverted = !commonTools.platformInverted;
-                statusBar.platformInverted = !statusBar.platformInverted;
-                backButtonTip.platformInverted = !backButtonTip.platformInverted;
-                articleButtonTip.platformInverted = !articleButtonTip.platformInverted;
-                settingsButtonTip.platformInverted = !settingsButtonTip.platformInverted;
+                appState.isInverted = !appState.isInverted
             }
         }
 
@@ -346,6 +343,7 @@ Window {
         text: qsTr("Back")
         target: backButton
         visible: false
+        platformInverted: appState.isInverted
     }
 
     ToolTip {
@@ -353,6 +351,7 @@ Window {
         text: qsTr("Read full article")
         target: articleButton
         visible: false
+        platformInverted: appState.isInverted
     }
 
     ToolTip {
@@ -360,6 +359,7 @@ Window {
         text: qsTr("Settings")
         target: settingsButton
         visible: false
+        platformInverted: appState.isInverted
     }
 
     // States
@@ -455,8 +455,8 @@ Window {
     transitions: Transition {
         from: "start"; to: "end"
         ParallelAnimation {
-            PropertyAnimation { properties: "x"; easing.type: Easing.OutQuad; duration: 300 }
-            PropertyAnimation { properties: "opacity"; easing.type: Easing.Linear; duration: 300 }
+            PropertyAnimation { properties: "x"; easing.type: Easing.OutQuad; duration: visual.generalTransitionTime }
+            PropertyAnimation { properties: "opacity"; easing.type: Easing.Linear; duration: visual.generalTransitionTime }
         }
     }
 }
