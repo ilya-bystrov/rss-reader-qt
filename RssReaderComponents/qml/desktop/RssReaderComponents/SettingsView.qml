@@ -49,6 +49,7 @@ Page {
 
                 Button {
                     id: darkButton
+                    width: visual.theme.segmentedButtonWidth
                     platformInverted: false
                     text: qsTr("Dark")
                     onClicked: {
@@ -61,6 +62,7 @@ Page {
                 }
                 Button {
                     id: lightButton
+                    width: visual.theme.segmentedButtonWidth
                     platformInverted: true
                     text: qsTr("Light")
                     onClicked: {

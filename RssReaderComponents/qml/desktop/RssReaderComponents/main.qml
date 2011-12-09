@@ -133,7 +133,7 @@ Window {
 
             // Subtle fade in/out animation for the button appear/disappear.
             Behavior on opacity {
-                NumberAnimation { duration: visual.generalTransitionTime; easing.type: Easing.InOutQuad }
+                NumberAnimation { duration: visual.theme.generalTransitionTime; easing.type: Easing.InOutQuad }
             }
         }
 
@@ -455,8 +455,8 @@ Window {
     transitions: Transition {
         from: "start"; to: "end"
         ParallelAnimation {
-            PropertyAnimation { properties: "x"; easing.type: Easing.OutQuad; duration: visual.generalTransitionTime }
-            PropertyAnimation { properties: "opacity"; easing.type: Easing.Linear; duration: visual.generalTransitionTime }
+            PropertyAnimation { properties: "x"; easing.type: Easing.OutQuad; duration: visual.theme.generalTransitionTime }
+            PropertyAnimation { properties: "opacity"; easing.type: Easing.Linear; duration: visual.theme.generalTransitionTime }
         }
     }
 }
