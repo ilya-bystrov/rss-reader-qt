@@ -7,7 +7,7 @@ QtObject {
     property string currentViewName: ""
     property string cameFromView: ""
     // Contains the string currently shown
-    property string currentTitle: ""
+    property string currentTitle: qsTr("RSS Reader")
     // Populate this whenever you select a feed
     property string selectedFeedTitle: ""
     // Populate this whenever you select a feed item

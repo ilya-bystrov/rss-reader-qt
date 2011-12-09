@@ -88,6 +88,7 @@ Item {
     property int settingsViewFontSize: 8
     property color settingsViewFontColor: defaultFontColor
     property int settingHeight: 44
+    property int segmentedButtonWidth: 100
 
     // Discovery view
     property string discoveryViewFont: defaultFontFamily
@@ -112,5 +113,6 @@ Item {
     property string feedItemViewFont: defaultFontFamily
     property int feedItemViewFontSize: 7
     property color feedItemViewFontColor: defaultFontColor
+    property color feedSearchFontColor: defaultFontColor
     property color feedSearchBarBgColor: "#f8f8f8"
 }

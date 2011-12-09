@@ -302,6 +302,7 @@ Window {
             fontName: visual.theme.feedViewFont
             fontSize: visual.theme.feedViewFontSize
             fontColor: visual.theme.feedViewFontColor
+            searchFontColor: visual.theme.feedSearchFontColor
             feedName: categoryView.selectedCategoryTitle
             feedUrl: categoryView.selectedCategoryUrl
             defaultText: "Tap to search"

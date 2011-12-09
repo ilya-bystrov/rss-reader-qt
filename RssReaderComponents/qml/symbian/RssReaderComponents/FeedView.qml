@@ -8,6 +8,7 @@ Page {
     property string fontName: "Helvetica"
     property int fontSize: 12
     property color fontColor: "black"
+    property color searchFontColor: "black"
     property string itemTitle: ""
     property string itemDescription: ""
     property string itemUrl: ""
@@ -82,7 +83,7 @@ Page {
             bgColor: visual.theme.feedSearchBarBgColor
 
             fontName: container.fontName
-            fontColor: container.fontColor
+            fontColor: container.searchFontColor
             fontSize: container.fontSize
             anchors {
                 top: parent.top

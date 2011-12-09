@@ -113,5 +113,6 @@ Item {
     property string feedItemViewFont: defaultFontFamily
     property int feedItemViewFontSize: 12
     property color feedItemViewFontColor: defaultFontColor
+    property color feedSearchFontColor: defaultFontColor
     property color feedSearchBarBgColor: "#f8f8f8"
 }
