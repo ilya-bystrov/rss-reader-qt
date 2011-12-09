@@ -44,16 +44,6 @@ Window {
         id: appState
     }
 
-    // Wait indicator is also not visible by default, only when mainWindow.loading === true
-    WaitIndicator {
-        id: waitIndicator
-        anchors.centerIn: contentPane
-        width: contentPane.width
-        height: contentPane.height
-        z: 120
-        show: appState.loading
-    }
-
     // All views have a title bar
     TitleBar {
         id: titleBar
@@ -336,6 +326,17 @@ Window {
             itemUrl: feedView.itemUrl
             itemImageUrl: feedView.itemImageUrl
         }
+    }
+
+    // Busy indicator is also not visible by default, only when mainWindow.loading === true
+    BusyIndicator {
+        width: visual.theme.busyIndicatorSize
+        height: visual.theme.busyIndicatorSize
+        anchors.centerIn: contentPane
+
+        visible: appState.loading
+        running: appState.loading
+        platformInverted: appState.isInverted
     }
 
     // The ToolTips have to appear above every view, thus defined here.

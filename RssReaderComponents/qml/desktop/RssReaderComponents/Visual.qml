@@ -115,4 +115,7 @@ Item {
     property color feedItemViewFontColor: defaultFontColor
     property color feedSearchFontColor: defaultFontColor
     property color feedSearchBarBgColor: "#f8f8f8"
+
+    // Busy indicator properties
+    property int busyIndicatorSize: 150
 }
