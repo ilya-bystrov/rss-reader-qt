@@ -100,3 +100,40 @@ function restore(model)
                    } );
     log("Restored " + model.count + " entries")
 }
+
+
+// Functions for storing/restoring the settings
+function storeSettings(theme)
+{
+    log ("storeSettings, inverted: " + theme);
+    var db = getDb();
+    // Clear the Settings table's values first.
+    db.transaction( function(tx) { try {
+                           tx.executeSql('DROP TABLE Settings;');
+                       } catch(error) {/*ignore*/} }
+                   );
+    // Then save the latest settings values.
+    db.transaction( function(tx) {
+                       tx.executeSql('CREATE TABLE IF NOT EXISTS Settings(inverted BOOLEAN)');
+                       tx.executeSql('INSERT INTO Settings VALUES(?)', [theme]);
+                   } );
+}
+
+function restoreSettings()
+{
+    var theme = 0;
+    var db = getDb();
+    db.transaction(
+        function(tx) {
+            try {
+                var rs = tx.executeSql('SELECT * FROM Settings');
+                for (var i = 0; i < rs.rows.length; i++) {
+                    theme = rs.rows.item(i).inverted;
+                }
+            } catch (error) {
+                log ("Error: "+error)
+            }
+        } );
+    log ("restoreSettings, inverted: " + theme);
+    return theme;
+}

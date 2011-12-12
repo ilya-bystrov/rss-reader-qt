@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import com.nokia.symbian 1.1
+import "Store.js" as Store
 
 Page {
     id: container
@@ -81,5 +82,20 @@ Page {
         if (container.status === PageStatus.Active) {
             themeSwitch.checkedButton = container.__selectedButton;
         }
+    }
+
+    Component.onCompleted: {
+        // Restore application settings values on startup.
+        var inverted = Store.restoreSettings();
+        if (inverted == "true") {
+            // Set the light theme.
+            container.__selectedButton = lightButton;
+            themeChanged("Visual");
+        }
+    }
+
+    Component.onDestruction: {
+        // Save application settings values on exit.
+        Store.storeSettings(appState.isInverted);
     }
 }
