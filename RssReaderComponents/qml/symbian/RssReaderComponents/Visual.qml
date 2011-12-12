@@ -1,8 +1,12 @@
-// Visual style for desktop
+// Visual style for Symbian
 import QtQuick 1.1
 
 Item {
     property alias images: images
+
+    // E6 has different screen resolution & aspect ratio (640x480), thus
+    // there's some differentation for it separately.
+    property bool isE6: mainWindow.height == 480
 
     // Time used in transitions, given in milliseconds
     property int generalTransitionTime: 300
@@ -78,10 +82,13 @@ Item {
     property int titleBarSmallestFontSize: 5
     property color titlebarFontColor: "white"
     property color titleBarBackgroundColor: "#478847"
-    property int titleBarHeight: 30
+    property int titleBarHeight: isE6 ? 40 : 30
 
     // Footer
     property int footerHeight: 60
+
+    // AccordionList
+    property int accordionItemHeight: isE6 ? 71 : 54
 
     // Settings view
     property string settingsViewFont: defaultFontFamily
@@ -107,7 +114,9 @@ Item {
     // Feed view
     property string feedViewFont: defaultFontFamily
     property int feedViewFontSize: 8
+    property int feedViewSearchFontSize: isE6 ? 6 : 8
     property color feedViewFontColor: defaultFontColor
+    property int feedViewSearchBoxHeight: isE6 ? 48 : 36
 
     // Feed item view
     property string feedItemViewFont: defaultFontFamily

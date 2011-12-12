@@ -6,8 +6,6 @@ import "Util.js" as Util
 Window {
     id: mainWindow
 
-    width: 360
-    height: 640
     anchors.centerIn: parent
 
     // We start out showing the splash screen
@@ -17,6 +15,7 @@ Window {
         console.log("RssReader: main.qml loading completed!")
         pageStack.push(categoryView);
         mainWindow.state = "end"
+        console.log("Is E6: " + visual.theme.isE6)
     }
 
     // Background color rectangle.
@@ -292,6 +291,7 @@ Window {
             fontName: visual.theme.feedViewFont
             fontSize: visual.theme.feedViewFontSize
             fontColor: visual.theme.feedViewFontColor
+            searchFontSize: visual.theme.feedViewSearchFontSize
             searchFontColor: visual.theme.feedSearchFontColor
             feedName: categoryView.selectedCategoryTitle
             feedUrl: categoryView.selectedCategoryUrl

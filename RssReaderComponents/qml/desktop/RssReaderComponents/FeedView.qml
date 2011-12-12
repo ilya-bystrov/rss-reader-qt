@@ -7,6 +7,7 @@ Page {
 
     property string fontName: "Helvetica"
     property int fontSize: 12
+    property int searchFontSize: 10
     property color fontColor: "black"
     property color searchFontColor: "black"
     property string itemTitle: ""
@@ -76,7 +77,7 @@ Page {
             id: textEntry
 
             property bool inDefaultState: textEntry.text == container.defaultText
-            height: 36
+            height: visual.theme.feedViewSearchBoxHeight
 
             bgImage: visual.theme.images.textField
             bgImageActive: visual.theme.images.buttonPressed
@@ -84,7 +85,7 @@ Page {
 
             fontName: container.fontName
             fontColor: container.searchFontColor
-            fontSize: container.fontSize
+            fontSize: container.searchFontSize
             anchors {
                 top: parent.top
                 topMargin: 8
