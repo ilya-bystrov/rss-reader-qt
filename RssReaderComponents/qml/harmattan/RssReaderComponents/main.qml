@@ -19,13 +19,14 @@ Window {
         mainWindow.state = "end"
         // On Harmattan platform it is possible to switch between "light" and
         // "dark" themes. "theme" comes magically from somewhere. No clue where.
-        theme.inverted = true;
+        theme.inverted = !appState.isInverted;
     }
     // Method for inverting the theme, as just calling the theme.inverted = xx
     // doesn't work (theme.inverted is just a context property or sumthin...)
     function invertTheme() {
-        theme.inverted = !theme.inverted
-        console.log("Theme.inverted: " + theme.inverted)
+        theme.inverted = !theme.inverted;
+        appState.isInverted = !appState.isInverted;
+        console.log("Theme.inverted: " + theme.inverted);
     }
 
     // Background color rectangle.
@@ -50,16 +51,6 @@ Window {
     // Properties.
     AppStateVars {
         id: appState
-    }
-
-    // Wait indicator is also not visible by default, only when mainWindow.loading === true
-    WaitIndicator {
-        id: waitIndicator
-        anchors.centerIn: contentPane
-        width: contentPane.width
-        height: contentPane.height
-        z: 120
-        show: appState.loading
     }
 
     // All views have a title bar
@@ -306,6 +297,8 @@ Window {
             fontName: visual.theme.feedViewFont
             fontSize: visual.theme.feedViewFontSize
             fontColor: visual.theme.feedViewFontColor
+            searchFontSize: visual.theme.feedViewSearchFontSize
+            searchFontColor: visual.theme.feedSearchFontColor
             feedName: categoryView.selectedCategoryTitle
             feedUrl: categoryView.selectedCategoryUrl
             defaultText: "Tap to search"
@@ -341,6 +334,14 @@ Window {
         }
     }
 
+    // Busy indicator is also not visible by default, only when mainWindow.loading === true
+    BusyIndicator {
+        platformStyle: BusyIndicatorStyle { size: "large" }
+        anchors.centerIn: contentPane
+
+        visible: appState.loading
+        running: appState.loading
+    }
 
     // States
     // Default state is implicit, all other states are defined here.
@@ -435,8 +436,8 @@ Window {
     transitions: Transition {
         from: "start"; to: "end"
         ParallelAnimation {
-            PropertyAnimation { properties: "x"; easing.type: Easing.OutQuad; duration: 300 }
-            PropertyAnimation { properties: "opacity"; easing.type: Easing.Linear; duration: 300 }
+            PropertyAnimation { properties: "x"; easing.type: Easing.OutQuad; duration: visual.theme.generalTransitionTime }
+            PropertyAnimation { properties: "opacity"; easing.type: Easing.Linear; duration: visual.theme.generalTransitionTime }
         }
     }
 }

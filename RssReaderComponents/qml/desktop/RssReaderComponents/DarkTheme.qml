@@ -82,7 +82,7 @@ Item {
     property int titleBarSmallestFontSize: 8
     property color titlebarFontColor: "white"
     property color titleBarBackgroundColor: "#478847"
-    property int titleBarHeight: isE6 ? 40 : 30
+    property int titleBarHeight: isE6 ? 46 : 30
 
     // Footer
     property int footerHeight: 60

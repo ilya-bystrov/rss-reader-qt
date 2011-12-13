@@ -70,7 +70,7 @@ Item {
         Item {
             id: container
             // Modify appearance from these properties
-            property int itemHeight: 54
+            property int itemHeight: visual.theme.accordionItemHeight
             property alias expandedItemCount: subItemRepeater.count
 
             // Flag to indicate if this delegate is expanded

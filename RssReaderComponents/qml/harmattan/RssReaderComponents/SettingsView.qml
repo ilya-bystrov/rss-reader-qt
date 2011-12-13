@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import com.nokia.meego 1.0
+import "Store.js" as Store
 
 Page {
     id: container
@@ -9,6 +10,8 @@ Page {
     property color fontColor: "black"
     property double margins: 8
     property int settingHeight: visual.theme.settingHeight
+    // Selected theme button
+    property variant __selectedButton: darkButton
 
     signal themeChanged(string theme)
 
@@ -35,27 +38,62 @@ Page {
                     pointSize: container.fontSize
                 }
 
-                text: themeSwitch.checked ? qsTr("Theme: Light") : qsTr("Theme: Dark")
-                // WORKAROUND FOR THERE'S NO clicked() SIGNAL
-                // for "Switch" component ON HARMATTAN / MEEGO!
-                onTextChanged: {
-                    var theme = themeSwitch.checked ? "Visual" : "DarkTheme";
-                    themeChanged(theme);
-                }
+                text: themeSwitch.checkedButton === lightButton ?
+                          qsTr("Theme: Light") : qsTr("Theme: Dark")
             }
 
-            Switch {
+            ButtonRow {
                 id: themeSwitch
 
                 anchors.right: parent.right
-                height: container.settingHeight
-                // NOTE: There's no clicked() signal on Harmattan/Meego
-                // QtQuick Components!
-//                onClicked: {
-//                    var theme = checked ? "Visual" : "DarkTheme";
-//                    themeChanged(theme);
-//                }
+                width: 266
+
+                Button {
+                    id: darkButton
+                    width: visual.theme.segmentedButtonWidth
+                    text: qsTr("Dark")
+                    onClicked: {
+                        if (container.__selectedButton != darkButton) {
+                            switchLabel.text = qsTr("Theme: Dark");
+                            container.__selectedButton = darkButton;
+                            themeChanged("DarkTheme");
+                        }
+                    }
+                }
+                Button {
+                    id: lightButton
+                    width: visual.theme.segmentedButtonWidth
+                    text: qsTr("Light")
+                    onClicked: {
+                        if (container.__selectedButton != lightButton) {
+                            switchLabel.text = qsTr("Theme: Light");
+                            container.__selectedButton = lightButton;
+                            themeChanged("Visual");
+                        }
+                    }
+                }
             }
         }
+    }
+
+    onStatusChanged: {
+        if (container.status === PageStatus.Active) {
+            themeSwitch.checkedButton = container.__selectedButton;
+        }
+    }
+
+    Component.onCompleted: {
+        // Restore application settings values on startup.
+        var inverted = Store.restoreSettings();
+        if (inverted == "true") {
+            // Set the light theme.
+            container.__selectedButton = lightButton;
+            themeChanged("Visual");
+        }
+    }
+
+    Component.onDestruction: {
+        // Save application settings values on exit.
+        Store.storeSettings(appState.isInverted);
     }
 }

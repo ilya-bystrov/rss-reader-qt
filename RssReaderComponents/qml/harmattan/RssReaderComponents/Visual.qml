@@ -3,6 +3,8 @@ import QtQuick 1.1
 
 Item {
     property alias images: images
+    // Time used in transitions, given in milliseconds
+    property int generalTransitionTime: 300
     property color windowActiveTextColor: "black"
     property color buttonPassiveColor: "grey"
     property color buttonActiveColor: Qt.darker(buttonPassiveColor)
@@ -81,11 +83,15 @@ Item {
     // Footer
     property int footerHeight: 80
 
+    // AccordionList
+    property int accordionItemHeight: 54
+
     // Settings view
     property string settingsViewFont: defaultFontFamily
     property int settingsViewFontSize: 18
     property color settingsViewFontColor: defaultFontColor
     property int settingHeight: 60
+    property int segmentedButtonWidth: 100
 
     // Discovery view
     property string discoveryViewFont: defaultFontFamily
@@ -104,12 +110,17 @@ Item {
     // Feed view
     property string feedViewFont: defaultFontFamily
     property int feedViewFontSize: 18
+    property int feedViewSearchFontSize: feedViewFontSize
     property color feedViewFontColor: defaultFontColor
-    property int searchBoxHeight: 45
+    property int feedViewSearchBoxHeight: 45
 
     // Feed item view
     property string feedItemViewFont: defaultFontFamily
     property int feedItemViewFontSize: 18
     property color feedItemViewFontColor: defaultFontColor
+    property color feedSearchFontColor: "black"
     property color feedSearchBarBgColor: "#f8f8f8"
+
+    // Busy indicator properties
+    property int busyIndicatorSize: 150
 }

@@ -46,7 +46,6 @@ Page {
                 id: themeSwitch
 
                 anchors.right: parent.right
-                //checkedButton: container.__selectedButton
 
                 Button {
                     id: darkButton

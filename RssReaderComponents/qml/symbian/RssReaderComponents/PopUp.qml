@@ -19,7 +19,7 @@ Item {
 
     Behavior on opacity {
         NumberAnimation {
-            duration: visual.generalTransitionTime
+            duration: visual.theme.generalTransitionTime
             easing.type: Easing.InOutQuad
         }
     }
