@@ -8,6 +8,12 @@ applications. RSS Reader uses the QML local storage to store the feeds that
 the user has subscribed to. The application also demonstrates how the 
 graphical theme can be switched from the settings view.
 
+This example application is hosted in Nokia Developer Projects:
+- http://projects.developer.nokia.com/QMLRSSReader
+
+For more information on implementation visit the wiki page:
+- http://projects.developer.nokia.com/QMLRSSReader/wiki
+
 
 FILES
 -------------------------------------------------------------------------------
@@ -19,7 +25,7 @@ design/*
 RssReader/*
 
 - The application itself. Contains a PRO file that can be opened in 
-  Qt SDK 1.1beta.
+  Qt SDK 1.1.4
 
 screenhots/*
 
@@ -34,11 +40,11 @@ Mobile device (Symbian^3)
 
 There are two ways to install the application on the device.
 
-0. The Qt libraries (4.7.2 or higher) must be installed. See the section 
+0. The Qt libraries (4.7.4 or higher) must be installed. See the section 
    COMPATIBILITY for more information about the installation.
 
-1. a) Drag the rssreader_1.0.0.sis file to the Nokia Ovi Suite while the 
-      device is connected with the USB cable.
+1. a) Drag the RssReaderComponenets_1.4.0.sis file to the Nokia Ovi Suite while
+       the device is connected with the USB cable.
    
    OR
    
@@ -48,17 +54,17 @@ There are two ways to install the application on the device.
 2. After the installation is complete, return to the application menu and
    select the Applications folder.
    
-3. Locate the RestaurantApp icon and select it to launch the application.
+3. Locate the RssReader icon and select it to launch the application.
 
 
-Mobile device (Maemo)
+Mobile device (Harmattan)
 ~~~~~~~~~~~~~~~~~~~~~
 
-0. The Qt libraries (4.7.0 or higher) must be installed. See the section 
+0. The Qt libraries (4.7.4 or higher) must be installed. See the section 
    COMPATIBILITY for more information about the installation.
 
-1. Copy the rssreader_1.0.0_armel.deb file into a specific folder on the 
-   device (for example, 'MyDocs').
+1. Copy the rssreadercomponents_1.4.0_armel.deb file into a specific folder
+   on the device (for example, 'MyDocs').
 
 2. Start XTerm. Type 'sudo gainroot' to get root access.
 
@@ -66,45 +72,43 @@ Mobile device (Maemo)
    (for example, 'cd MyDocs').
 
 4. As root, install the package:
-   dpkg -i rssreader_1.0.0_armel.deb
+   dpkg -i rssreadercomponents_1.4.0_armel.deb
 
 5. Launch the Applications menu.
 
-6. Locate the RestaurantApp icon and select it to launch the application.
+6. Locate the RssReader icon and select it to launch the application.
 
 
 COMPATIBILITY
 -------------------------------------------------------------------------------
 
-- Symbian^3 with Qt version 4.7.2 or higher
+- Symbian^3 with Qt version 4.7.4 or higher
 
-  1. Download Qt for Symbian (4.7.2 or higher) from qt.nokia.com.
+  1. Download Qt for Symbian (4.7.4 or higher) from qt.nokia.com.
   
   2. Drag qt_installer.sis on top of the device in Nokia Ovi Suite while the 
      device is connected. The SIS package is found in the installation folder 
-     of Qt for Symbian (4.7.2 or higher).
+     of Qt for Symbian (4.7.4 or higher).
      
-     
-- Maemo with PR1.3 which includes Qt 4.7.0
-
-  1. Use Nokia Ovi Suite to update the device's firmware to PR1.3.
 
 - MeeGo 1.2 Harmattan
 
 Tested on:
 
-- Nokia N8-00
+- Nokia E6
 - Nokia E7-00
-- Nokia N900
 - Nokia N950
+- Nokia N9
 
 Developed with:
 
-- Qt SDK 1.1
+- Qt SDK 1.1.4
 
 
 VERSION HISTORY
 -------------------------------------------------------------------------------
-v1.1 Added MeeGo 1.2 Harmattan support.
-v1.0 Initial release.
+v1.4	Added E6 support, UI fine tuning, some refactoring.
+v1.3	Version published on the Nokia Developer website.
+v1.1	Added MeeGo 1.2 Harmattan support.
+v1.0	Initial release.
 v0.1.7 Initial version published in Forum Nokia Projects.

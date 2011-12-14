@@ -113,7 +113,7 @@ Window {
 
             // Subtle fade in/out animation for the button appear/disappear.
             Behavior on opacity {
-                NumberAnimation { duration: 250; easing.type: Easing.InOutQuad }
+                NumberAnimation { duration: visual.theme.generalTransitionTime; easing.type: Easing.InOutQuad }
             }
         }
 
@@ -133,12 +133,13 @@ Window {
 
             // Subtle fade in/out animation for the button appear/disappear.
             Behavior on opacity {
-                NumberAnimation { duration: 250; easing.type: Easing.InOutQuad }
+                NumberAnimation { duration: visual.theme.generalTransitionTime; easing.type: Easing.InOutQuad }
             }
         }
 
         ToolIcon {
             iconSource: visual.theme.images.harmattanSettingsIcon
+            opacity: appState.currentViewName == "settingsView" ? 0 : 1
 
             onClicked: {
                 if (appState.currentViewName != "settingsView") {
@@ -148,6 +149,11 @@ Window {
                     appState.currentViewName = "settingsView"
                     pageStack.push(settingsView);
                 }
+            }
+
+            // Subtle fade in/out animation for the button appear/disappear.
+            Behavior on opacity {
+                NumberAnimation { duration: visual.theme.generalTransitionTime; easing.type: Easing.InOutQuad }
             }
         }
     }

@@ -129,6 +129,7 @@ Window {
         ToolButton {
             id: settingsButton
             iconSource: visual.theme.images.settingsIcon
+            opacity: appState.currentViewName == "settingsView" ? 0 : 1
 
             onPlatformReleased: settingsButtonTip.opacity = 0;
             onPlatformPressAndHold: settingsButtonTip.opacity = 1;
@@ -140,6 +141,11 @@ Window {
                     appState.currentViewName = "settingsView"
                     pageStack.push(settingsView);
                 }
+            }
+
+            // Subtle fade in/out animation for the button appear/disappear.
+            Behavior on opacity {
+                NumberAnimation { duration: visual.theme.generalTransitionTime; easing.type: Easing.InOutQuad }
             }
         }
     }
