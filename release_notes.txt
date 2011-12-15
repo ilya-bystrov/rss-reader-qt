@@ -15,6 +15,50 @@ For more information on implementation visit the wiki page:
 - http://projects.developer.nokia.com/QMLRSSReader/wiki
 
 
+IMPORTANT CLASSES AND QML ELEMENTS
+-------------------------------------------------------------------------------
+
+Qt:
+- QmlApplicationViewer, QDeclarativeView, QTimer
+
+Standard QML elements used:
+- Component
+- Item
+- Rectangle
+- Text
+- TextEntry
+- Image
+- BorderImage
+- ListView
+- Grid
+- Column
+- FocusScope
+- Gradient
+- GradientStop
+- MouseArea
+
+- State
+- Transition
+- Behavior
+- PropertyChanges
+- PropertyAnimation
+- NumberAnimation
+- ParallelAnimation
+- SequentialAnimation
+
+QML elements from Qt Quick Components used:
+- Window
+- Page
+- PageStack
+- StatusBar
+- ToolBar
+- ToolBarLayout
+- ToolButton / ToolIcon
+- ToolTip
+- ButtonRow
+- Button
+
+
 FILES
 -------------------------------------------------------------------------------
 
@@ -31,7 +75,7 @@ screenhots/*
 
 - Screenshots for the wiki page
 
-  
+
 INSTALLATION INSTRUCTIONS
 -------------------------------------------------------------------------------
 
@@ -97,7 +141,6 @@ Tested on:
 
 - Nokia E6
 - Nokia E7-00
-- Nokia N950
 - Nokia N9
 
 Developed with:
