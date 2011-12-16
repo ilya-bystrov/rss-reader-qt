@@ -30,7 +30,6 @@ Item {
         property string handle: path+"handle.png"
         property string rotationIcon: path+"rotation_icon.png"
         property string rssLogo: path+"rss_logo.png"
-        property string scrollbar: path+"scrollbar.png"
         property string searchIcon: path+"search_icon.png"
         property string harmattanSettingsIcon: path+"harmattan_settings_icon.png"
         property string settingsIcon: path+"settings_icon.png"

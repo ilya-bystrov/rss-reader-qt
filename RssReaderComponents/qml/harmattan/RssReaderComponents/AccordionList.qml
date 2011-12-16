@@ -56,13 +56,15 @@ Item {
         spacing: 0
     }
 
-    ScrollBar {
-        scrollArea: listView;
-        width: item.scrollBarWidth;
-        anchors.top: listView.top;
-        anchors.right: listView.right;
-        anchors.bottom: listView.bottom;
-        z: 100;
+    ScrollDecorator {
+        flickableItem: listView
+        width: item.scrollBarWidth
+        z: 100
+        anchors {
+            top: listView.top
+            right: listView.right
+            bottom: listView.bottom
+        }
     }
 
     Component {

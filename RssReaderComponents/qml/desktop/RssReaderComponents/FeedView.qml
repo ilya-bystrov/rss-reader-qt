@@ -122,11 +122,12 @@ Page {
         }
 
         // ScrollBar indicator. Take the bottommost search field height into account.
-        ScrollBar {
+        ScrollDecorator {
             id: scrollBar
 
             height: list.height
             width: container.scrollBarWidth
+            platformInverted: appState.isInverted
             anchors.top: list.top
             anchors.right: parent.right
             flickableItem: list

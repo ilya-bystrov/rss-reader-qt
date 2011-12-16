@@ -122,14 +122,14 @@ Page {
         }
 
         // ScrollBar indicator. Take the bottommost search field height into account.
-        ScrollBar {
+        ScrollDecorator {
             id: scrollBar
 
             height: list.height
             width: container.scrollBarWidth
             anchors.top: list.top
             anchors.right: parent.right
-            scrollArea: list
+            flickableItem: list
         }
 
         function activationComplete() {

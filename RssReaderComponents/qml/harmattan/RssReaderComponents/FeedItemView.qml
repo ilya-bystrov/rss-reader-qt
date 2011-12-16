@@ -93,12 +93,14 @@ Page {
         }
     }
 
-    ScrollBar {
-        scrollArea: flicker;
-        width: container.scrollBarWidth;
-        anchors.top: flicker.top;
-        anchors.right: flicker.right;
-        anchors.bottom: flicker.bottom
+    ScrollDecorator {
+        flickableItem: flicker
+        width: container.scrollBarWidth
+        anchors {
+            top: flicker.top
+            right: flicker.right
+            bottom: flicker.bottom
+        }
     }
 
     // Set/remove the URL to be used for opening the web browser during Page

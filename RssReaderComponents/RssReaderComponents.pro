@@ -3,13 +3,11 @@
 #
 QT += declarative
 CONFIG += qt qt-components
-MOBILITY += multimedia
 
 # Version number & version string definition (for using it inside the app)
 VERSION = 1.4.0
 VERSTR = '\\"$${VERSION}\\"'
 DEFINES += VER=\"$${VERSTR}\"
-
 
 #Speed up launching on MeeGo/Harmattan when using applauncherd daemon
 #CONFIG += qdeclarative-boostable
@@ -22,7 +20,7 @@ DEPLOYMENTFOLDERS = common_qml
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =
 
-# The .cpp & .h files
+# The .cpp, .h  & packaging files
 HEADERS += loadhelper.h
 SOURCES += main.cpp \
     loadhelper.cpp
@@ -79,8 +77,8 @@ contains(MEEGO_EDITION,harmattan) {
     INSTALLS += desktop icon_file
 }
 
+# Take the platform specific QML-folder files.
 DEPLOYMENTFOLDERS += platform_qml
-
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
