@@ -57,7 +57,8 @@ Page {
 
                 fillMode: "PreserveAspectFit"
                 height: parent.height*0.5
-                source: parent.subscribed ? visual.theme.images.favourited : visual.theme.images.notFavourited
+                source: parent.subscribed ? visual.theme.images.favourited
+                                          : visual.theme.images.notFavourited
                 smooth: true
                 anchors {
                     right: parent.right

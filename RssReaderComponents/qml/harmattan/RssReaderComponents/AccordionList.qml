@@ -135,8 +135,13 @@ Item {
                     // Animate subitem expansion. After the final height is reached,
                     // ensure that it is visible to the user.
                     SequentialAnimation {
-                        NumberAnimation { duration: item.animationDuration; easing.type: Easing.InOutQuad }
-                        ScriptAction { script: ListView.view.positionViewAtIndex(index, ListView.Contain) }
+                        NumberAnimation {
+                            duration: item.animationDuration
+                            easing.type: Easing.InOutQuad
+                        }
+                        ScriptAction {
+                            script: ListView.view.positionViewAtIndex(index, ListView.Contain)
+                        }
                     }
                 }
 
@@ -183,10 +188,13 @@ Item {
                                 item.expandedTitle = expandedCategoryTitle
 
                                 if (type == "discover") {
-                                    Util.log("Clicked on discovery in " + expandedCategoryTitle);
+                                    Util.log("Clicked on discovery in "
+                                             + expandedCategoryTitle);
                                     item.discoveryClicked(expandedCategoryTitle);
                                 } else {
-                                    Util.log("Clicked on subitem "+categoryTitle+ ", the expCatTitle was: "+expandedCategoryTitle)
+                                    Util.log("Clicked on subitem " + categoryTitle
+                                             + ", the expCatTitle was: "
+                                             + expandedCategoryTitle)
                                     item.itemSelected(categoryTitle, expandedCategoryTitle)
                                 }
                             }

@@ -63,7 +63,8 @@ Item {
     Text {
         id: itemText
 
-        property int itemTextHeight: height + anchors.topMargin + anchors.bottomMargin
+        property int itemTextHeight: height + anchors.topMargin
+                                     + anchors.bottomMargin
         anchors {
             left: iconId.right
             top: iconId.visible ? iconId.top : parent.top
@@ -112,15 +113,26 @@ Item {
     states: [
         State {
             name: 'pressed'; when: mouseArea.pressed
-            PropertyChanges { target: background; source: bgImagePressed; border { left: 35; top: 35; right: 35; bottom: 10 } }
+            PropertyChanges {
+                target: background
+                source: bgImagePressed
+                border { left: 35; top: 35; right: 35; bottom: 10 }
+            }
         },
         State {
             name: 'selected'
-            PropertyChanges { target: background; source: bgImageSelected; border { left: 35; top: 35; right: 35; bottom: 10 } }
+            PropertyChanges {
+                target: background
+                source: bgImageSelected
+                border { left: 35; top: 35; right: 35; bottom: 10 }
+            }
         },
         State {
             name: 'active';
-            PropertyChanges { target: background; source: bgImageActive; }
+            PropertyChanges {
+                target: background
+                source: bgImageActive
+            }
         }
     ]
 }

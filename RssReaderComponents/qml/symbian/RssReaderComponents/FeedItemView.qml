@@ -28,7 +28,8 @@ Page {
         clip: true
 
         contentWidth: parent.width
-        contentHeight: titleText.height + textPart.y + textPart.height + container.margin*4
+        contentHeight: titleText.height + textPart.y
+                       + textPart.height + container.margin*4
 
         Text {
             id: titleText

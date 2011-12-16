@@ -65,7 +65,6 @@ Window {
         fontName: visual.theme.titleBarFont
         fontSize: visual.theme.titleBarFontSize
         fontColor: visual.theme.titlebarFontColor
-//        color: visual.theme.titleBarBackgroundColor
         height: visual.theme.titleBarHeight
         text: appState.currentTitle
         iconSource: visual.theme.images.rssLogo
@@ -122,7 +121,10 @@ Window {
 
             // Subtle fade in/out animation for the button appear/disappear.
             Behavior on opacity {
-                NumberAnimation { duration: visual.theme.generalTransitionTime; easing.type: Easing.InOutQuad }
+                NumberAnimation {
+                    duration: visual.theme.generalTransitionTime
+                    easing.type: Easing.InOutQuad
+                }
             }
         }
 
@@ -145,7 +147,10 @@ Window {
 
             // Subtle fade in/out animation for the button appear/disappear.
             Behavior on opacity {
-                NumberAnimation { duration: visual.theme.generalTransitionTime; easing.type: Easing.InOutQuad }
+                NumberAnimation {
+                    duration: visual.theme.generalTransitionTime
+                    easing.type: Easing.InOutQuad
+                }
             }
         }
     }
@@ -185,7 +190,6 @@ Window {
             margins: 2
         }
 
-
         // Views inside the contentPane:
         // Settings view
         SettingsView {
@@ -211,9 +215,11 @@ Window {
                 top: parent.top
                 bottom: parent.bottom
             }
-            // Must use width and not anchor to left&right for left/right animations to work
+            // Must use width and not anchor to left&right for
+            // left/right animations to work
             width:  parent.width
-            // The views that are not visible should be set to 0 opacity or visible: false
+            // The views that are not visible should be set
+            // to 0 opacity or visible: false
             fontName: visual.theme.discoveryViewFont
             fontSize: visual.theme.discoveryViewFontSize
             fontColor: visual.theme.discoveryViewFontColor
@@ -223,6 +229,7 @@ Window {
         CategoryView {
             id: categoryView
 
+            // Function to select the gradient colors judging by the category.
             function setTitleBarGradient(category) {
                 // Select, which gradient to show behind the TitleBar
                 if (category == "News") {
@@ -259,7 +266,8 @@ Window {
             subItemFontColor: visual.theme.categoryViewSubItemFontColor
 
             onFeedSelected: {
-                Util.log("Selected feed: " + feedName + " from " + expandedCategory + " category.")
+                Util.log("Selected feed: " + feedName + " from "
+                         + expandedCategory + " category.")
                 appState.selectedFeedTitle = feedName;
                 appState.fromLeft = false;
                 appState.currentViewName = "feedView";
@@ -270,13 +278,13 @@ Window {
             }
             onDiscoverFromCategory: {
                 Util.log("Discover from " + category
-                                         + ", url:" + categoryView.selectedCategoryUrl);
+                         + ", url:" + categoryView.selectedCategoryUrl);
                 // Set the discovery view to show the proper category:
                 discoveryView.categoryTitle = category;
                 appState.selectedFeedTitle = categoryView.expandedCategoryTitle;
                 appState.fromLeft = true;
                 appState.currentViewName = "discoveryView";
-                appState.currentTitle = "Manage "+category+" Feeds";
+                appState.currentTitle = "Manage " + category + " Feeds";
                 // Show the DiscoveryView.
                 pageStack.push(discoveryView);
 
@@ -334,7 +342,8 @@ Window {
         }
     }
 
-    // Busy indicator is also not visible by default, only when mainWindow.loading === true
+    // Busy indicator is also not visible by default,
+    // only when mainWindow.loading === true
     BusyIndicator {
         width: visual.theme.busyIndicatorSize
         height: visual.theme.busyIndicatorSize
@@ -463,8 +472,16 @@ Window {
     transitions: Transition {
         from: "start"; to: "end"
         ParallelAnimation {
-            PropertyAnimation { properties: "x"; easing.type: Easing.OutQuad; duration: visual.theme.generalTransitionTime }
-            PropertyAnimation { properties: "opacity"; easing.type: Easing.Linear; duration: visual.theme.generalTransitionTime }
+            PropertyAnimation {
+                properties: "x"
+                easing.type: Easing.OutQuad
+                duration: visual.theme.generalTransitionTime
+            }
+            PropertyAnimation {
+                properties: "opacity"
+                easing.type: Easing.Linear
+                duration: visual.theme.generalTransitionTime
+            }
         }
     }
 }

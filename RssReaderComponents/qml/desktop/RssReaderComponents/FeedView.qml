@@ -109,8 +109,8 @@ Page {
             clip: true
             model: listModel
             delegate: listDelegate
-            // Hide list until loading complete to avoid showing previously loaded
-            // content.
+            // Hide list until loading complete to avoid showing
+            // previously loaded content.
             visible: !listModel.loading
             onMovementStarted: focus = true
 
@@ -121,7 +121,8 @@ Page {
             }
         }
 
-        // ScrollBar indicator. Take the bottommost search field height into account.
+        // ScrollBar indicator. Take the bottommost
+        // search field height into account.
         ScrollDecorator {
             id: scrollBar
 
