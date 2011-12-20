@@ -139,6 +139,6 @@ VERSION HISTORY
 -------------------------------------------------------------------------------
 v1.4    Added E6 support, UI fine tuning, some refactoring.
 v1.3    Version published on the Nokia Developer website.
-v1.1    Added MeeGo 1.2 Harmattan support.
+v1.1    Added MeeGo/Harmattan 1.2 support.
 v1.0    Initial release.
 v0.1.7  Initial version published in Forum Nokia Projects.
