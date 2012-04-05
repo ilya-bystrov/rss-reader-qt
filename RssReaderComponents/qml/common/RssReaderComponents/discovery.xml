@@ -35,7 +35,8 @@
         </outline>
 
         <outline title="Tech" text="Tech">
-      <outline text="All About MeeGo" title="All About MeeGo" type="rss" xmlUrl="http://rss.allaboutmeego.com/aam-feed-summary.xml"/>
+            <outline text="Nokia Conversations" title="Nokia Conversations" type="rss" xmlUrl="http://feeds.feedburner.com/NokiaConversations-Posts?format=xml"/>
+            <outline text="All About MeeGo" title="All About MeeGo" type="rss" xmlUrl="http://rss.allaboutmeego.com/aam-feed-summary.xml"/>
             <outline text="Gizmodo" title="Gizmodo" type="rss" xmlUrl="http://gizmodo.com/index.xml"/>
             <outline text="Nasa image of the day" title="Nasa image of the day" type="rss" xmlUrl="http://www.nasa.gov/rss/image_of_the_day.rss"/>
             <outline text="Qt Blog" title="Qt Blog" type="rss" xmlUrl="http://feeds.feedburner.com/TheQtBlog"/>

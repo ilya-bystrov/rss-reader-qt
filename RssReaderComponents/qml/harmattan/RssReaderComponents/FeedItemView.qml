@@ -90,6 +90,11 @@ Page {
                 text: itemDescription
                 wrapMode: Text.Wrap
                 textFormat: Text.RichText
+
+                onLinkActivated: {
+                    Util.log("Opening link: " + link)
+                    Qt.openUrlExternally(link)
+                }
             }
         }
     }

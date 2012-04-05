@@ -7,11 +7,13 @@ XmlListModel {
 
     property string feedUrl: ""
     property bool loading: status == XmlListModel.Loading
+    namespaceDeclarations: "declare namespace content = 'http://purl.org/rss/1.0/modules/content/';"
 
     source: feedUrl
     query: "/rss/channel/item"
     XmlRole { name: "title"; query: "title/string()" }
     XmlRole { name: "description"; query: "description/string()" }
+    XmlRole { name: "encodedContent"; query: "content:encoded/string()"}
     XmlRole { name: "url"; query: "link/string()" }
     XmlRole { name: "enclosureUrl"; query: "enclosure/@url/string()" }
     XmlRole { name: "enclosureType"; query: "enclosure/@type/string()" }

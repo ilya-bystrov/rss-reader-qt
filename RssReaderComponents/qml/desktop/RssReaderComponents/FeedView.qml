@@ -61,7 +61,7 @@ Page {
                     Util.log("Clicked on "+title + " "+enclosureUrl)
                     list.focus = true // Unfocus text field
                     container.itemTitle = title
-                    container.itemDescription = description
+                    container.itemDescription = encodedContent ? encodedContent : description
                     container.itemUrl = url
                     if (enclosureType.substring(0,5) == "image") {
                         container.itemImageUrl = enclosureUrl

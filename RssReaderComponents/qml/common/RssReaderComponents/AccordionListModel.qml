@@ -125,9 +125,9 @@ ListModel {
         iconUrl: 'gfx/tech_icon.png'
         attributes: [
             ListElement {
-                categoryTitle: "Reuters Technology News"
+                categoryTitle: "Nokia Conversations"
                 type: "rss"
-                url: "http://feeds.reuters.com/reuters/technologyNews"
+                url: "http://feeds.feedburner.com/NokiaConversations-Posts?format=xml"
             },
             ListElement {
                 categoryTitle: "Manage"
@@ -147,4 +147,3 @@ ListModel {
         Store.store(model)
     }
 }
-

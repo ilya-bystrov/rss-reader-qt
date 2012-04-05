@@ -141,7 +141,7 @@ Item {
                             easing.type: Easing.InOutQuad
                         }
                         ScriptAction {
-                            script: ListView.view.positionViewAtIndex(index, ListView.Contain)
+                            script: container.ListView.view.positionViewAtIndex(index, ListView.Contain)
                         }
                     }
                 }
