@@ -5,7 +5,7 @@ QT += declarative
 CONFIG += qt qt-components
 
 # Version number & version string definition (for using it inside the app)
-VERSION = 1.4.0
+VERSION = 1.5.0
 VERSTR = '\\"$${VERSION}\\"'
 DEFINES += VER=\"$${VERSTR}\"
 

@@ -1,11 +1,14 @@
-rssreadercomponents (1.4.0) unstable; urgency=low
+rssreadercomponents (1.5.0) unstable; urgency=low
+  * Added Nokia Conversations feed & few bug fixes.
 
+ -- unknown <>  Thu, 05 Apr 2012 14:03:13 +0300
+
+rssreadercomponents (1.4.0) unstable; urgency=low
   * UI fine tuning, some refactoring.
 
  -- unknown <>  ke, 14 joulu 2011 14:56:14 +0200
 
 rssreadercomponents (1.3.0) unstable; urgency=low
-
   * Nokia Developer publication
 
  -- unknown <>  Wed, 29 Jun 2011 10:30:52 +0300
