@@ -137,6 +137,7 @@ Developed with:
 
 VERSION HISTORY
 -------------------------------------------------------------------------------
+v1.5    Added Nokia Conversations feed and done few bug fixes.
 v1.4    Added E6 support, UI fine tuning, some refactoring.
 v1.3    Version published on the Nokia Developer website.
 v1.1    Added MeeGo/Harmattan 1.2 support.
